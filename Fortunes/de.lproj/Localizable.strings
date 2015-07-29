@@ -19,3 +19,7 @@
 
 "desriptionFontSettings" = "Du hättest DEIN FORTUNE oder alle Fortunes als Liste, die Quellenangaben gern in anderen Schriftarten? Büüde ... !";
 "changeFonts" = "Schriftarten festlegen...";
+"justASecond" = "Moment...";
+"remoteGetFortunes" = "Lade Fortunes vom Server";
+"loading #X of #Y" = "Fortune %d of %d";
+"#n Fortunes" = "%d Fortunes";

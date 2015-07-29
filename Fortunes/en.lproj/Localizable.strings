@@ -32,3 +32,7 @@
 "ButtonGoBack" = "Back";
 
 
+"justASecond" = "Just a second...";
+"remoteGetFortunes" = "Loading fortunes data";
+"loading #X of #Y" = "Fortune %d von %d";
+"#n Fortunes" = "%d Fortunes";

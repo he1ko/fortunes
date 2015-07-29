@@ -61,7 +61,7 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
     _tableView.delegate = self;
     _tableView.dataSource = self;
 
-    [self.navigationItem setTitle:@"Alle Fortunes"];
+    [self.navigationItem setTitle:NSLocalizedString(@"listOfFortunes", @"AllFortunes header text")];
 }
 
 
@@ -107,8 +107,8 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
         [self.view addSubview:HUD];
         HUD.mode = MBProgressHUDModeDeterminateHorizontalBar;
         HUD.progress = 0.0;
-        HUD.labelText = @"Moment...";
-        HUD.detailsLabelText = @"Lade Fortunes vom Server";
+        HUD.labelText = NSLocalizedString(@"justASecond", @"wait... notification");
+        HUD.detailsLabelText = NSLocalizedString(@"remoteGetFortunes", @"Lade Fortunes vom Server");
         HUD.delegate = self;
         [HUD show:YES];
 
@@ -239,12 +239,12 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
         [mFortuneCells addObject:[self cellForFortune:f]];
         HUD.progress = (CGFloat)[mFortuneCells count] / [fortuneList.fortunes count];
-        HUD.detailsLabelText = [NSString stringWithFormat:@"Fortune %d von %d", (int)[mFortuneCells count], (int)[fortuneList.fortunes count]];
+        HUD.detailsLabelText = [NSString stringWithFormat:NSLocalizedString(@"loading #X of #Y", @"Fortune %d von %d"), (int) [mFortuneCells count], (int) [fortuneList.fortunes count]];
     }
 
     fortuneCells = mFortuneCells;
 
-    [self.navigationItem setTitle:[NSString stringWithFormat:@"%d Fortunes", (int)[fortuneList.fortunes count]]];
+    [self.navigationItem setTitle:[NSString stringWithFormat:NSLocalizedString(@"#n Fortunes", @"%d Fortunes"), (int) [fortuneList.fortunes count]]];
 
     [_tableView reloadData];
     [self restoreScrollPosition];
