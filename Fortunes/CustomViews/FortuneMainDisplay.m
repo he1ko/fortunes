@@ -93,6 +93,7 @@ static float const labelMargin = 24.0f;
 
     fortuneLabel.text = [fortune cleanText];
     [fortuneLabel adjust];
+    [self centerFortune];
 }
 
 @end
