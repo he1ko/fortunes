@@ -5,6 +5,21 @@
 "Fortunes" = "Fortunes-EN";
 
 /*!
+    Main Navigation sections
+*/
+"mainFortune" = "Your fortune";
+"listOfFortunes" = "All fortunes";
+"fortunesBySource" = "Fortunes by source";
+"Settings" = "Settings";
+"Impressum" = "Imprint";
+
+/*!
+    Settings
+*/
+"desriptionFontSettings" = "Set the fonts for the most important items to your favourite look!";
+"changeFonts" = "Change font settings";
+
+/*!
     Settings --> Set font for single areas
 */
 "Question-which-area-to-set-font-for" = "Where do you want to apply this font to?";
@@ -16,11 +31,4 @@
 "ButtonListSource" = "Source in list view";
 "ButtonGoBack" = "Back";
 
-/*!
-    Main Navigation sections
-*/
-"mainFortune" = "Your fortune";
-"listOfFortunes" = "All fortunes";
-"fortunesBySource" = "Fortunes by source";
-"Settings" = "Settings";
-"Impressum" = "Imprint";
+

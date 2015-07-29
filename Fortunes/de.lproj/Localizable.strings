@@ -4,6 +4,12 @@
 
 "Fortunes" = "Fortunes";
 
+"mainFortune" = "Dein Fortune";
+"listOfFortunes" = "Alle Fortunes";
+"fortunesBySource" = "Fortunes nach Quelle";
+"Settings" = "Einstellungen";
+"Impressum" = "Impressum";
+
 "Question-which-area-to-set-font-for" = "Wo möchtest Du diese Schrift verwenden?";
 "Font-sample-text" = "Mein Luftkissenboot ist voller Aale...";
 "ButtonMyFortune" = "Mein Fortune";
@@ -11,8 +17,5 @@
 "ButtonListSource" = "Quelle in der Liste";
 "ButtonGoBack" = "Zurück";
 
-"mainFortune" = "Dein Fortune";
-"listOfFortunes" = "Alle Fortunes";
-"fortunesBySource" = "Fortunes nach Quelle";
-"Settings" = "Einstellungen";
-"Impressum" = "Impressum";
+"desriptionFontSettings" = "Du hättest DEIN FORTUNE oder alle Fortunes als Liste, die Quellenangaben gern in anderen Schriftarten? Büüde ... !";
+"changeFonts" = "Schriftarten festlegen...";
