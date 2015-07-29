@@ -36,9 +36,18 @@ static float const labelMargin = 24.0f;
 
         [self addSubview:fortuneLabel];
         [self updateFortuneText];
+        [self centerFortune];
     }
 
     return self;
+}
+
+
+- (void)centerFortune {
+
+    CGPoint center = self.center;
+    center.y -= self.frame.origin.y;
+    [fortuneLabel setCenter:center];
 }
 
 
