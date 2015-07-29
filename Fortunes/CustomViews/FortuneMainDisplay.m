@@ -60,6 +60,19 @@ static float const labelMargin = 24.0f;
 }
 
 
+- (NSString *)getFontName {
+
+    return fortuneLabel.font.fontName;
+}
+
+
+- (void)setFontName:(NSString *)fontName {
+
+    fortuneLabel.font = [UIFont fontWithName:fontName size:fortuneLabel.font.pointSize];
+    [fortuneLabel adjust];
+}
+
+
 - (void)updateFortune:(SingleFortune *)fortune__ {
 
     fortune = fortune__;

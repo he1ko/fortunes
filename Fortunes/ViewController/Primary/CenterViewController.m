@@ -29,14 +29,11 @@
 
     [super viewWillAppear:animated];
 
-    /*
     NSString *fontName = [self fontNameFromUserSettings];
-    if([fontName isEqualToString:lblFortune.font.fontName]) {
-        return;
+    if(![fontName isEqualToString:[fortuneDisplay getFontName]]) {
+
+        [fortuneDisplay setFontName:fontName];
     }
-    lblFortune.font = [UIFont fontWithName:fontName size:lblFortune.font.pointSize];
-    [self adjustLabelSize];
-    */
 }
 
 
@@ -74,6 +71,13 @@
 - (FortuneMainDisplay*)fortuneDisplay:(SingleFortune *)fortune {
 
     FortuneMainDisplay *fortuneMain = [[FortuneMainDisplay alloc] initWithFrame:[self visibleViewFrame] andFortune:fortune];
+
+    NSString *fontName = [self fontNameFromUserSettings];
+    if(![fontName isEqualToString:[fortuneDisplay getFontName]]) {
+
+        [fortuneMain setFontName:fontName];
+    }
+
     fortuneMain.userInteractionEnabled = YES;
     return fortuneMain;
 }
