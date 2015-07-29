@@ -18,6 +18,7 @@
 
 @interface LeftViewController ()
 
+- (LeftNavItem *)navItemWithFrame:(CGRect)frame tag:(LeftNavItemTag)tag text:(NSString *)text;
 @end
 
 @implementation LeftViewController {
@@ -38,53 +39,37 @@
 }
 
 
+- (LeftNavItem *)navItemWithFrame:(CGRect)frame tag:(LeftNavItemTag)tag text:(NSString *)text {
+
+    LeftNavItem *item = [[LeftNavItem alloc] initWithFrame:frame andTag:tag andText:text];
+    [item addTarget:self action:@selector(itemTouched:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:item];
+
+    return item;
+}
+
 
 - (void)setupNavItems {
 
-    CGRect itemFrame = self.view.frame;
-    itemFrame.size.height = itemHeight;
-    CGFloat originY = 50.0f;
-
     NSMutableArray *mItems = [[NSMutableArray alloc] initWithCapacity:5];
 
-    LeftNavItem *itemHome = [[LeftNavItem alloc] initWithFrame:itemFrame andTag:LeftNavItemTagHome andText:@"Dein Fortune!"];
-    [itemHome setY:originY];
-    [itemHome addTarget:self action:@selector(itemTouched:) forControlEvents:UIControlEventTouchUpInside];
-    [itemHome setSelected:YES];
-    [self.view addSubview:itemHome];
-    [mItems addObject:itemHome];
+    CGRect itemFrame = self.view.frame;
+    itemFrame.size.height = itemHeight;
 
-    originY += itemHeight;
+    itemFrame.origin.y = 50.0f;
+    [mItems addObject:[self navItemWithFrame:itemFrame tag:LeftNavItemTagHome text:NSLocalizedString(@"mainFortune", @"full screen Fortune display")]];
 
-    LeftNavItem *itemFortuneList = [[LeftNavItem alloc] initWithFrame:itemFrame andTag:LeftNavItemTagFortunesList andText:@"Alle Fortunes"];
-    [itemFortuneList setY:originY];
-    [itemFortuneList addTarget:self action:@selector(itemTouched:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:itemFortuneList];
-    [mItems addObject:itemFortuneList];
+    itemFrame.origin.y += itemHeight;
+    [mItems addObject:[self navItemWithFrame:itemFrame tag:LeftNavItemTagFortunesList text:NSLocalizedString(@"listOfFortunes", @"all fortunes as a table")]];
 
-    originY += itemHeight;
+    itemFrame.origin.y += itemHeight;
+    [mItems addObject:[self navItemWithFrame:itemFrame tag:LeftNavItemTagFortunesBySource text:NSLocalizedString(@"fortunesBySource", @"fortunes selecteable by sources")]];
 
-    LeftNavItem *itemFortunesBySource = [[LeftNavItem alloc] initWithFrame:itemFrame andTag:LeftNavItemTagFortunesBySource andText:@"Fortunes nach Quellen"];
-    [itemFortunesBySource setY:originY];
-    [itemFortunesBySource addTarget:self action:@selector(itemTouched:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:itemFortunesBySource];
-    [mItems addObject:itemFortunesBySource];
+    itemFrame.origin.y += itemHeight;
+    [mItems addObject:[self navItemWithFrame:itemFrame tag:LeftNavItemTagSettings text:NSLocalizedString(@"Settings", @"app settings")]];
 
-    originY += itemHeight;
-
-    LeftNavItem *itemSettings = [[LeftNavItem alloc] initWithFrame:itemFrame andTag:LeftNavItemTagSettings andText:@"Einstellungen"];
-    [itemSettings setY:originY];
-    [itemSettings addTarget:self action:@selector(itemTouched:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:itemSettings];
-    [mItems addObject:itemSettings];
-
-    originY += itemHeight;
-
-    LeftNavItem *itemImpressum = [[LeftNavItem alloc] initWithFrame:itemFrame andTag:LeftNavItemTagImpressum andText:@"Impressum"];
-    [itemImpressum setY:originY];
-    [itemImpressum addTarget:self action:@selector(itemTouched:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:itemImpressum];
-    [mItems addObject:itemImpressum];
+    itemFrame.origin.y += itemHeight;
+    [mItems addObject:[self navItemWithFrame:itemFrame tag:LeftNavItemTagImpressum text:NSLocalizedString(@"Impressum", @"imprint")]];
 
     leftItems = mItems;
 

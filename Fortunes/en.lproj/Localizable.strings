@@ -15,3 +15,12 @@
 "ButtonListFortune" = "Fortune in list view";
 "ButtonListSource" = "Source in list view";
 "ButtonGoBack" = "Back";
+
+/*!
+    Main Navigation sections
+*/
+"mainFortune" = "Your fortune";
+"listOfFortunes" = "All fortunes";
+"fortunesBySource" = "Fortunes by source";
+"Settings" = "Settings";
+"Impressum" = "Imprint";

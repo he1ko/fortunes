@@ -12,7 +12,7 @@
 /**
 * Language setting for testing purpose
 */
-#define APP_LANGUAGE_ENGLISH NO;
+#define APP_LANGUAGE_ENGLISH YES;
 
 
 /**

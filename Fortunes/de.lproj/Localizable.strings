@@ -10,3 +10,9 @@
 "ButtonListFortune" = "Fortune in der Liste";
 "ButtonListSource" = "Quelle in der Liste";
 "ButtonGoBack" = "Zurück";
+
+"mainFortune" = "Dein Fortune";
+"listOfFortunes" = "Alle Fortunes";
+"fortunesBySource" = "Fortunes nach Quelle";
+"Settings" = "Einstellungen";
+"Impressum" = "Impressum";
