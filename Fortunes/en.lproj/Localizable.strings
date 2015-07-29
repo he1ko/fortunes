@@ -1,0 +1,17 @@
+/****************************************************************************/
+/* Localization ENGLISH */
+
+
+"Fortunes" = "Fortunes-EN";
+
+/*!
+    Settings --> Set font for single areas
+*/
+"Question-which-area-to-set-font-for" = "Where do you want to apply this font to?";
+"Font-sample-text" = "My hovercraft is full of eals";
+
+/// Button Text
+"ButtonMyFortune" = "My Fortune";
+"ButtonListFortune" = "Fortune in list view";
+"ButtonListSource" = "Source in list view";
+"ButtonGoBack" = "Back";

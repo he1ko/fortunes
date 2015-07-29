@@ -1,0 +1,12 @@
+/****************************************************************************/
+/* Localization GERMAN */
+
+
+"Fortunes" = "Fortunes";
+
+"Question-which-area-to-set-font-for" = "Für welchen Bereich möchtest Du diese Schrift verwenden?";
+"Font-sample-text" = "Mein Luftkissenboot ist voller Aale!";
+"ButtonMyFortune" = "Mein Fortune";
+"ButtonListFortune" = "Fortune in der Liste";
+"ButtonListSource" = "Quelle in der Liste";
+"ButtonGoBack" = "Zurück";
