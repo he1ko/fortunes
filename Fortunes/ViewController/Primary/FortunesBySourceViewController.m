@@ -24,7 +24,7 @@
 
     [super viewWillAppear:animated];
 
-    [self.navigationItem setTitle:@"Nach Quellen"];
+    [self.navigationItem setTitle:NSLocalizedString(@"fortunesBySource", @"fortunesBySource-Header")];
 }
 
 

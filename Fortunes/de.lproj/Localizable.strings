@@ -8,7 +8,7 @@
 "listOfFortunes" = "Alle Fortunes";
 "fortunesBySource" = "Fortunes nach Quelle";
 "Settings" = "Einstellungen";
-"Impressum" = "Impressum";
+"imprint" = "Impressum";
 
 "Question-which-area-to-set-font-for" = "Wo möchtest Du diese Schrift verwenden?";
 "Font-sample-text" = "Mein Luftkissenboot ist voller Aale...";
@@ -23,3 +23,4 @@
 "remoteGetFortunes" = "Lade Fortunes vom Server";
 "loading #X of #Y" = "Fortune %d of %d";
 "#n Fortunes" = "%d Fortunes";
+"fortunesBySource" = "Nach Quellen";

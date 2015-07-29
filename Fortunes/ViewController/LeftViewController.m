@@ -76,7 +76,7 @@
     [mItems addObject:[self navItemWithFrame:itemFrame tag:LeftNavItemTagSettings text:NSLocalizedString(@"Settings", @"app settings")]];
 
     itemFrame.origin.y += itemHeight;
-    [mItems addObject:[self navItemWithFrame:itemFrame tag:LeftNavItemTagImpressum text:NSLocalizedString(@"Impressum", @"imprint")]];
+    [mItems addObject:[self navItemWithFrame:itemFrame tag:LeftNavItemTagImpressum text:NSLocalizedString(@"imprint", @"imprint")]];
 
     leftItems = mItems;
 

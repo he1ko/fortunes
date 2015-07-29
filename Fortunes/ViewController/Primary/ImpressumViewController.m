@@ -23,7 +23,7 @@
 
     [super viewWillAppear:animated];
 
-    [self.navigationItem setTitle:@"Impressum"];
+    [self.navigationItem setTitle:NSLocalizedString(@"imprint", @"Imprint-headerText")];
 }
 
 

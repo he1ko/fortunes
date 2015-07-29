@@ -11,7 +11,7 @@
 "listOfFortunes" = "All fortunes";
 "fortunesBySource" = "Fortunes by source";
 "Settings" = "Settings";
-"Impressum" = "Imprint";
+"imprint" = "Imprint";
 
 /*!
     Settings
@@ -34,5 +34,5 @@
 
 "justASecond" = "Just a second...";
 "remoteGetFortunes" = "Loading fortunes data";
-"loading #X of #Y" = "Fortune %d von %d";
+"loading #X of #Y" = "Fortune %d of %d";
 "#n Fortunes" = "%d Fortunes";
