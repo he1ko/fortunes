@@ -7,7 +7,6 @@
 //
 
 #import "SingleFortune.h"
-#import "LabelAutoSize.h"
 
 @implementation SingleFortune {
 
@@ -46,6 +45,41 @@
 
     /// trim text
     fortuneText = [fortuneText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+
+    /*!
+            remove leading and trailing " quotes "
+
+            CHECK if there are " at the beginning AND the end!!!
+            Imagine this: Then I said "Hello"
+            Would result in: Then I said "Hello
+
+            Or: "Sorry" seems to be the hardest word.
+            Would result in: Sorry" seems to be the hardest word.
+      */
+
+    NSRange firstCharacterRange = NSMakeRange(0, 1);
+    NSRange lastCharacterRange = NSMakeRange(fortuneText.length -1, 1);
+    BOOL firstCharIsBad = NO;
+    BOOL lastCharIsBad = NO;
+
+    unichar greekAlpha = [fortuneText characterAtIndex:fortuneText.length -1];
+    NSString* s = [NSString stringWithCharacters:&greekAlpha length:1];
+    if([s isEqualToString:@"\""]) {
+        lastCharIsBad = YES;
+    }
+
+    greekAlpha = [fortuneText characterAtIndex:0];
+    s = [NSString stringWithCharacters:&greekAlpha length:1];
+    if([s isEqualToString:@"\""]) {
+        firstCharIsBad = YES;
+    }
+
+
+    if (firstCharIsBad && lastCharIsBad) {
+
+        fortuneText = [fortuneText stringByReplacingCharactersInRange:lastCharacterRange withString:@""];
+        fortuneText = [fortuneText stringByReplacingCharactersInRange:firstCharacterRange withString:@""];
+    }
 
     _text = fortuneText;
     cleaned = YES;
