@@ -8,13 +8,13 @@
 
 #import "CenterViewController.h"
 #import "UIViewController+Layout.h"
-#import "LabelAutoSize.h"
 #import "UserSettings.h"
+#import "FortuneMainDisplay.h"
 
 @implementation CenterViewController {
 
 @private
-    LabelAutoSize *lblFortune;
+    FortuneMainDisplay *fortuneDisplay;
 }
 
 - (void)viewDidLoad {
@@ -29,12 +29,14 @@
 
     [super viewWillAppear:animated];
 
+    /*
     NSString *fontName = [self fontNameFromUserSettings];
     if([fontName isEqualToString:lblFortune.font.fontName]) {
         return;
     }
     lblFortune.font = [UIFont fontWithName:fontName size:lblFortune.font.pointSize];
     [self adjustLabelSize];
+    */
 }
 
 
@@ -58,68 +60,28 @@
 - (void)setupFortune {
 
     /// main fortune display
-
-    if(lblFortune == nil) {
-
-        lblFortune = [self fortuneLabel];
-        [self.view addSubview:lblFortune];
+    if (fortuneDisplay == nil) {
+        fortuneDisplay = [self fortuneDisplay:(SingleFortune *) self.jsonModel];
+        [self.view addSubview:fortuneDisplay];
+    }
+    else {
+        [fortuneDisplay updateFortune:(SingleFortune *) self.jsonModel];
     }
 
-    SingleFortune *fortune = (SingleFortune *)self.jsonModel;
-
-    lblFortune.text = [fortune cleanText];
-    [self adjustLabelSize];
 }
 
 
-- (void)adjustLabelSize {
+- (FortuneMainDisplay*)fortuneDisplay:(SingleFortune *)fortune {
 
-    [lblFortune adjust];
-
-    /// move Label to center of visible area
-    CGRect frVisible = [self visibleViewFrame];
-    CGPoint lblCenter = self.view.center;
-    lblCenter.y = CGRectGetMidY(frVisible);
-    lblFortune.center = lblCenter;
-}
-
-
-- (LabelAutoSize*)fortuneLabel {
-
-    CGFloat labelMarginAll = 40.0f;
-
-    CGRect frVisible = [self visibleViewFrame];
-    CGRect frLabel = frVisible;
-
-    frLabel.origin.x += labelMarginAll;
-    frLabel.origin.y += labelMarginAll;
-    frLabel.size.width -= labelMarginAll * 2;
-    frLabel.size.height -= labelMarginAll * 2;
-
-    LabelAutoSize *lbl = [[LabelAutoSize alloc] initWithFrame:frLabel resizeMode:AUTOLABEL_RESIZE_FONT];
-    [lbl setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:22.0f]];
-
-    NSString *lblFontName = [self fontNameFromUserSettings];
-    if(lblFontName != nil) {
-        [lbl setFont:[UIFont fontWithName:lblFontName size:22.0f]];
-    }
-
-    lbl.textColor = [UIColor whiteColor];
-    lbl.backgroundColor = [UIColor clearColor];
-    lbl.textAlignment = NSTextAlignmentCenter;
-    lbl.userInteractionEnabled = YES;
-
-    [self.view addSubview:lbl];
-
-    return lbl;
+    FortuneMainDisplay *fortuneMain = [[FortuneMainDisplay alloc] initWithFrame:[self visibleViewFrame] andFortune:fortune];
+    fortuneMain.userInteractionEnabled = YES;
+    return fortuneMain;
 }
 
 
 - (NSString *)fontNameFromUserSettings {
 
-    NSString *fontSettingsKey = [UserSettings userDefaultsKeyForSection:FONT_APP_SECTION_MAIN_FORTUNE];
-    NSString *lblFontName = [UserSettings loadStringWithKey:fontSettingsKey];
-
+    NSString *lblFontName = [UserSettings loadFontNameForSection:FONT_APP_SECTION_MAIN_FORTUNE];
     if(lblFontName == nil || [lblFontName isEqualToString:@""]) {
         return nil;
     }
@@ -129,10 +91,11 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 
-    UITouch *touch = [touches anyObject];
-    if ([touch view] == lblFortune) {
+    CGPoint touchLocation = [[touches anyObject] locationInView:self.view];
+    CGPoint viewPoint = [fortuneDisplay convertPoint:touchLocation fromView:self.view];
+
+    if ([fortuneDisplay pointInside:viewPoint withEvent:event]) {
         [self loadFortune];
-        return;
     }
 }
 
@@ -142,14 +105,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
