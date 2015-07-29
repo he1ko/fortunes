@@ -22,6 +22,8 @@
 @property float width;
 @property float height;
 
++ (CGRect)expandFrame:(CGRect)frame by:(CGFloat)padding;
+
 - (void)expandHeightBy:(CGFloat)deltaHeight;
 
 -(float) x;

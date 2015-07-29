@@ -119,8 +119,7 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
 - (NSString *)fortuneFontNameFromUserSettings {
 
-    NSString *fontSettingsKey = [UserSettings userDefaultsKeyForSection:FONT_APP_SECTION_LIST_FORTUNE];
-    NSString *fortuneFontName = [UserSettings loadStringWithKey:fontSettingsKey];
+    NSString *fortuneFontName = [UserSettings loadFontNameForSection:FONT_APP_SECTION_LIST_FORTUNE];
 
     if(fortuneFontName == nil || [fortuneFontName isEqualToString:@""]) {
         return nil;
@@ -132,8 +131,7 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
 - (NSString *)sourceFontNameFromUserSettings {
 
-    NSString *fontSettingsKey = [UserSettings userDefaultsKeyForSection:FONT_APP_SECTION_LIST_SOURCE];
-    NSString *sourceFontName = [UserSettings loadStringWithKey:fontSettingsKey];
+    NSString *sourceFontName = [UserSettings loadFontNameForSection:FONT_APP_SECTION_LIST_SOURCE];
 
     if(sourceFontName == nil || [sourceFontName isEqualToString:@""]) {
         return nil;

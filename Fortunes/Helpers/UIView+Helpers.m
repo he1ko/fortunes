@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Fast Gesund. All rights reserved.
 //
 
-#import "UIView+Helpers.h"
-
 @implementation UIView (Helpers)
 
 - (UIViewController*)viewController
@@ -15,7 +13,7 @@
     for (UIView* next = [self superview]; next; next = next.superview)
     {
         UIResponder* nextResponder = [next nextResponder];
-        
+
         if ([nextResponder isKindOfClass:[UIViewController class]])
         {
             return (UIViewController*)nextResponder;
@@ -43,6 +41,18 @@
 {
     [self setHeight:self.frame.size.height + deltaHeight];
 }
+
+
++ (CGRect)expandFrame:(CGRect)frame by:(CGFloat)padding {
+
+    frame.origin.x -= padding;
+    frame.origin.y -= padding;
+    frame.size.width += padding *2;
+    frame.size.height += padding *2;
+
+    return frame;
+}
+
 
 -(float) x {
     return self.frame.origin.x;

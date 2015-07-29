@@ -48,6 +48,14 @@ static float const canvasMargin = 20.0;
 }
 
 #pragma mark -
+#pragma mark basic views
+
+- (UIView *)fullCanvasView {
+
+    return [[UIView alloc] initWithFrame:[self contentCanvas]];
+}
+
+#pragma mark -
 #pragma mark Buttons
 
 - (UIButton *)defaultButtonWithText:(NSString *)buttonText {

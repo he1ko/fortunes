@@ -14,13 +14,15 @@ typedef NS_ENUM(NSInteger, FontAppSection) {
 @interface UserSettings : NSObject
 
 
-+ (NSString *)loadStringWithKey:(NSString *)key;
++ (NSString *)loadFontNameForSection:(FontAppSection)fontSection;
 
-+ (void)saveString:(NSString *)string forKey:(NSString *)key;
++ (void)saveFontName:(NSString *)fontName forSection:(FontAppSection)fontSection;
+
+
 
 + (int)loadFortuneListScrollPosition;
 
 + (void)saveFortuneListScrollPosition:(int)scrollPos;
 
-+ (NSString *)userDefaultsKeyForSection:(FontAppSection)section;
+
 @end

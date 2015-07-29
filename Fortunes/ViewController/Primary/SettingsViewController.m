@@ -36,6 +36,9 @@
 
     btFonts = [self buttonWithText:NSLocalizedString(@"changeFonts", @"button text for changing font settings")];
     [self.view addSubview:btFonts];
+
+    NSLog(@"Button: %d", (int)btFonts.titleLabel.font.pointSize);
+    NSLog(@"Label: %d", (int)lblDescription.font.pointSize);
 }
 
 

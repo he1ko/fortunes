@@ -6,7 +6,7 @@
 #import "UserSettings.h"
 
 static NSString *keyScrollPosFortunesList = @"SCROLL_MAIN";
-static NSString *userDefaultsKeyPrefix = @"fontSection";
+static NSString *fontsSettingKeyPrefix = @"fontSection";
 
 
 @implementation UserSettings {
@@ -14,16 +14,28 @@ static NSString *userDefaultsKeyPrefix = @"fontSection";
 }
 
 
++ (NSString *)loadFontNameForSection:(FontAppSection)fontSection {
+
+    NSString *key = [NSString stringWithFormat:@"%@_%d", fontsSettingKeyPrefix, (int)fontSection];
+    return [self loadStringWithKey:key];
+};
+
++ (void) saveFontName:(NSString *)fontName forSection:(FontAppSection)fontSection {
+
+    NSString *key = [NSString stringWithFormat:@"%@_%d", fontsSettingKeyPrefix, (int)fontSection];
+    [self saveString:fontName forKey:key];
+}
+
+
+
 + (NSString *)loadStringWithKey:(NSString *)key {
 
-    NSLog(@"Lese Wert für %@", key);
     return [[NSUserDefaults standardUserDefaults] stringForKey:key];
 }
 
 
 + (void)saveString:(NSString *)string forKey:(NSString *)key {
 
-    NSLog(@"Speichere %@ für %@", string, key);
     [[NSUserDefaults standardUserDefaults] setObject:string forKey:key];
 }
 
@@ -39,16 +51,6 @@ static NSString *userDefaultsKeyPrefix = @"fontSection";
 
     [[NSUserDefaults standardUserDefaults] setInteger:scrollPos forKey:keyScrollPosFortunesList];
 }
-
-#pragma mark -
-#pragma mark FontSettings
-
-
-+ (NSString *)userDefaultsKeyForSection:(FontAppSection)section {
-
-    return [NSString stringWithFormat:@"%@_%d", userDefaultsKeyPrefix, (int)section];
-}
-
 
 
 @end

@@ -14,6 +14,8 @@
 
 - (void)alignView:(UIView *)view atTopOfRect:(CGRect)frame;
 
+- (UIView *)fullCanvasView;
+
 - (UIButton *)defaultButtonWithText:(NSString *)buttonText;
 
 - (UIButton *)roundedButtonWithText:(NSString *)buttonText;
