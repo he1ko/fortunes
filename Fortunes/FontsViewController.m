@@ -9,6 +9,7 @@
 #import "FontsViewController.h"
 #import "UIViewController+Layout.h"
 #import "FontAssignViewController.h"
+#import "FontSectionSelector.h"
 
 @interface FontsViewController ()
 
@@ -20,6 +21,7 @@
 
 @private
     NSDictionary *fontFamilysAndNames;
+    FontSectionSelector *selector;
 }
 
 - (void)viewDidLoad {
@@ -87,8 +89,6 @@
     NSString *familyName = families[(NSUInteger)section];
     NSArray *fntArray = (NSArray*)fontFamilysAndNames[familyName];
 
-    // NSLog(@"Section %d: %d x %@", (int)section, (int)[fntArray count], familyName);
-
     return [fntArray count];
 }
 
@@ -148,9 +148,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     FontAssignViewController *fontAssignVC = [[FontAssignViewController alloc] init];
+    fontAssignVC.section = _fontSection;
     fontAssignVC.fontName = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
     [self.navigationController pushViewController:fontAssignVC animated:YES];
 }
+
+
 
 
 

@@ -13,7 +13,6 @@ static NSString *keyScrollPosFortunesList = @"SCROLL_MAIN";
 }
 
 
-
 + (NSString *)loadStringWithKey:(NSString *)key {
 
     NSString *string = [[NSUserDefaults standardUserDefaults] stringForKey:key];

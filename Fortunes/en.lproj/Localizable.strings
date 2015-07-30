@@ -36,3 +36,8 @@
 "remoteGetFortunes" = "Loading fortunes data";
 "loading #X of #Y" = "Fortune %d of %d";
 "#n Fortunes" = "%d Fortunes";
+
+
+"Dein (großes) Fortune" = "Your (large) Fortune";
+"Fortunes in Listen" = "Fortunes in list views";
+"Fortune-Quelle in Listen" = "Fortune-Source in list views";

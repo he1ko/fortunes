@@ -23,7 +23,10 @@
 @implementation SettingsViewController {
 
 @private
-    UIButton *btFonts;
+    UIButton *btMainFortune;
+    UIButton *btListFortune;
+    UIButton *btListSource;
+
     UILabel *lblDescription;
 }
 
@@ -34,11 +37,20 @@
     lblDescription = [self descriptionLabel];
     [self.view addSubview:lblDescription];
 
-    btFonts = [self buttonWithText:NSLocalizedString(@"changeFonts", @"button text for changing font settings")];
-    [self.view addSubview:btFonts];
+    btMainFortune = [self buttonWithText:NSLocalizedString(@"Dein (großes) Fortune", @"Dein (großes) Fortune")];
+    [btMainFortune setTag:FONT_APP_SECTION_MAIN_FORTUNE];
+    [self.view addSubview:btMainFortune];
 
-    NSLog(@"Button: %d", (int)btFonts.titleLabel.font.pointSize);
-    NSLog(@"Label: %d", (int)lblDescription.font.pointSize);
+    btListFortune = [self buttonWithText:NSLocalizedString(@"Fortunes in Listen", @"Fortunes in Listen")];
+    [btListFortune setTag:FONT_APP_SECTION_LIST_FORTUNE];
+    [btListFortune setY:(float) (CGRectGetMaxY(btMainFortune.frame) + 20.0)];
+    [self.view addSubview:btListFortune];
+
+    btListSource = [self buttonWithText:NSLocalizedString(@"Fortune-Quelle in Listen", @"Fortune-Quelle in Listen")];
+    [btListSource setTag:FONT_APP_SECTION_LIST_FORTUNE];
+    [btListSource setY:(float) (CGRectGetMaxY(btListFortune.frame) + 20.0)];
+    [self.view addSubview:btListSource];
+
 }
 
 
@@ -66,16 +78,21 @@
 
     UIButton * button = [self roundedButtonWithText:buttonText];
     [button setY:(float) (CGRectGetMaxY(lblDescription.frame) + 20.0)];
-    [button addTarget:self action:@selector(fontsButtonTouch) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(fontsButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
 
     return button;
 }
 
-- (void)fontsButtonTouch {
+
+- (void)fontsButtonTouch:(id)sender {
+
+    UIView *bt = (UIView *)sender;
 
     FontsViewController *vcFonts = [[FontsViewController alloc] init];
+    vcFonts.fontSection = (FontAppSection)[sender tag];
     [self.navigationController pushViewController:vcFonts animated:YES];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

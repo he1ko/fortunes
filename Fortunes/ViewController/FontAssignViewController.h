@@ -10,6 +10,7 @@
 
 @interface FontAssignViewController : BaseViewController <MBProgressHUDDelegate>
 
+@property(nonatomic, assign) FontAppSection section;
 @property(nonatomic, strong) NSString *fontName;
 
 @end

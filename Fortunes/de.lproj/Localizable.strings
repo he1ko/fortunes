@@ -24,3 +24,6 @@
 "loading #X of #Y" = "Fortune %d of %d";
 "#n Fortunes" = "%d Fortunes";
 "fortunesBySource" = "Nach Quellen";
+"Dein (großes) Fortune" = "Dein (großes) Fortune";
+"Fortunes in Listen" = "Fortunes in Listen";
+"Fortune-Quelle in Listen" = "Fortune-Quelle in Listen";
