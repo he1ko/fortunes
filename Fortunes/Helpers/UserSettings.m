@@ -16,7 +16,11 @@ static NSString *keyScrollPosFortunesList = @"SCROLL_MAIN";
 
 + (NSString *)loadStringWithKey:(NSString *)key {
 
-    return [[NSUserDefaults standardUserDefaults] stringForKey:key];
+    NSString *string = [[NSUserDefaults standardUserDefaults] stringForKey:key];
+    if(string == nil) {
+        return @"";
+    }
+    return string;
 }
 
 
