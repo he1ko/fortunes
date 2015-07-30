@@ -14,4 +14,8 @@
 - (CGFloat)getHeight;
 
 - (void)setFortune:(SingleFortune *)fortune;
+
+- (NSString *)getFortuneFontName;
+
+- (NSString *)getSourceFontName;
 @end

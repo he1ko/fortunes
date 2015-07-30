@@ -13,6 +13,25 @@
 static CGFloat const LeftPanelWidth = 30.0f;
 static CGFloat const TextViewMargin = 12.0f;
 
+@interface FortuneTableViewCell ()
+
+- (void)addTextLabel;
+
+- (void)addSourceLabel;
+
+- (CGRect)applyMarginToTextFrame:(CGRect)textFrame;
+
+- (void)addLeftPanel;
+
+- (void)addBottomline;
+
+- (UILabel *)languageLabel;
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated;
+@end
+
+
+
 @implementation FortuneTableViewCell {
 
 @private
@@ -40,9 +59,6 @@ static CGFloat const TextViewMargin = 12.0f;
 
     self = [self initWithStyle:UITableViewCellStyleDefault fortune:fortune reuseIdentifier:reuseIdentifier];
 
-    if (self) {
-
-    }
     return self;
 }
 
@@ -60,8 +76,6 @@ static CGFloat const TextViewMargin = 12.0f;
         colorSource = [UIColor blackColor];
         colorNoSource = [UIColor preset_backGroundBlackWithAlpha:0.5];
 
-
-        // self.contentView.backgroundColor = [UIColor presetHighlight];
         self.contentView.backgroundColor = colorCellBackground;
 
         [self addTextLabel];
@@ -79,6 +93,7 @@ static CGFloat const TextViewMargin = 12.0f;
 - (CGFloat)getHeight {
 
     CGFloat cellHeight = CGRectGetMaxY(lblText.frame) + TextViewMargin + lblSource.frame.size.height + TextViewMargin;
+    myHeight = cellHeight;
     return cellHeight;
 }
 
@@ -196,5 +211,15 @@ static CGFloat const TextViewMargin = 12.0f;
 
     [lblText adjust];
 }
+
+
+- (NSString *)getFortuneFontName {
+    return lblText.font.fontName;
+}
+
+- (NSString *)getSourceFontName {
+    return lblSource.font.fontName;
+}
+
 
 @end

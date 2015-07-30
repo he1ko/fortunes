@@ -20,14 +20,12 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 @private
     FortuneList *fortuneList;
     FortuneTableViewCell *heightTestCell;
+    NSString *fortuneFontName;
+    NSString *sourceFontName;
 
-    NSArray *fortuneCells;
     MBProgressHUD *HUD;
     NSIndexPath *lastSelectionPath;
     RowIndicator *rowIndicator;
-
-    UIFont *fortuneFont;
-    UIFont *sourceFont;
 
     int topRowIdx;
 }
@@ -47,9 +45,6 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
     }
 
     CGRect tableViewFrame = self.view.frame;
-
-    fortuneFont = [self fortuneFontFromUserSettings];
-    sourceFont = [self sourceFontFromUserSettings];
 
     _tableView = [[UITableView alloc] initWithFrame:tableViewFrame style:UITableViewStylePlain];
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
@@ -76,12 +71,6 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
         [_tableView deselectRowAtIndexPath:lastSelectionPath animated:YES];
     }
 
-    BOOL fortuneFontModified = NO;
-    BOOL sourceFontModified = NO;
-
-    fortuneFont = [self fortuneFontFromUserSettings];
-    sourceFont = [self sourceFontFromUserSettings];
-
     /*!
         async. Request calls setRestAnswer: on completion
      */
@@ -99,18 +88,12 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
         [RESTClient loadFortunesList:self];
     }
-}
+    else if ([_tableView numberOfRowsInSection:(NSInteger)0] > 0) {
+        if([self isFontChanged]) {
 
-
-- (UIFont *)fortuneFontFromUserSettings {
-
-    return [[FontManager getInstance] fontForSection:FONT_APP_SECTION_LIST_FORTUNE];
-}
-
-
-- (UIFont *)sourceFontFromUserSettings {
-
-    return [[FontManager getInstance] fontForSection:FONT_APP_SECTION_LIST_SOURCE];
+            [_tableView reloadData];
+        }
+    }
 }
 
 
@@ -159,6 +142,31 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
     rowIndicator.hidden = YES;
 }
 
+
+#pragma mark -
+#pragma mark Font change
+
+-(Boolean)isFontChanged {
+
+    if(fortuneFontName == nil && sourceFontName == nil) {
+        return NO;
+    }
+
+    UIFont *fFortune = [[FontManager getInstance] fontForSection:FONT_APP_SECTION_LIST_FORTUNE];
+    UIFont *fSource = [[FontManager getInstance] fontForSection:FONT_APP_SECTION_LIST_SOURCE];
+
+    if(![fFortune.fontName isEqualToString:fortuneFontName]) {
+        return YES;
+    }
+
+    if(![fSource.fontName isEqualToString:sourceFontName]) {
+        return YES;
+    }
+
+    return NO;
+}
+
+
 #pragma mark -
 #pragma mark reading, writing and restoring scroll position
 
@@ -202,15 +210,6 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
     fortuneList = (FortuneList *)self.jsonModel;
 
-    fortuneCells = nil;
-    fortuneCells = [[NSArray alloc] init];
-    NSMutableArray * mFortuneCells = [[NSMutableArray alloc] initWithCapacity:[fortuneList.fortunes count]];
-
-
-    // HUD.progress = (CGFloat)[mFortuneCells count] / [fortuneList.fortunes count];
-    // HUD.detailsLabelText = [NSString stringWithFormat:NSLocalizedString(@"loading #X of #Y", @"Fortune %d von %d"), (int) [mFortuneCells count], (int) [fortuneList.fortunes count]];
-
-
     [self.navigationItem setTitle:[NSString stringWithFormat:NSLocalizedString(@"#n Fortunes", @"%d Fortunes"), (int) [fortuneList.fortunes count]]];
 
     [_tableView reloadData];
@@ -224,6 +223,15 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
     UIFont *fFortune = [[FontManager getInstance] fontForSection:FONT_APP_SECTION_LIST_FORTUNE];
     UIFont *fSource = [[FontManager getInstance] fontForSection:FONT_APP_SECTION_LIST_SOURCE];
     FortuneTableViewCell *cell = [[FortuneTableViewCell alloc] initWithFortune:f fortuneFont:fFortune sourceFont:fSource reuseIdentifier:cellReuseIdentifier];
+
+    if(!fortuneFontName) {
+        fortuneFontName = [cell getFortuneFontName];
+    }
+
+    if(!sourceFontName) {
+        sourceFontName = [cell getSourceFontName];
+    }
+
     return cell;
 }
 
@@ -247,23 +255,30 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-
     if(!heightTestCell) {
 
-        heightTestCell = [[FortuneTableViewCell alloc] initWithFortune:fortuneList.fortunes[(NSUInteger)indexPath.row] fortuneFont:fortuneFont sourceFont:sourceFont reuseIdentifier:cellReuseIdentifier];
+        heightTestCell = [self cellForFortune:fortuneList.fortunes[(NSUInteger) indexPath.row]];
+    }
+    else if ([self isFontChanged]) {
+
+        heightTestCell = [self cellForFortune:fortuneList.fortunes[(NSUInteger) indexPath.row]];
     }
     else {
         [heightTestCell setFortune:fortuneList.fortunes[(NSUInteger)indexPath.row]];
     }
 
-    NSLog(@"H = %d", (int) [heightTestCell getHeight]);
+    CGFloat progress = (CGFloat)indexPath.row / [fortuneList.fortunes count];
+
+    HUD.progress = progress;
+    HUD.detailsLabelText = [NSString stringWithFormat:NSLocalizedString(@"loading #X of #Y", @"Fortune %d von %d"), (int)indexPath.row, (int) [fortuneList.fortunes count]];
+
     return [heightTestCell getHeight];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    return [[FortuneTableViewCell alloc] initWithFortune:fortuneList.fortunes[(NSUInteger)indexPath.row] fortuneFont:fortuneFont sourceFont:sourceFont reuseIdentifier:cellReuseIdentifier];
+    return [self cellForFortune:fortuneList.fortunes[(NSUInteger) indexPath.row]];
 }
 
 
