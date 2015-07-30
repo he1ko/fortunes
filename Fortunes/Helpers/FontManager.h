@@ -4,13 +4,13 @@
     Default fonts for fortune display
  */
 
-#define kDEFAULT_FONT_NAME_FORTUNE_MAIN @"AvenirNext-BoldItalic"
-#define kDEFAULT_FONT_NAME_LIST_FORTUNE @"HelveticaNeue"
-#define kDEFAULT_FONT_NAME_LIST_SOURCE @"Baskerville-SemiBoldItalic"
+static NSString * kDEFAULT_FONT_NAME_FORTUNE_MAIN = @"AvenirNext-BoldItalic";
+static NSString * kDEFAULT_FONT_NAME_LIST_FORTUNE = @"HelveticaNeue";
+static NSString * kDEFAULT_FONT_NAME_LIST_SOURCE = @"Baskerville-SemiBoldItalic";
 
-#define kDEFAULT_FONT_SIZE_FORTUNE_MAIN 22.0
-#define kDEFAULT_FONT_SIZE_LIST_FORTUNE 15.0
-#define kDEFAULT_FONT_SIZE_LIST_SOURCE 9.0
+static float kDEFAULT_FONT_SIZE_FORTUNE_MAIN = 22.0;
+static float kDEFAULT_FONT_SIZE_LIST_FORTUNE = 15.0;
+static float kDEFAULT_FONT_SIZE_LIST_SOURCE = 9.0;
 
 
 /*! @discussion public definition of section types for dynamic font changes

@@ -58,9 +58,9 @@ static NSString *fontsSettingKeyPrefix = @"fontSection";
 
         NSMutableArray *mFontSizes = [[NSMutableArray alloc] initWithCapacity:3];
 
-        mFontSizes[FONT_APP_SECTION_MAIN_FORTUNE] = @kDEFAULT_FONT_SIZE_FORTUNE_MAIN;
-        mFontSizes[FONT_APP_SECTION_LIST_FORTUNE] = @kDEFAULT_FONT_SIZE_LIST_FORTUNE;
-        mFontSizes[FONT_APP_SECTION_LIST_SOURCE] = @kDEFAULT_FONT_SIZE_LIST_SOURCE;
+        mFontSizes[FONT_APP_SECTION_MAIN_FORTUNE] = [NSNumber numberWithFloat:kDEFAULT_FONT_SIZE_FORTUNE_MAIN];
+        mFontSizes[FONT_APP_SECTION_LIST_FORTUNE] = [NSNumber numberWithFloat:kDEFAULT_FONT_SIZE_LIST_FORTUNE];
+        mFontSizes[FONT_APP_SECTION_LIST_SOURCE] = [NSNumber numberWithFloat:kDEFAULT_FONT_SIZE_LIST_SOURCE];
 
         fontSizes = mFontSizes;
     }
