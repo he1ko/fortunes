@@ -28,16 +28,16 @@ static CGFloat const fortuneFontSize= 15.0f;
     UILabel *lblSource;
     CGFloat myHeight;
 
-    NSString *fortuneFontName;
-    NSString *sourceFontName;
+    UIFont *fortuneFont;
+    UIFont *sourceFont;
 }
 
 
 
-- (id)initWithFortune:(SingleFortune *)fortune fontName:(NSString *)fontName sourceFontName:(NSString *)_sourceFontName reuseIdentifier:(NSString *)reuseIdentifier {
+- (id)initWithFortune:(SingleFortune *)fortune fortuneFont:(UIFont *)_fortuneFont sourceFont:(UIFont *)_sourceFont reuseIdentifier:(NSString *)reuseIdentifier {
 
-    fortuneFontName = fontName;
-    sourceFontName = _sourceFontName;
+    fortuneFont = _fortuneFont;
+    sourceFont = _sourceFont;
 
     self = [self initWithStyle:UITableViewCellStyleDefault fortune:fortune reuseIdentifier:reuseIdentifier];
 
@@ -97,7 +97,7 @@ static CGFloat const fortuneFontSize= 15.0f;
     lblText.textColor = colorText;
     lblText.backgroundColor = [UIColor clearColor];
     lblText.text = [myFortune cleanText];
-    lblText.font = [UIFont fontWithName:[self getFortuneFontName] size:fortuneFontSize];
+    lblText.font = fortuneFont;
     [lblText adjust];
 
     [self.contentView addSubview:lblText];
@@ -113,7 +113,7 @@ static CGFloat const fortuneFontSize= 15.0f;
     sourceFrame.origin.x += TextViewMargin;
 
     lblSource = [[UILabel alloc] initWithFrame:sourceFrame];
-    lblSource.font = [UIFont fontWithName:[self getSourceFontName] size:9.0];
+    lblSource.font = sourceFont;
     lblSource.textAlignment = NSTextAlignmentCenter;
     lblSource.backgroundColor = [UIColor clearColor];
 
@@ -189,39 +189,6 @@ static CGFloat const fortuneFontSize= 15.0f;
     }
 
     //[super setSelected:selected animated:animated];
-}
-
-
-- (NSString *)getFortuneFontName {
-
-    if(fortuneFontName != nil && ![fortuneFontName isEqualToString:@""]) {
-
-        return fortuneFontName;
-    }
-    return @"HelveticaNeue-Light";
-}
-
-
-- (void)setFortuneFontName:(NSString *)fontName {
-
-    fortuneFontName = fontName;
-}
-
-
-
-- (NSString *)getSourceFontName {
-
-    if(sourceFontName != nil && ![sourceFontName isEqualToString:@""]) {
-
-        return sourceFontName;
-    }
-    return @"TimesNewRomanPS-ItalicMT";
-}
-
-
-- (void)setSourceFontName:(NSString *)fontName {
-
-    sourceFontName = fontName;
 }
 
 

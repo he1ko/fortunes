@@ -6,26 +6,10 @@
 #import "UserSettings.h"
 
 static NSString *keyScrollPosFortunesList = @"SCROLL_MAIN";
-static NSString *fontsSettingKeyPrefix = @"fontSection";
 
 
 @implementation UserSettings {
 
-}
-
-
-+ (NSString *)loadFontNameForSection:(FontAppSection)fontSection {
-
-    NSString *key = [NSString stringWithFormat:@"%@_%d", fontsSettingKeyPrefix, (int)fontSection];
-    NSLog(@"Lade %@", key);
-    return [self loadStringWithKey:key];
-};
-
-+ (void) saveFontName:(NSString *)fontName forSection:(FontAppSection)fontSection {
-
-    NSString *key = [NSString stringWithFormat:@"%@_%d", fontsSettingKeyPrefix, (int)fontSection];
-    NSLog(@"Lese %@", key);
-    [self saveString:fontName forKey:key];
 }
 
 

@@ -9,7 +9,6 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "FontAssignViewController.h"
 #import "UIViewController+Layout.h"
-#import "UserSettings.h"
 
 static NSString *locDescriptionText = @"Question-which-area-to-set-font-for";
 static NSString *locSampleText = @"Font-sample-text";
@@ -23,6 +22,21 @@ static NSString *locButtonTextGoBack = @"ButtonGoBack";
 
 @interface FontAssignViewController ()
 
+- (UILabel *)mainFontNameLabel;
+
+- (UILabel *)fontSampleLabel;
+
+- (UILabel *)descriptionLabel;
+
+- (UIButton *)btAssignToMainFortune:(NSString *)buttonText;
+
+- (UIButton *)btAssignToListFortune:(NSString *)buttonText;
+
+- (UIButton *)btAssignToListSource:(NSString *)buttonText;
+
+- (void)saveFontName:(id)sender;
+
+- (void)hideHud;
 @end
 
 @implementation FontAssignViewController {
@@ -134,7 +148,7 @@ static NSString *locButtonTextGoBack = @"ButtonGoBack";
     if([sender isKindOfClass:[UIView class]]) {
 
         UIView *senderView = (UIView *)sender;
-        [UserSettings saveFontName:_fontName forSection:(FontAppSection)[sender tag]];
+        [[FontManager getInstance] updateFontName:_fontName forSection:(FontAppSection)[sender tag]];
 
         HUD = [[MBProgressHUD alloc] initWithView:self.view];
         [self.view addSubview:HUD];

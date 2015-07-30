@@ -10,9 +10,7 @@
 
 @interface FortuneTableViewCell : UITableViewCell
 
-- (id)initWithFortune:(SingleFortune *)fortune fontName:(NSString *)fontName sourceFontName:(NSString *)_sourceFontName reuseIdentifier:(NSString *)reuseIdentifier;
+- (id)initWithFortune:(SingleFortune *)fortune fortuneFont:(UIFont *)_fortuneFont sourceFont:(UIFont *)_sourceFont reuseIdentifier:(NSString *)reuseIdentifier;
 - (CGFloat)getHeight;
-- (void)setFortuneFontName:(NSString *)fontName;
 
-- (void)setSourceFontName:(NSString *)fontName;
 @end

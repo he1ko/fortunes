@@ -1,4 +1,17 @@
 
+
+/*! @discussion Definition of label resize behaviour types for global use
+*/
+typedef NS_ENUM(NSInteger, AutoLabelResizeMode) {
+
+    /// Font size will fit given content and frame size
+    AUTOLABEL_RESIZE_FONT,
+
+    /// Frame height will fit given content and font
+    AUTOLABEL_RESIZE_HEIGHT
+};
+
+
 /*! @discussion UILabel that resizes by itself.
 
  - Height is given and fixed --> Font size will be adopted
@@ -25,17 +38,13 @@
     lblSample.center = self.view.center;
 
  */
-
-
-typedef NS_ENUM(NSInteger, AutoLabelResizeMode) {
-
-    AUTOLABEL_RESIZE_FONT,
-    AUTOLABEL_RESIZE_HEIGHT
-};
-
-
 @interface LabelAutoSize : UILabel
 
+/*!
+    Initializer with frame and resizing behaviour
+
+    @sa AutoLabelResizeMode
+ */
 - (id)initWithFrame:(CGRect)frame resizeMode:(AutoLabelResizeMode)resizeMode;
 - (void)adjust;
 

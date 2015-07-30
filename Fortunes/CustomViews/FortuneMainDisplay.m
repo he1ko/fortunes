@@ -9,6 +9,7 @@ static float const labelMargin = 24.0f;
 
 @interface FortuneMainDisplay ()
 
+- (void)centerFortune;
 - (LabelAutoSize *)setupFortuneLabel;
 - (void)updateFortuneText;
 
@@ -58,7 +59,7 @@ static float const labelMargin = 24.0f;
     CGRect labelFrame = [UIView expandFrame:myFrame by: labelMargin * -1];
 
     LabelAutoSize *lbl = [[LabelAutoSize alloc] initWithFrame:labelFrame resizeMode:AUTOLABEL_RESIZE_FONT];
-    [lbl setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:22.0f]];
+    [lbl setFont:[[FontManager getInstance] fontForSection:FONT_APP_SECTION_MAIN_FORTUNE]];
 
     lbl.textColor = [UIColor whiteColor];
     lbl.backgroundColor = [UIColor clearColor];
@@ -75,9 +76,9 @@ static float const labelMargin = 24.0f;
 }
 
 
-- (void)setFontName:(NSString *)fontName {
+- (void)setFont:(UIFont *)font {
 
-    fortuneLabel.font = [UIFont fontWithName:fontName size:fortuneLabel.font.pointSize];
+    fortuneLabel.font = font;
     [fortuneLabel adjust];
 }
 

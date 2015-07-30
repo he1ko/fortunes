@@ -6,7 +6,7 @@
 
 - (NSString *)getFontName;
 
-- (void)setFontName:(NSString *)fontName;
+- (void)setFont:(UIFont *)font;
 
 - (void)updateFortune:(SingleFortune *)fortune;
 

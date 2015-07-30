@@ -8,7 +8,6 @@
 
 #import "CenterViewController.h"
 #import "UIViewController+Layout.h"
-#import "UserSettings.h"
 #import "FortuneMainDisplay.h"
 
 @implementation CenterViewController {
@@ -29,11 +28,8 @@
 
     [super viewWillAppear:animated];
 
-    NSString *fontName = [self fontNameFromUserSettings];
-    if(![fontName isEqualToString:[fortuneDisplay getFontName]]) {
-
-        [fortuneDisplay setFontName:fontName];
-    }
+    UIFont *font = [self fontFromUserSettings];
+    [fortuneDisplay setFont:font];
 }
 
 
@@ -72,24 +68,17 @@
 
     FortuneMainDisplay *fortuneMain = [[FortuneMainDisplay alloc] initWithFrame:[self visibleViewFrame] andFortune:fortune];
 
-    NSString *fontName = [self fontNameFromUserSettings];
-    if(![fontName isEqualToString:[fortuneDisplay getFontName]]) {
-
-        [fortuneMain setFontName:fontName];
-    }
+    UIFont *font = [self fontFromUserSettings];
+    [fortuneMain setFont:font];
 
     fortuneMain.userInteractionEnabled = YES;
     return fortuneMain;
 }
 
 
-- (NSString *)fontNameFromUserSettings {
+- (UIFont *)fontFromUserSettings {
 
-    NSString *lblFontName = [UserSettings loadFontNameForSection:FONT_APP_SECTION_MAIN_FORTUNE];
-    if(lblFontName == nil || [lblFontName isEqualToString:@""]) {
-        return nil;
-    }
-    return lblFontName;
+    return [[FontManager getInstance] fontForSection:FONT_APP_SECTION_MAIN_FORTUNE];
 }
 
 

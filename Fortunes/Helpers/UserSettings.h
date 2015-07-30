@@ -3,26 +3,19 @@
 // Copyright (c) 2015 Jemix. All rights reserved.
 //
 
-typedef NS_ENUM(NSInteger, FontAppSection) {
 
-    FONT_APP_SECTION_MAIN_FORTUNE,
-    FONT_APP_SECTION_LIST_FORTUNE,
-    FONT_APP_SECTION_LIST_SOURCE
-};
 
 
 @interface UserSettings : NSObject
 
 
-+ (NSString *)loadFontNameForSection:(FontAppSection)fontSection;
++ (NSString *)loadStringWithKey:(NSString *)key;
 
-+ (void)saveFontName:(NSString *)fontName forSection:(FontAppSection)fontSection;
-
-
++ (void)saveString:(NSString *)string forKey:(NSString *)key;
 
 + (int)loadFortuneListScrollPosition;
-
 + (void)saveFortuneListScrollPosition:(int)scrollPos;
+
 
 
 @end

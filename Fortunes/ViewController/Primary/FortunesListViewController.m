@@ -23,8 +23,9 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
     MBProgressHUD *HUD;
     NSIndexPath *lastSelectionPath;
     RowIndicator *rowIndicator;
-    NSString *fortuneFont;
-    NSString *sourceFont;
+
+    UIFont *fortuneFont;
+    UIFont *sourceFont;
 
     int topRowIdx;
 }
@@ -45,8 +46,8 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
     CGRect tableViewFrame = self.view.frame;
 
-    fortuneFont = [self fortuneFontNameFromUserSettings];
-    sourceFont = [self sourceFontNameFromUserSettings];
+    fortuneFont = [self fortuneFontFromUserSettings];
+    sourceFont = [self sourceFontFromUserSettings];
 
     _tableView = [[UITableView alloc] initWithFrame:tableViewFrame style:UITableViewStylePlain];
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
@@ -76,26 +77,8 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
     BOOL fortuneFontModified = NO;
     BOOL sourceFontModified = NO;
 
-    NSString *fortuneFontNameFromSettings = [self fortuneFontNameFromUserSettings];
-    if(fortuneList != nil && ![fortuneFontNameFromSettings isEqualToString:fortuneFont]) {
-
-        fortuneFont = fortuneFontNameFromSettings;
-        fortuneFontModified = YES;
-    }
-
-
-    NSString *sourceFontNameFromSettings = [self sourceFontNameFromUserSettings];
-    if(fortuneList != nil && ![sourceFontNameFromSettings isEqualToString:sourceFont]) {
-
-        sourceFont = sourceFontNameFromSettings;
-        sourceFontModified = YES;
-    }
-
-
-    if(fortuneFontModified || sourceFontModified) {
-        [self setRestAnswer:fortuneList];
-    }
-
+    fortuneFont = [self fortuneFontFromUserSettings];
+    sourceFont = [self sourceFontFromUserSettings];
 
     /*!
         async. Request calls setRestAnswer: on completion
@@ -117,27 +100,15 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 }
 
 
-- (NSString *)fortuneFontNameFromUserSettings {
+- (UIFont *)fortuneFontFromUserSettings {
 
-    NSString *fortuneFontName = [UserSettings loadFontNameForSection:FONT_APP_SECTION_LIST_FORTUNE];
-
-    if(fortuneFontName == nil || [fortuneFontName isEqualToString:@""]) {
-        return nil;
-    }
-
-    return fortuneFontName;
+    return [[FontManager getInstance] fontForSection:FONT_APP_SECTION_LIST_FORTUNE];
 }
 
 
-- (NSString *)sourceFontNameFromUserSettings {
+- (UIFont *)sourceFontFromUserSettings {
 
-    NSString *sourceFontName = [UserSettings loadFontNameForSection:FONT_APP_SECTION_LIST_SOURCE];
-
-    if(sourceFontName == nil || [sourceFontName isEqualToString:@""]) {
-        return nil;
-    }
-
-    return sourceFontName;
+    return [[FontManager getInstance] fontForSection:FONT_APP_SECTION_LIST_SOURCE];
 }
 
 
@@ -252,7 +223,9 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
 -(FortuneTableViewCell *)cellForFortune:(SingleFortune *)f {
 
-    FortuneTableViewCell *cell = [[FortuneTableViewCell alloc] initWithFortune:f fontName:fortuneFont sourceFontName:sourceFont reuseIdentifier:cellReuseIdentifier];
+    UIFont *fFortune = [[FontManager getInstance] fontForSection:FONT_APP_SECTION_LIST_FORTUNE];
+    UIFont *fSource = [[FontManager getInstance] fontForSection:FONT_APP_SECTION_LIST_SOURCE];
+    FortuneTableViewCell *cell = [[FortuneTableViewCell alloc] initWithFortune:f fortuneFont:fFortune sourceFont:fSource reuseIdentifier:cellReuseIdentifier];
     return cell;
 }
 
