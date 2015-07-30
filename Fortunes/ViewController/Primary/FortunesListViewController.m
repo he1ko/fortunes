@@ -19,6 +19,8 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
 @private
     FortuneList *fortuneList;
+    FortuneTableViewCell *heightTestCell;
+
     NSArray *fortuneCells;
     MBProgressHUD *HUD;
     NSIndexPath *lastSelectionPath;
@@ -204,14 +206,10 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
     fortuneCells = [[NSArray alloc] init];
     NSMutableArray * mFortuneCells = [[NSMutableArray alloc] initWithCapacity:[fortuneList.fortunes count]];
 
-    for (SingleFortune *f in fortuneList.fortunes) {
 
-        [mFortuneCells addObject:[self cellForFortune:f]];
-        HUD.progress = (CGFloat)[mFortuneCells count] / [fortuneList.fortunes count];
-        HUD.detailsLabelText = [NSString stringWithFormat:NSLocalizedString(@"loading #X of #Y", @"Fortune %d von %d"), (int) [mFortuneCells count], (int) [fortuneList.fortunes count]];
-    }
+    // HUD.progress = (CGFloat)[mFortuneCells count] / [fortuneList.fortunes count];
+    // HUD.detailsLabelText = [NSString stringWithFormat:NSLocalizedString(@"loading #X of #Y", @"Fortune %d von %d"), (int) [mFortuneCells count], (int) [fortuneList.fortunes count]];
 
-    fortuneCells = mFortuneCells;
 
     [self.navigationItem setTitle:[NSString stringWithFormat:NSLocalizedString(@"#n Fortunes", @"%d Fortunes"), (int) [fortuneList.fortunes count]]];
 
@@ -243,19 +241,29 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     // Return the number of rows in the section.
-    return [fortuneCells count];
+    return [fortuneList.fortunes count];
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    return [fortuneCells[(NSUInteger) indexPath.row] getHeight];
+
+    if(!heightTestCell) {
+
+        heightTestCell = [[FortuneTableViewCell alloc] initWithFortune:fortuneList.fortunes[(NSUInteger)indexPath.row] fortuneFont:fortuneFont sourceFont:sourceFont reuseIdentifier:cellReuseIdentifier];
+    }
+    else {
+        [heightTestCell setFortune:fortuneList.fortunes[(NSUInteger)indexPath.row]];
+    }
+
+    NSLog(@"H = %d", (int) [heightTestCell getHeight]);
+    return [heightTestCell getHeight];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    return fortuneCells[(NSUInteger)indexPath.row];
+    return [[FortuneTableViewCell alloc] initWithFortune:fortuneList.fortunes[(NSUInteger)indexPath.row] fortuneFont:fortuneFont sourceFont:sourceFont reuseIdentifier:cellReuseIdentifier];
 }
 
 

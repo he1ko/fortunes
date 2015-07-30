@@ -13,4 +13,5 @@
 - (id)initWithFortune:(SingleFortune *)fortune fortuneFont:(UIFont *)_fortuneFont sourceFont:(UIFont *)_sourceFont reuseIdentifier:(NSString *)reuseIdentifier;
 - (CGFloat)getHeight;
 
+- (void)setFortune:(SingleFortune *)fortune;
 @end

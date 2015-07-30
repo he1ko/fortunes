@@ -12,7 +12,6 @@
 
 static CGFloat const LeftPanelWidth = 30.0f;
 static CGFloat const TextViewMargin = 12.0f;
-static CGFloat const fortuneFontSize= 15.0f;
 
 @implementation FortuneTableViewCell {
 
@@ -79,8 +78,7 @@ static CGFloat const fortuneFontSize= 15.0f;
 
 - (CGFloat)getHeight {
 
-    // CGFloat cellHeight = lblText.frame.size.height + lblSource.frame.size.height + TextViewMargin * 2;
-    CGFloat cellHeight = CGRectGetMaxY(lblSource.frame) + TextViewMargin;
+    CGFloat cellHeight = CGRectGetMaxY(lblText.frame) + TextViewMargin + lblSource.frame.size.height + TextViewMargin;
     return cellHeight;
 }
 
@@ -191,5 +189,12 @@ static CGFloat const fortuneFontSize= 15.0f;
     //[super setSelected:selected animated:animated];
 }
 
+- (void) setFortune:(SingleFortune *)fortune {
+
+    lblText.text = [fortune cleanText];
+    lblSource.text = fortune.source;
+
+    [lblText adjust];
+}
 
 @end
