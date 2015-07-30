@@ -18,6 +18,7 @@ static NSString *fontsSettingKeyPrefix = @"fontSection";
 
 @private
     NSArray *fontSizes;
+    NSArray *fontNames;
 }
 
 
@@ -57,12 +58,17 @@ static NSString *fontsSettingKeyPrefix = @"fontSection";
     if (self) {
 
         NSMutableArray *mFontSizes = [[NSMutableArray alloc] initWithCapacity:3];
+        NSMutableArray *mFontNames = [[NSMutableArray alloc] initWithCapacity:3];
 
         mFontSizes[FONT_APP_SECTION_MAIN_FORTUNE] = [NSNumber numberWithFloat:kDEFAULT_FONT_SIZE_FORTUNE_MAIN];
         mFontSizes[FONT_APP_SECTION_LIST_FORTUNE] = [NSNumber numberWithFloat:kDEFAULT_FONT_SIZE_LIST_FORTUNE];
         mFontSizes[FONT_APP_SECTION_LIST_SOURCE] = [NSNumber numberWithFloat:kDEFAULT_FONT_SIZE_LIST_SOURCE];
-
         fontSizes = mFontSizes;
+
+        mFontNames[FONT_APP_SECTION_MAIN_FORTUNE] = [self fontNameForSection:FONT_APP_SECTION_MAIN_FORTUNE];
+        mFontNames[FONT_APP_SECTION_LIST_FORTUNE] = [self fontNameForSection:FONT_APP_SECTION_LIST_FORTUNE];
+        mFontNames[FONT_APP_SECTION_LIST_SOURCE] = [self fontNameForSection:FONT_APP_SECTION_LIST_SOURCE];
+        fontNames = mFontNames;
     }
 
     return self;
@@ -83,6 +89,10 @@ static NSString *fontsSettingKeyPrefix = @"fontSection";
 
     NSString *key = [self userSettingsKeyForSection:section];
     [UserSettings saveString:fontName forKey:key];
+
+    NSMutableArray *mFontNames = [fontNames mutableCopy];
+    mFontNames[section] = fontName;
+    fontNames = mFontNames;
 }
 
 
@@ -98,7 +108,15 @@ static NSString *fontsSettingKeyPrefix = @"fontSection";
 - (NSString *)fontNameForSection:(FontAppSection)section {
 
     NSString *settingsKey = [self userSettingsKeyForSection:section];
-    return [UserSettings loadStringWithKey:settingsKey];
+    NSString *fontName = fontNames[section];
+
+    if(fontName == nil || [fontName isEqualToString:@""]) {
+
+        fontName = [UserSettings loadStringWithKey:settingsKey];
+    }
+
+    return fontName;
 }
+
 
 @end
