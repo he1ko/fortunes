@@ -100,6 +100,9 @@ static NSString *fontsSettingKeyPrefix = @"fontSection";
     NSMutableArray *mFontNames = [fontNames mutableCopy];
     mFontNames[section] = fontName;
     fontNames = mFontNames;
+
+    NSLog(@"calling delegate method");
+    [_delegate fontSaved];
 }
 
 

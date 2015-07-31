@@ -22,10 +22,17 @@ typedef NS_ENUM(NSInteger, FontAppSection) {
     FONT_APP_SECTION_LIST_SOURCE
 };
 
+
+@protocol FontManagerNotification;
+
+
 /*!
     Singleton managing font properties for a couple of fortune displays
  */
 @interface FontManager : NSObject
+
+/// @name public properties
+@property(nonatomic, strong) id<FontManagerNotification> delegate;
 
 /// @name public methods
 
@@ -42,4 +49,9 @@ typedef NS_ENUM(NSInteger, FontAppSection) {
 - (void)updateFontName:(NSString *)fontName forSection:(FontAppSection)section;
 
 - (NSString *)sectionNameForSection:(FontAppSection)section;
+@end
+
+
+@protocol FontManagerNotification
+- (void)fontSaved;
 @end
