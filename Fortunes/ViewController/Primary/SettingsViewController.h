@@ -6,8 +6,9 @@
 //  Copyright (c) 2015 Jemix. All rights reserved.
 //
 
+#import <MBProgressHUD/MBProgressHUD.h>
 #import "BaseViewController.h"
 
-@interface SettingsViewController : BaseViewController
+@interface SettingsViewController : BaseViewController <MBProgressHUDDelegate>
 
 @end

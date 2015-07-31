@@ -101,8 +101,15 @@ static NSString *fontsSettingKeyPrefix = @"fontSection";
     mFontNames[section] = fontName;
     fontNames = mFontNames;
 
-    NSLog(@"calling delegate method");
     [_delegate fontSaved];
+}
+
+
+- (void)resetFontNames {
+
+    [self updateFontName:kDEFAULT_FONT_NAME_FORTUNE_MAIN forSection:FONT_APP_SECTION_MAIN_FORTUNE];
+    [self updateFontName:kDEFAULT_FONT_NAME_LIST_FORTUNE forSection:FONT_APP_SECTION_LIST_FORTUNE];
+    [self updateFontName:kDEFAULT_FONT_NAME_LIST_SOURCE forSection:FONT_APP_SECTION_LIST_SOURCE];
 }
 
 

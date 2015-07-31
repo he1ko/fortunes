@@ -10,6 +10,8 @@
 #import "UIViewController+Layout.h"
 #import "FontsViewController.h"
 
+static NSInteger FAKE_SECTION_RESET = 99;
+
 @interface SettingsViewController ()
 
 - (UILabel *)descriptionLabel;
@@ -25,9 +27,12 @@
     UIButton *btMainFortune;
     UIButton *btListFortune;
     UIButton *btListSource;
+    UIButton *btResetAll;
 
     UILabel *lblDescription;
     NSArray *fontListViewControllers;
+
+    MBProgressHUD *hud;
 }
 
 - (void)viewDidLoad {
@@ -50,6 +55,10 @@
     btListSource = [self buttonWithText:NSLocalizedString(@"Fortune-Quelle in Listen", @"Fortune-Quelle in Listen")];
     [btListSource setTag:FONT_APP_SECTION_LIST_SOURCE];
     [self appendView:btListSource];
+
+    btResetAll = [self buttonWithText:NSLocalizedString(@"settings.buttons.reset", @"reset fonts")];
+    [btResetAll setTag:FAKE_SECTION_RESET];
+    [self appendView:btResetAll];
 }
 
 
@@ -102,8 +111,32 @@
 
     UIView *bt = (UIView *)sender;
 
+    if([bt tag] == FAKE_SECTION_RESET) {
+
+        [self showHud];
+        [[FontManager getInstance] resetFontNames];
+        return;
+    }
+
     FontsViewController *vcFonts = [self getFontVcForSection:(FontAppSection)[bt tag]];
     [self.navigationController pushViewController:vcFonts animated:YES];
+}
+
+
+- (void)showHud {
+
+    hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.userInteractionEnabled = NO;
+    hud.labelText = NSLocalizedString(@"settings.hud.title.reset", @"Schriftarten zurückgesetzt");
+    hud.delegate = self;
+
+    [self performSelector:@selector(hideHud) withObject:nil afterDelay:1.3];
+}
+
+- (void)hideHud {
+
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
 

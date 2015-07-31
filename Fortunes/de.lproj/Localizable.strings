@@ -42,3 +42,5 @@
 "Dein (großes) Fortune" = "Dein Fortune (Home)";
 "Fortunes in Listen" = "Fortunes in Listen";
 "Fortune-Quelle in Listen" = "Fortune-Quelle in Listen";
+"settings.buttons.reset" = "Standards wiederherstellen";
+"settings.hud.title.reset" = "Schriften zurückgesetzt";

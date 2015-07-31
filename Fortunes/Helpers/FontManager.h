@@ -48,6 +48,8 @@ typedef NS_ENUM(NSInteger, FontAppSection) {
  */
 - (void)updateFontName:(NSString *)fontName forSection:(FontAppSection)section;
 
+- (void)resetFontNames;
+
 - (NSString *)sectionNameForSection:(FontAppSection)section;
 @end
 
