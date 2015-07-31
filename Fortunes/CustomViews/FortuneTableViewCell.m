@@ -13,6 +13,8 @@
 
 static CGFloat const LeftPanelWidth = 45.0f;
 static CGFloat const TextViewMargin = 12.0f;
+static CGFloat const favButtonOpacityActive = 1.0f;
+static CGFloat const favButtonOpacityInactive = 0.2f;
 
 @interface FortuneTableViewCell ()
 
@@ -239,21 +241,17 @@ static CGFloat const TextViewMargin = 12.0f;
     return lblSource.font.fontName;
 }
 
+
 - (void)favouritesButtonTouch {
 
     if([myFortune isFavourite]) {
         [myFortune removeFromFavourites];
+        [btFav setAlpha:favButtonOpacityInactive];
     }
     else {
         [myFortune setToFavourite];
+        [btFav setAlpha:favButtonOpacityActive];
     }
-
-    CGRect btFrame = btFav.frame;
-    btFav = nil;
-
-    UIButton *bt = [self favouritesButtonInFrame:leftPanel.frame];
-    bt.frame = btFrame;
-    btFav = bt;
 }
 
 @end
