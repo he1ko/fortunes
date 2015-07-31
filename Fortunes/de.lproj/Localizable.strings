@@ -1,29 +1,44 @@
 /****************************************************************************/
-/* Localization GERMAN */
+/* Localization ENGLISH */
 
 
 "Fortunes" = "Fortunes";
 
+/*!
+    Main Navigation sections
+*/
 "mainFortune" = "Dein Fortune";
 "listOfFortunes" = "Alle Fortunes";
-"fortunesBySource" = "Fortunes nach Quelle";
+"fortunesBySource" = "Nach Quellen";
 "Settings" = "Einstellungen";
 "imprint" = "Impressum";
 
+/*!
+    Settings
+*/
+"desriptionFontSettings" = "Für einige Darstellungen der Fortunes kannst Du hier die Schriftart anpassen wie Du magst.";
+"changeFonts" = "Schriftarten festlegen...";
+
+/*!
+    Settings --> Set font for single areas
+*/
 "Question-which-area-to-set-font-for" = "Wo möchtest Du diese Schrift verwenden?";
 "Font-sample-text" = "Mein Luftkissenboot ist voller Aale...";
+
+/// Button Text
 "ButtonMyFortune" = "Mein Fortune";
 "ButtonListFortune" = "Fortune in der Liste";
 "ButtonListSource" = "Quelle in der Liste";
+"FontSaved" = "Schriftart gespeichert";
 "ButtonGoBack" = "Zurück";
 
-"desriptionFontSettings" = "Du hättest DEIN FORTUNE oder alle Fortunes als Liste, die Quellenangaben gern in anderen Schriftarten? Büüde ... !";
-"changeFonts" = "Schriftarten festlegen...";
+
 "justASecond" = "Moment...";
 "remoteGetFortunes" = "Lade Fortunes vom Server";
 "loading #X of #Y" = "Fortune %d of %d";
 "#n Fortunes" = "%d Fortunes";
-"fortunesBySource" = "Nach Quellen";
-"Dein (großes) Fortune" = "Dein (großes) Fortune";
+
+
+"Dein (großes) Fortune" = "Dein Fortune (Home)";
 "Fortunes in Listen" = "Fortunes in Listen";
 "Fortune-Quelle in Listen" = "Fortune-Quelle in Listen";

@@ -11,7 +11,6 @@ static float const labelMargin = 24.0f;
 
 - (void)centerFortune;
 - (LabelAutoSize *)setupFortuneLabel;
-- (void)updateFortuneText;
 
 @end
 
@@ -31,24 +30,14 @@ static float const labelMargin = 24.0f;
     if (self) {
 
         self.backgroundColor = [UIColor clearColor];
-        fortune = fortune__;
 
         fortuneLabel = [self setupFortuneLabel];
-
         [self addSubview:fortuneLabel];
-        [self updateFortuneText];
-        [self centerFortune];
+
+        [self updateFortune:fortune__];
     }
 
     return self;
-}
-
-
-- (void)centerFortune {
-
-    CGPoint center = self.center;
-    center.y -= self.frame.origin.y;
-    [fortuneLabel setCenter:center];
 }
 
 
@@ -83,14 +72,17 @@ static float const labelMargin = 24.0f;
 }
 
 
-- (void)updateFortune:(SingleFortune *)fortune__ {
+- (void)centerFortune {
 
-    fortune = fortune__;
-    [self updateFortuneText];
+    CGPoint center = self.center;
+    center.y -= self.frame.origin.y;
+    [fortuneLabel setCenter:center];
 }
 
 
-- (void)updateFortuneText {
+- (void)updateFortune:(SingleFortune *)fortune__ {
+
+    fortune = fortune__;
 
     fortuneLabel.text = [fortune cleanText];
     [fortuneLabel adjust];

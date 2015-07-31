@@ -16,7 +16,7 @@
 /*!
     Settings
 */
-"desriptionFontSettings" = "Set the fonts for the most important items to your favourite look!";
+"desriptionFontSettings" = "Set fonts for the most important items to your favourite look!";
 "changeFonts" = "Change font settings";
 
 /*!
@@ -29,6 +29,7 @@
 "ButtonMyFortune" = "My Fortune";
 "ButtonListFortune" = "Fortune in list view";
 "ButtonListSource" = "Source in list view";
+"FontSaved" = "Font setting saved";
 "ButtonGoBack" = "Back";
 
 
@@ -38,6 +39,6 @@
 "#n Fortunes" = "%d Fortunes";
 
 
-"Dein (großes) Fortune" = "Your (large) Fortune";
+"Dein (großes) Fortune" = "Your Fortune (Home)";
 "Fortunes in Listen" = "Fortunes in list views";
 "Fortune-Quelle in Listen" = "Fortune-Source in list views";

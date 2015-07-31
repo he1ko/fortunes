@@ -10,7 +10,6 @@
 #import "FontAssignViewController.h"
 #import "UIViewController+Layout.h"
 
-static NSString *locDescriptionText = @"Question-which-area-to-set-font-for";
 static NSString *locSampleText = @"Font-sample-text";
 static NSString *locButtonTextMyFortune = @"ButtonMyFortune";
 static NSString *locButtonTextListFortune = @"ButtonListFortune";
@@ -87,7 +86,7 @@ static NSString *locButtonTextGoBack = @"ButtonGoBack";
 
 - (UILabel *)fontSampleLabel {
 
-    UILabel *lblSample = [self fullWidthLabelWithText:NSLocalizedString(locSampleText, @"Font Sample")];
+    UILabel *lblSample = [self fullWidthLabelWithText:NSLocalizedString(@"Font-sample-text", @"Font Sample")];
     [self alignView:lblSample atTopOfRect:[self visibleViewFrame]];
     [lblSample setY:(float) (CGRectGetMaxY(__mainFontNameLabel.frame) + 20.0)];
     lblSample.backgroundColor = [UIColor whiteColor];
@@ -101,7 +100,7 @@ static NSString *locButtonTextGoBack = @"ButtonGoBack";
 
 - (UILabel *)descriptionLabel {
 
-    UILabel *lblDesc = [self simpleLabelWithText:NSLocalizedString(locDescriptionText, @"Description")];
+    UILabel *lblDesc = [self simpleLabelWithText:NSLocalizedString(@"Question-which-area-to-set-font-for", @"Description")];
     [lblDesc setY:(float) (CGRectGetMaxY(__sampleLabel.frame) + 20.0)];
     lblDesc.numberOfLines = 0;
     [lblDesc sizeToFit];
@@ -148,13 +147,13 @@ static NSString *locButtonTextGoBack = @"ButtonGoBack";
     if([sender isKindOfClass:[UIView class]]) {
 
         UIView *senderView = (UIView *)sender;
-        [[FontManager getInstance] updateFontName:_fontName forSection:_section];
+        [[FontManager getInstance] updateFontName:_fontName forSection:[sender tag]];
 
         HUD = [[MBProgressHUD alloc] initWithView:self.view];
         [self.view addSubview:HUD];
         HUD.mode = MBProgressHUDModeText;
-        HUD.labelText = @"Schriftart gespeichert";
-        HUD.detailsLabelText = [NSString stringWithFormat:@"Mein Fortune: %@", _fontName];
+        HUD.labelText = NSLocalizedString(@"FontSaved", @"Schriftart gespeichert");
+        HUD.detailsLabelText = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"ButtonMyFortune", @"Mein Fortune"), _fontName];
 
         HUD.delegate = self;
         [HUD show:YES];
@@ -172,8 +171,8 @@ static NSString *locButtonTextGoBack = @"ButtonGoBack";
 }
 
 - (void)didReceiveMemoryWarning {
+
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
