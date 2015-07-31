@@ -1,0 +1,156 @@
+
+#import "FavouritesManager.h"
+#import "SingleFortune.h"
+#import "UserSettings.h"
+
+
+static NSString *favSettingKey = @"favourites";
+
+
+@implementation FavouritesManager {
+
+@private
+    NSArray *favouriteIDs;
+}
+
+
+#pragma mark -
+#pragma mark initialization
+
+
++ (FavouritesManager *)getInstance {
+
+    static FavouritesManager *instance;
+
+    @synchronized(self) {
+        if (!instance) {
+            instance = [[FavouritesManager alloc] initPrivate];
+        }
+        return instance;
+    }
+
+}
+
+/*!
+    init may not be called explicitly
+ */
+- (id)init {
+
+    [self doesNotRecognizeSelector:_cmd];
+    return nil;
+}
+
+
+/*!
+    private init method
+ */
+- (id)initPrivate {
+
+    self = [super init];
+
+    if (self) {
+
+        favouriteIDs = [self loadFavouriteIds];
+    }
+
+    return self;
+}
+
+
+
+
+#pragma mark -
+#pragma mark public Fav data access
+
+
+- (BOOL)isFavourite:(SingleFortune *)fortune {
+
+    for(NSNumber *num in favouriteIDs) {
+
+        if([num intValue] == fortune.id){
+            return YES;
+        }
+    }
+    return NO;
+}
+
+
+- (void)addToFavourites:(SingleFortune *)fortune {
+
+    FavouritesResult rslt = [self _saveFavouriteState:YES for:fortune];
+
+    if(rslt == FAV_RESULT_ALREADY_FAV) {
+        [_delegate favouriteNotSaved:FAV_RESULT_ALREADY_FAV];
+    }
+    if(rslt == FAV_RESULT_SET_TO_FAV) {
+        [_delegate favouriteSaved:FAV_RESULT_SET_TO_FAV];
+    }
+}
+
+
+- (void)removeFromFavourites:(SingleFortune *)fortune {
+
+    FavouritesResult rslt = [self _saveFavouriteState:NO for:fortune];
+
+    if(rslt == FAV_RESULT_ALREADY_NO_FAV) {
+        [_delegate favouriteNotSaved:FAV_RESULT_ALREADY_NO_FAV];
+    }
+    if(rslt == FAV_RESULT_SET_NO_FAV) {
+        [_delegate favouriteSaved:FAV_RESULT_SET_NO_FAV];
+    }
+}
+
+
+#pragma mark -
+#pragma mark private helpers
+
+
+
+- (FavouritesResult) _saveFavouriteState:(BOOL)isFav for:(SingleFortune*)fortune {
+
+    if(isFav && [self isFavourite:fortune]) {
+        return FAV_RESULT_ALREADY_FAV;
+    }
+    if(!isFav && ![self isFavourite:fortune]) {
+        return FAV_RESULT_ALREADY_NO_FAV;
+    }
+
+
+    NSMutableArray * mFavouriteIDs = [favouriteIDs mutableCopy];
+
+    /// isFav = YES: simply add fortune-id
+
+    if(isFav) {
+        [mFavouriteIDs addObject:@(fortune.id)];
+        favouriteIDs = mFavouriteIDs;
+        [UserSettings saveArray:favouriteIDs forKey:favSettingKey];
+        return FAV_RESULT_SET_TO_FAV;
+    }
+
+
+    /// isFav = NO: remove fortune-id
+
+    __block int fortuneId = fortune.id;
+
+    [mFavouriteIDs enumerateObjectsUsingBlock:^(NSNumber *num, NSUInteger index, BOOL *stop) {
+
+        if ([num intValue] == fortuneId) {
+            [mFavouriteIDs removeObjectAtIndex:index];
+            *stop = YES;
+        }
+    }];
+
+    /// Save modified array to userDefaults
+    favouriteIDs = mFavouriteIDs;
+    [UserSettings saveArray:favouriteIDs forKey:favSettingKey];
+    return FAV_RESULT_SET_NO_FAV;
+}
+
+
+
+- (NSArray *)loadFavouriteIds {
+
+    return [UserSettings loadArrayWithKey:favSettingKey];
+}
+
+@end
