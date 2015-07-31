@@ -86,7 +86,6 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
         HUD.detailsLabelText = NSLocalizedString(@"remoteGetFortunes", @"Lade Fortunes vom Server");
         HUD.delegate = self;
     }
-    // [HUD show:YES];
 
     if(fortuneList.fortunes == nil) {
 
@@ -95,12 +94,8 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
          */
         [RESTClient loadFortunesList:self];
     }
-    else if ([_tableView numberOfRowsInSection:(NSInteger)0] > 0) {
-        if([self isFontChanged]) {
-
-            [HUD showWhileExecuting:@selector(reloadData) onTarget:_tableView withObject:nil animated:YES];
-            // [_tableView reloadData];
-        }
+    else if ([self isFontChanged] && [_tableView numberOfRowsInSection:(NSInteger)0] > 0) {
+        [HUD showWhileExecuting:@selector(reloadData) onTarget:_tableView withObject:nil animated:YES];
     }
 }
 
