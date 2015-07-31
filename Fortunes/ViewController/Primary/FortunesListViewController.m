@@ -67,16 +67,17 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
     [super viewWillAppear:animated];
 
-    if(lastSelectionPath != nil) {
+    if (lastSelectionPath != nil) {
         [_tableView deselectRowAtIndexPath:lastSelectionPath animated:YES];
     }
+}
 
-    /*!
-        async. Request calls setRestAnswer: on completion
-     */
 
-    if(fortuneList.fortunes == nil) {
+- (void)viewDidAppear:(BOOL)animated {
 
+    [super viewDidAppear:animated];
+
+    if(!HUD) {
         HUD = [[MBProgressHUD alloc] initWithView:self.view];
         [self.view addSubview:HUD];
         HUD.mode = MBProgressHUDModeDeterminateHorizontalBar;
@@ -84,14 +85,21 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
         HUD.labelText = NSLocalizedString(@"justASecond", @"wait... notification");
         HUD.detailsLabelText = NSLocalizedString(@"remoteGetFortunes", @"Lade Fortunes vom Server");
         HUD.delegate = self;
-        [HUD show:YES];
+    }
+    // [HUD show:YES];
 
+    if(fortuneList.fortunes == nil) {
+
+        /*!
+            async. Request calls setRestAnswer: on completion
+         */
         [RESTClient loadFortunesList:self];
     }
     else if ([_tableView numberOfRowsInSection:(NSInteger)0] > 0) {
         if([self isFontChanged]) {
 
-            [_tableView reloadData];
+            [HUD showWhileExecuting:@selector(reloadData) onTarget:_tableView withObject:nil animated:YES];
+            // [_tableView reloadData];
         }
     }
 }

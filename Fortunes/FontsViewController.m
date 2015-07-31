@@ -150,17 +150,18 @@
     NSString *sectionName = [[FontManager getInstance] sectionNameForSection:_fontSection];
 
     if(!HUD) {
-        HUD = [[MBProgressHUD alloc] initWithView:self.view];
-        HUD.delegate = self;
+        HUD = [[MBProgressHUD alloc] initWithView:_tableView];
         HUD.mode = MBProgressHUDModeText;
+        HUD.removeFromSuperViewOnHide = NO;
+        HUD.userInteractionEnabled = NO;
         HUD.labelText = NSLocalizedString(@"FontSaved", @"Schriftart gespeichert");
-        [self.view addSubview:HUD];
+        [_tableView addSubview:HUD];
     }
 
-    [self.view bringSubviewToFront:HUD];
-
+    HUD.delegate = self;
     HUD.detailsLabelText = [NSString stringWithFormat:@"%@: %@", sectionName, fontName];
-    [HUD show:YES];
+    [self.view bringSubviewToFront:HUD];
+    [HUD show:NO];
 
     [[FontManager getInstance] updateFontName:fontName forSection:_fontSection];
     [self hideHud:HUD];
@@ -169,13 +170,16 @@
 
 - (void)hideHud:(MBProgressHUD *)hud {
 
+    NSLog(@"Verberge HUD (%@)", hud.detailsLabelText);
+
     [hud hide:YES afterDelay:2.0];
 }
 
 
 - (void)hudWasHidden:(MBProgressHUD *)hud {
 
-    hud = nil;
+    NSLog(@"Hud weg...");
+
     [self rightNavigationButtonTouched];
 }
 

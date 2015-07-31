@@ -12,12 +12,15 @@
 
 @end
 
-@implementation NavController
+@implementation NavController {
+
+}
 
 - (void)viewDidLoad {
 
     [super viewDidLoad];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
