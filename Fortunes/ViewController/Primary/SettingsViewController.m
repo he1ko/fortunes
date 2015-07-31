@@ -120,7 +120,6 @@
         mFontListVcs[section] = neededVc;
         fontListViewControllers = mFontListVcs;
     }
-
     return neededVc;
 }
 
