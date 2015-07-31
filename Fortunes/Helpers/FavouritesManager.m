@@ -82,9 +82,8 @@ static NSString *favSettingKey = @"favourites";
     if(rslt == FAV_RESULT_ALREADY_FAV) {
         return FAV_RESULT_ALREADY_FAV;
     }
-    if(rslt == FAV_RESULT_SET_TO_FAV) {
-        return FAV_RESULT_SET_TO_FAV;
-    }
+
+    return FAV_RESULT_SET_TO_FAV;
 }
 
 
@@ -95,9 +94,8 @@ static NSString *favSettingKey = @"favourites";
     if(rslt == FAV_RESULT_ALREADY_NO_FAV) {
         return FAV_RESULT_ALREADY_NO_FAV;
     }
-    if(rslt == FAV_RESULT_SET_NO_FAV) {
-        return FAV_RESULT_SET_NO_FAV;
-    }
+
+    return FAV_RESULT_SET_NO_FAV;
 }
 
 
@@ -108,6 +106,8 @@ static NSString *favSettingKey = @"favourites";
 
 - (FavouritesResult) _saveFavouriteState:(BOOL)isFav for:(SingleFortune*)fortune {
 
+    NSLog(@"%@", favouriteIDs);
+
     if(isFav && [self isFavourite:fortune]) {
         return FAV_RESULT_ALREADY_FAV;
     }
@@ -115,8 +115,11 @@ static NSString *favSettingKey = @"favourites";
         return FAV_RESULT_ALREADY_NO_FAV;
     }
 
+    NSMutableArray *mFavouriteIDs = [favouriteIDs mutableCopy];
 
-    NSMutableArray * mFavouriteIDs = [favouriteIDs mutableCopy];
+    if(!mFavouriteIDs) {
+        mFavouriteIDs = [[NSMutableArray alloc] initWithCapacity:1];
+    }
 
     /// isFav = YES: simply add fortune-id
 

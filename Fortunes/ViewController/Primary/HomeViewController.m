@@ -13,7 +13,9 @@
 @implementation HomeViewController {
 
 @private
+    SingleFortune *fortune;
     FortuneMainDisplay *fortuneDisplay;
+    UIButton *favouriteButton;
 }
 
 - (void)viewDidLoad {
@@ -52,19 +54,44 @@
 
 - (void)setupFortune {
 
+    fortune = (SingleFortune *)self.jsonModel;
+
     /// main fortune display
     if (fortuneDisplay == nil) {
-        fortuneDisplay = [self fortuneDisplay:(SingleFortune *) self.jsonModel];
+        fortuneDisplay = [self fortuneDisplay];
         [self.view addSubview:fortuneDisplay];
     }
     else {
-        [fortuneDisplay updateFortune:(SingleFortune *) self.jsonModel];
+        [fortuneDisplay updateFortune:fortune];
     }
 
+    [self setFavouriteButton];
 }
 
 
-- (FortuneMainDisplay*)fortuneDisplay:(SingleFortune *)fortune {
+- (void)setFavouriteButton {
+
+    if(favouriteButton) {
+        [favouriteButton removeFromSuperview];
+        favouriteButton = nil;
+    }
+
+    favouriteButton = [fortune favImageButton];
+    [self alignView:favouriteButton atTopOfRect:[self contentCanvas]];
+    [favouriteButton setX:[self contentCanvas].size.width - favouriteButton.frame.size.width];
+    [favouriteButton addTarget:self action:@selector(favouriteButtonTouch) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:favouriteButton];
+}
+
+
+- (void)favouriteButtonTouch {
+
+    [fortune switchFavouriteState];
+    [self setFavouriteButton];
+}
+
+
+- (FortuneMainDisplay*)fortuneDisplay {
 
     FortuneMainDisplay *fortuneMain = [[FortuneMainDisplay alloc] initWithFrame:[self visibleViewFrame] andFortune:fortune];
 
@@ -73,6 +100,14 @@
 
     fortuneMain.userInteractionEnabled = YES;
     return fortuneMain;
+}
+
+
+- (void)fortuneFavouriteStateChanged {
+
+    NSLog(@"Fav-Status changed...!");
+    UIButton *btFav = [fortune favImageButton];
+    [favouriteButton setImage:[btFav imageForState:UIControlStateNormal] forState:UIControlStateNormal];
 }
 
 

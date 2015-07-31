@@ -1,5 +1,4 @@
-
-
+@class SingleFortune;
 typedef NS_ENUM(NSInteger, FavouritesResult) {
 
     FAV_RESULT_SET_TO_FAV,

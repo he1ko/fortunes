@@ -1,6 +1,11 @@
 
 #import "SingleFortune.h"
 
+
+
+@protocol FortuneFavourite;
+
+
 @interface SingleFortune (Favourites)
 
 - (void)switchFavouriteState;
@@ -13,4 +18,11 @@
 
 - (UIButton *)favImageButton;
 
+@end
+
+
+@protocol FortuneFavourite
+
+@optional
+- (void)fortuneFavouriteStateChanged;
 @end

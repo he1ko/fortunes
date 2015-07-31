@@ -18,6 +18,7 @@
 {
     if ([propertyName isEqualToString: @"translationDe"]) return YES;
     if ([propertyName isEqualToString: @"rating"]) return YES;
+    if ([propertyName isEqualToString: @"favDelegate"]) return YES;
 
     return NO;
 }

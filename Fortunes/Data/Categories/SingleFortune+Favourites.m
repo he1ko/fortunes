@@ -37,7 +37,9 @@
 
 - (UIButton *)favImageButton {
 
-    UIButton *btFav = [[UIButton buttonWithType:UIButtonTypeCustom];
+    UIButton *btFav = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btFav setFrame:CGRectMake(0.0, 0.0, 30.0, 30.0)];
+
     UIImage *favImg = [UIImage imageNamed:@"fav-add"];
 
     if([self isFavourite]) {
@@ -45,7 +47,6 @@
     }
 
     [btFav setImage:favImg forState:UIControlStateNormal];
-    [btFav addTarget:self action:@selector(switchFavouriteState) forControlEvents:UIControlEventTouchUpInside];
 
     return btFav;
 }

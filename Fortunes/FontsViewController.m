@@ -178,9 +178,8 @@
 }
 
 
-- (void)hudWasHidden:(MBProgressHUD *)hud {
+- (void)hudWasHidden:(MBProgressHUD *)_hud {
 
-    NSLog(@"Hud weg...");
     hud = nil;
     [self rightNavigationButtonTouched];
 }
