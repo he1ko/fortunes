@@ -58,6 +58,7 @@ static NSInteger FAKE_SECTION_RESET = 99;
 
     btResetAll = [self buttonWithText:NSLocalizedString(@"settings.buttons.reset", @"reset fonts")];
     [btResetAll setTag:FAKE_SECTION_RESET];
+    btResetAll.backgroundColor = [UIColor clearColor];
     [self appendView:btResetAll];
 }
 
@@ -99,7 +100,7 @@ static NSInteger FAKE_SECTION_RESET = 99;
 
     UIButton * button = [self roundedButtonWithText:buttonText];
     [button addTarget:self action:@selector(fontsButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
-
+    button.backgroundColor = [UIColor presetItemSelected];
     return button;
 }
 
