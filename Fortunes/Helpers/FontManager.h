@@ -55,5 +55,6 @@ typedef NS_ENUM(NSInteger, FontAppSection) {
 
 
 @protocol FontManagerNotification
-- (void)fontSaved;
+@optional
+    - (void)fontSaved;
 @end
