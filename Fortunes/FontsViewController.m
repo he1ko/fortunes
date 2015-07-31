@@ -47,7 +47,8 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
 
-    [self.navigationItem setTitle:@"Schriftarten"];
+    NSString *sectionName = [[FontManager getInstance] sectionNameForSection:_fontSection];
+    [self.navigationItem setTitle:sectionName];
     [self addRightNavigationButtonWithText:@"Zurück"];
 }
 

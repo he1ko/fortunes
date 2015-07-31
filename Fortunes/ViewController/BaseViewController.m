@@ -40,7 +40,7 @@
     self.navigationController.navigationBar.barStyle  = UIBarStyleDefault;
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithWhite:1.0 alpha:0.8];
 
-    [self.navigationItem setTitle:NSLocalizedString(@"Fortunes", @"Fortunes")];
+    // [self.navigationItem setTitle:NSLocalizedString(@"Fortunes", @"Fortunes")];
 
     UIBarButtonItem *menuIcon = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"MenuIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(leftNavigationButtonTouched)];
     [self.navigationItem setLeftBarButtonItem:menuIcon animated:YES];
