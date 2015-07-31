@@ -147,7 +147,7 @@ static NSString *locButtonTextGoBack = @"ButtonGoBack";
     if([sender isKindOfClass:[UIView class]]) {
 
         UIView *senderView = (UIView *)sender;
-        [[FontManager getInstance] updateFontName:_fontName forSection:[senderView tag]];
+        [[FontManager getInstance] updateFontName:_fontName forSection:(FontAppSection) [senderView tag]];
 
         HUD = [[MBProgressHUD alloc] initWithView:self.view];
         [self.view addSubview:HUD];

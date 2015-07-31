@@ -8,8 +8,6 @@
 
 #import "FontsViewController.h"
 #import "UIViewController+Layout.h"
-#import "FontAssignViewController.h"
-#import "FontSectionSelector.h"
 
 @interface FontsViewController ()
 
@@ -21,7 +19,7 @@
 
 @private
     NSDictionary *fontFamilysAndNames;
-    FontSectionSelector *selector;
+    MBProgressHUD *HUD;
 }
 
 - (void)viewDidLoad {
@@ -51,8 +49,6 @@
 
     [self.navigationItem setTitle:@"Schriftarten"];
     [self addRightNavigationButtonWithText:@"Zurück"];
-
-    NSLog(@"Schriftenauswahl für Section %d", (int)_fontSection);
 }
 
 
@@ -149,13 +145,37 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
+    [self saveFontName:[tableView cellForRowAtIndexPath:indexPath].textLabel.text];
+
+    /*
     FontAssignViewController *fontAssignVC = [[FontAssignViewController alloc] init];
     fontAssignVC.section = _fontSection;
     fontAssignVC.fontName = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
     [self.navigationController pushViewController:fontAssignVC animated:YES];
+    */
 }
 
 
+- (void)saveFontName:(NSString *)fontName {
+
+    [[FontManager getInstance] updateFontName:fontName forSection:_fontSection];
+
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    HUD.mode = MBProgressHUDModeText;
+    HUD.labelText = NSLocalizedString(@"FontSaved", @"Schriftart gespeichert");
+    HUD.detailsLabelText = [NSString stringWithFormat:@"%@: %@", [[FontManager getInstance] sectionNameForSection:_fontSection], fontName];
+
+    HUD.delegate = self;
+    [HUD show:YES];
+    [self performSelector:@selector(hideHud) withObject:nil afterDelay:2.0];
+}
+
+
+- (void)hideHud {
+
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
 
 
 
