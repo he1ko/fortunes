@@ -1,16 +1,16 @@
 //
-//  CenterViewController.m
+//  HomeViewController.m
 //  Fortunes
 //
 //  Created by Heiko Bublitz on 20.07.15.
 //  Copyright (c) 2015 Jemix. All rights reserved.
 //
 
-#import "CenterViewController.h"
+#import "HomeViewController.h"
 #import "UIViewController+Layout.h"
 #import "FortuneMainDisplay.h"
 
-@implementation CenterViewController {
+@implementation HomeViewController {
 
 @private
     FortuneMainDisplay *fortuneDisplay;

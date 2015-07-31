@@ -34,7 +34,7 @@
 		212359953153F89860E3347A /* LeftNavItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 212356EE4BB41E321C30899F /* LeftNavItem.m */; };
 		21235AB75DB52849AB17F75B /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2123597AB4AE3E5E4C5B86CD /* SettingsViewController.m */; };
 		21235BC34468EE5D395A02D8 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235A60946C133DC4DC54F9 /* UserSettings.m */; };
-		21235E71F303B6ECD38B2E71 /* CenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235A1012460B08E0193D6D /* CenterViewController.m */; };
+		21235E71F303B6ECD38B2E71 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235A1012460B08E0193D6D /* HomeViewController.m */; };
 		21235E85CDBD6D571FEC8213 /* FortuneMainDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235283A711AC51577195B5 /* FortuneMainDisplay.m */; };
 		870D330A1B5E6EC000C8B750 /* FortuneInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 870D33091B5E6EC000C8B750 /* FortuneInfo.m */; };
 		87316F771B6B2C2E005FF5C7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87316F751B6B2C2E005FF5C7 /* Localizable.strings */; };
@@ -78,14 +78,14 @@
 		21235659F2FEAFC19CECD82E /* UIViewController+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Layout.m"; sourceTree = "<group>"; };
 		212356603CDF1DDA989BF9AE /* FortunesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FortunesListViewController.h; path = ViewController/Primary/FortunesListViewController.h; sourceTree = "<group>"; };
 		21235690640FBCF317AA3CAB /* SingleFortune.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleFortune.h; sourceTree = "<group>"; };
-		2123569F771A32289000B781 /* CenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CenterViewController.h; path = ViewController/Primary/CenterViewController.h; sourceTree = "<group>"; };
+		2123569F771A32289000B781 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = ViewController/Primary/HomeViewController.h; sourceTree = "<group>"; };
 		212356EE4BB41E321C30899F /* LeftNavItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftNavItem.m; sourceTree = "<group>"; };
 		2123571D931755AB55081451 /* UIView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Helpers.m"; sourceTree = "<group>"; };
 		212358A59896E13DC0F05FEE /* UIColor+Presets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Presets.h"; sourceTree = "<group>"; };
 		2123597AB4AE3E5E4C5B86CD /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = ViewController/Primary/SettingsViewController.m; sourceTree = "<group>"; };
 		2123598DA8F6797CCD469E6A /* RESTClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESTClient.m; sourceTree = "<group>"; };
 		21235A0BF722C72BC12CF90B /* UIViewController+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Layout.h"; sourceTree = "<group>"; };
-		21235A1012460B08E0193D6D /* CenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CenterViewController.m; path = ViewController/Primary/CenterViewController.m; sourceTree = "<group>"; };
+		21235A1012460B08E0193D6D /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = ViewController/Primary/HomeViewController.m; sourceTree = "<group>"; };
 		21235A489AD4681C6D98CA7E /* FortunesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FortunesListViewController.m; path = ViewController/Primary/FortunesListViewController.m; sourceTree = "<group>"; };
 		21235A50AC0E760F4767EA08 /* ImpressumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImpressumViewController.m; path = ViewController/Primary/ImpressumViewController.m; sourceTree = "<group>"; };
 		21235A60946C133DC4DC54F9 /* UserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettings.m; sourceTree = "<group>"; };
@@ -245,8 +245,8 @@
 		21235F0E7CB8EF132B87410D /* Primary */ = {
 			isa = PBXGroup;
 			children = (
-				2123569F771A32289000B781 /* CenterViewController.h */,
-				21235A1012460B08E0193D6D /* CenterViewController.m */,
+				2123569F771A32289000B781 /* HomeViewController.h */,
+				21235A1012460B08E0193D6D /* HomeViewController.m */,
 				2123543A547892D91FDC3F6D /* FortunesBySourceViewController.h */,
 				2123539D67F30A0EF672E68B /* FortunesBySourceViewController.m */,
 				212356603CDF1DDA989BF9AE /* FortunesListViewController.h */,
@@ -527,7 +527,7 @@
 				87BE06541B664700003F2186 /* FortuneDetailViewController.m in Sources */,
 				21235BC34468EE5D395A02D8 /* UserSettings.m in Sources */,
 				212357EDC201D0BD5C2ADA04 /* UIViewController+Layout.m in Sources */,
-				21235E71F303B6ECD38B2E71 /* CenterViewController.m in Sources */,
+				21235E71F303B6ECD38B2E71 /* HomeViewController.m in Sources */,
 				2123575B4905EF8E678ADDB9 /* FortunesBySourceViewController.m in Sources */,
 				212357B2C99E5B3D469FF335 /* FortunesListViewController.m in Sources */,
 				2123541E4803BCF55E97A9B5 /* ImpressumViewController.m in Sources */,

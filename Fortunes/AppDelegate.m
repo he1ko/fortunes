@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "LeftViewController.h"
-#import "CenterViewController.h"
+#import "HomeViewController.h"
 #import "NavController.h"
 #import "MMDrawerController.h"
 
@@ -28,7 +28,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
     vCLeft = [[LeftViewController alloc] init];
-    CenterViewController *vCcenter = [[CenterViewController alloc] init];
+    HomeViewController *vCcenter = [[HomeViewController alloc] init];
 
     NavController *navController = [[NavController alloc] initWithRootViewController:vCcenter];
 

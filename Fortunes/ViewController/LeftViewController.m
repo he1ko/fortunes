@@ -9,7 +9,7 @@
 #import "LeftViewController.h"
 #import "LeftNavItem.h"
 #import "NavController.h"
-#import "CenterViewController.h"
+#import "HomeViewController.h"
 #import "ImpressumViewController.h"
 #import "UIViewController+MMDrawerController.h"
 #import "FortunesListViewController.h"
@@ -125,7 +125,7 @@
     NSMutableArray *mControllers = [[NSMutableArray alloc] initWithCapacity:5];
 
     if(viewControllers[0] == nil) {
-        mControllers[0] = [[CenterViewController alloc] init];
+        mControllers[0] = [[HomeViewController alloc] init];
     }
     mControllers[1] = [[FortunesListViewController alloc] init];
     mControllers[2] = [[FortunesBySourceViewController alloc] init];
