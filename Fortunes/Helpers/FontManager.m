@@ -19,6 +19,7 @@ static NSString *fontsSettingKeyPrefix = @"fontSection";
 @private
     NSArray *fontSizes;
     NSArray *fontNames;
+    NSArray *sectionNames;
 }
 
 
@@ -59,6 +60,7 @@ static NSString *fontsSettingKeyPrefix = @"fontSection";
 
         NSMutableArray *mFontSizes = [[NSMutableArray alloc] initWithCapacity:3];
         NSMutableArray *mFontNames = [[NSMutableArray alloc] initWithCapacity:3];
+        NSMutableArray *mSectionNames = [[NSMutableArray alloc] initWithCapacity:3];
 
         mFontSizes[FONT_APP_SECTION_MAIN_FORTUNE] = [NSNumber numberWithFloat:kDEFAULT_FONT_SIZE_FORTUNE_MAIN];
         mFontSizes[FONT_APP_SECTION_LIST_FORTUNE] = [NSNumber numberWithFloat:kDEFAULT_FONT_SIZE_LIST_FORTUNE];
@@ -69,6 +71,11 @@ static NSString *fontsSettingKeyPrefix = @"fontSection";
         mFontNames[FONT_APP_SECTION_LIST_FORTUNE] = [self fontNameForSection:FONT_APP_SECTION_LIST_FORTUNE];
         mFontNames[FONT_APP_SECTION_LIST_SOURCE] = [self fontNameForSection:FONT_APP_SECTION_LIST_SOURCE];
         fontNames = mFontNames;
+
+        mSectionNames[FONT_APP_SECTION_MAIN_FORTUNE] = NSLocalizedString(@"ButtonMyFortune", @"");
+        mSectionNames[FONT_APP_SECTION_LIST_FORTUNE] = NSLocalizedString(@"ButtonListFortune", @"");
+        mSectionNames[FONT_APP_SECTION_LIST_SOURCE] = NSLocalizedString(@"ButtonListSource", @"");
+        sectionNames = mSectionNames;
     }
 
     return self;
@@ -118,5 +125,10 @@ static NSString *fontsSettingKeyPrefix = @"fontSection";
     return fontName;
 }
 
+
+- (NSString *)sectionNameForSection:(FontAppSection)section {
+
+    return sectionNames[section];
+}
 
 @end
