@@ -48,7 +48,7 @@
     [self appendView:btListFortune];
 
     btListSource = [self buttonWithText:NSLocalizedString(@"Fortune-Quelle in Listen", @"Fortune-Quelle in Listen")];
-    [btListSource setTag:FONT_APP_SECTION_LIST_FORTUNE];
+    [btListSource setTag:FONT_APP_SECTION_LIST_SOURCE];
     [self appendView:btListSource];
 }
 
@@ -101,7 +101,7 @@
 - (void)fontsButtonTouch:(id)sender {
 
     UIView *bt = (UIView *)sender;
-    
+
     FontsViewController *vcFonts = [self getFontVcForSection:(FontAppSection)[bt tag]];
     [self.navigationController pushViewController:vcFonts animated:YES];
 }
@@ -112,6 +112,7 @@
     FontsViewController *neededVc = fontListViewControllers[section];
 
     if([neededVc isEqual:[NSNull null]]) {
+
         neededVc = [[FontsViewController alloc] init];
         neededVc.fontSection = section;
 
