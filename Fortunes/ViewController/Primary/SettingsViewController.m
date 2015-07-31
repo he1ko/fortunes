@@ -13,9 +13,8 @@
 @interface SettingsViewController ()
 
 - (UILabel *)descriptionLabel;
-
 - (UIButton *)buttonWithText:(NSString *)buttonText;
-- (void)fontsButtonTouch;
+- (void)fontsButtonTouch:(id)sender;
 
 @end
 
@@ -35,22 +34,19 @@
     [super viewDidLoad];
 
     lblDescription = [self descriptionLabel];
-    [self.view addSubview:lblDescription];
+    [self appendView:lblDescription];
 
     btMainFortune = [self buttonWithText:NSLocalizedString(@"Dein (großes) Fortune", @"Dein (großes) Fortune")];
     [btMainFortune setTag:FONT_APP_SECTION_MAIN_FORTUNE];
-    [self.view addSubview:btMainFortune];
+    [self appendView:btMainFortune];
 
     btListFortune = [self buttonWithText:NSLocalizedString(@"Fortunes in Listen", @"Fortunes in Listen")];
     [btListFortune setTag:FONT_APP_SECTION_LIST_FORTUNE];
-    [btListFortune setY:(float) (CGRectGetMaxY(btMainFortune.frame) + 20.0)];
-    [self.view addSubview:btListFortune];
+    [self appendView:btListFortune];
 
     btListSource = [self buttonWithText:NSLocalizedString(@"Fortune-Quelle in Listen", @"Fortune-Quelle in Listen")];
     [btListSource setTag:FONT_APP_SECTION_LIST_FORTUNE];
-    [btListSource setY:(float) (CGRectGetMaxY(btListFortune.frame) + 20.0)];
-    [self.view addSubview:btListSource];
-
+    [self appendView:btListSource];
 }
 
 
@@ -77,7 +73,6 @@
 - (UIButton *)buttonWithText:(NSString *)buttonText {
 
     UIButton * button = [self roundedButtonWithText:buttonText];
-    [button setY:(float) (CGRectGetMaxY(lblDescription.frame) + 20.0)];
     [button addTarget:self action:@selector(fontsButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
 
     return button;
@@ -87,9 +82,9 @@
 - (void)fontsButtonTouch:(id)sender {
 
     UIView *bt = (UIView *)sender;
-
     FontsViewController *vcFonts = [[FontsViewController alloc] init];
-    vcFonts.fontSection = (FontAppSection)[sender tag];
+
+    vcFonts.fontSection = (FontAppSection)[bt tag];
     [self.navigationController pushViewController:vcFonts animated:YES];
 }
 

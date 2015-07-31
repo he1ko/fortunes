@@ -26,7 +26,6 @@
 		21235214EA04DA6DE383266B /* SingleFortune.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235E5B4E3B889BF682F011 /* SingleFortune.m */; };
 		212353C87192D6A030581AE4 /* FortuneList.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235A9C81611CA9F92D0CD7 /* FortuneList.m */; };
 		2123541E4803BCF55E97A9B5 /* ImpressumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235A50AC0E760F4767EA08 /* ImpressumViewController.m */; };
-		212354578BAAB0BA17F6C4E4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 21235147A4DF3437FF7CF692 /* Localizable.strings */; };
 		2123575B4905EF8E678ADDB9 /* FortunesBySourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2123539D67F30A0EF672E68B /* FortunesBySourceViewController.m */; };
 		212357B2C99E5B3D469FF335 /* FortunesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235A489AD4681C6D98CA7E /* FortunesListViewController.m */; };
 		212357EDC201D0BD5C2ADA04 /* UIViewController+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235659F2FEAFC19CECD82E /* UIViewController+Layout.m */; };
@@ -35,10 +34,11 @@
 		212359953153F89860E3347A /* LeftNavItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 212356EE4BB41E321C30899F /* LeftNavItem.m */; };
 		21235AB75DB52849AB17F75B /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2123597AB4AE3E5E4C5B86CD /* SettingsViewController.m */; };
 		21235BC34468EE5D395A02D8 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235A60946C133DC4DC54F9 /* UserSettings.m */; };
-		21235E323F850C7DB616831E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 212352B201D9B59F916E446D /* Localizable.strings */; };
 		21235E71F303B6ECD38B2E71 /* CenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235A1012460B08E0193D6D /* CenterViewController.m */; };
 		21235E85CDBD6D571FEC8213 /* FortuneMainDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235283A711AC51577195B5 /* FortuneMainDisplay.m */; };
 		870D330A1B5E6EC000C8B750 /* FortuneInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 870D33091B5E6EC000C8B750 /* FortuneInfo.m */; };
+		87316F771B6B2C2E005FF5C7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87316F751B6B2C2E005FF5C7 /* Localizable.strings */; };
+		87316F7A1B6B2C37005FF5C7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87316F781B6B2C37005FF5C7 /* Localizable.strings */; };
 		874B14A51B6A6566006E227E /* FontSectionSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 874B14A41B6A6566006E227E /* FontSectionSelector.m */; };
 		877BFBA01B6501BC00B2A8E5 /* LabelAutoSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 877BFB9F1B6501BC00B2A8E5 /* LabelAutoSize.m */; };
 		87BD950D1B66EEA300A96289 /* RowIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 87BD950C1B66EEA300A96289 /* RowIndicator.m */; };
@@ -69,7 +69,6 @@
 
 /* Begin PBXFileReference section */
 		212350A4C588C6D1D3154C12 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = ViewController/Primary/SettingsViewController.h; sourceTree = "<group>"; };
-		2123512381309C816A302362 /* de */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		21235283A711AC51577195B5 /* FortuneMainDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FortuneMainDisplay.m; sourceTree = "<group>"; };
 		212353696E159DDC4466913F /* RESTClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESTClient.h; sourceTree = "<group>"; };
 		2123539D67F30A0EF672E68B /* FortunesBySourceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FortunesBySourceViewController.m; path = ViewController/Primary/FortunesBySourceViewController.m; sourceTree = "<group>"; };
@@ -94,7 +93,6 @@
 		21235B00A7B0934024EA901F /* UIView+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Helpers.h"; sourceTree = "<group>"; };
 		21235BC70AFC73F6B03B6177 /* UserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettings.h; sourceTree = "<group>"; };
 		21235C63BD62088824415089 /* FortuneList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FortuneList.h; sourceTree = "<group>"; };
-		21235D34E7696F4C5B214670 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		21235E13C125FF2E916FCF61 /* UIColor+Presets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Presets.m"; sourceTree = "<group>"; };
 		21235E5B4E3B889BF682F011 /* SingleFortune.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleFortune.m; sourceTree = "<group>"; };
 		21235E8E8F6225FAEF26FA73 /* ImpressumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImpressumViewController.h; path = ViewController/Primary/ImpressumViewController.h; sourceTree = "<group>"; };
@@ -105,6 +103,8 @@
 		7A70EDD08EEC7F06DE57B4C0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		870D33081B5E6EC000C8B750 /* FortuneInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FortuneInfo.h; sourceTree = "<group>"; };
 		870D33091B5E6EC000C8B750 /* FortuneInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FortuneInfo.m; sourceTree = "<group>"; };
+		87316F761B6B2C2E005FF5C7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		87316F791B6B2C37005FF5C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		874B14A31B6A6566006E227E /* FontSectionSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontSectionSelector.h; sourceTree = "<group>"; };
 		874B14A41B6A6566006E227E /* FontSectionSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontSectionSelector.m; sourceTree = "<group>"; };
 		877BFB9E1B6501BC00B2A8E5 /* LabelAutoSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelAutoSize.h; sourceTree = "<group>"; };
@@ -229,7 +229,7 @@
 		212358BF02CF1AB20D6742BE /* en.lproj */ = {
 			isa = PBXGroup;
 			children = (
-				212352B201D9B59F916E446D /* Localizable.strings */,
+				87316F781B6B2C37005FF5C7 /* Localizable.strings */,
 			);
 			path = en.lproj;
 			sourceTree = "<group>";
@@ -237,7 +237,7 @@
 		21235AF00A2D2921FAD9ADF3 /* de.lproj */ = {
 			isa = PBXGroup;
 			children = (
-				21235147A4DF3437FF7CF692 /* Localizable.strings */,
+				87316F751B6B2C2E005FF5C7 /* Localizable.strings */,
 			);
 			name = de.lproj;
 			sourceTree = "<group>";
@@ -421,6 +421,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = 87D1486B1B5D5C26003841AC;
 			productRefGroup = 87D148751B5D5C26003841AC /* Products */;
@@ -440,9 +441,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				87D148851B5D5C26003841AC /* Images.xcassets in Resources */,
+				87316F7A1B6B2C37005FF5C7 /* Localizable.strings in Resources */,
+				87316F771B6B2C2E005FF5C7 /* Localizable.strings in Resources */,
 				87D1489E1B5D636C003841AC /* Default-568h@2x.png in Resources */,
-				212354578BAAB0BA17F6C4E4 /* Localizable.strings in Resources */,
-				21235E323F850C7DB616831E /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,18 +557,18 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		21235147A4DF3437FF7CF692 /* Localizable.strings */ = {
+		87316F751B6B2C2E005FF5C7 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				2123512381309C816A302362 /* de */,
+				87316F761B6B2C2E005FF5C7 /* de */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
-		212352B201D9B59F916E446D /* Localizable.strings */ = {
+		87316F781B6B2C37005FF5C7 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				21235D34E7696F4C5B214670 /* en */,
+				87316F791B6B2C37005FF5C7 /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

@@ -6,7 +6,9 @@
 #import "UIViewController+Layout.h"
 
 static float const canvasMargin = 20.0;
-
+static float const controlsMargin = 20.0;
+static float const defaultLabelFontSize = 15.0f;
+static float const defaultControlHeight = 40.0f;
 
 @implementation UIViewController (Layout)
 
@@ -47,6 +49,23 @@ static float const canvasMargin = 20.0;
     [view setY:frame.origin.y];
 }
 
+
+- (void)appendView:(UIView *)newView {
+
+    NSArray *existingViews = [self.view subviews];
+    CGFloat maxY = [self visibleViewFrame].origin.y;
+
+    for(UIView *v in existingViews) {
+
+        if(CGRectGetMaxY(v.frame) > maxY) {
+
+            maxY = CGRectGetMaxY(v.frame);
+        }
+    }
+    [newView setY:maxY + controlsMargin];
+    [self.view addSubview:newView];
+}
+
 #pragma mark -
 #pragma mark basic views
 
@@ -66,7 +85,7 @@ static float const canvasMargin = 20.0;
     [button setBackgroundColor:[UIColor clearColor]];
 
     CGRect buttonFrame = [self contentCanvas];
-    buttonFrame.size.height = 40.0;
+    buttonFrame.size.height = defaultControlHeight;
 
     [button setFrame:buttonFrame];
 
@@ -88,8 +107,6 @@ static float const canvasMargin = 20.0;
 
 #pragma mark -
 #pragma mark Labels
-
-static float defaultLabelFontSize = 15.0f;
 
 - (UILabel*)simpleLabelWithText:(NSString *)labelText {
 
