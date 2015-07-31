@@ -40,4 +40,5 @@ typedef NS_ENUM(NSInteger, FavouritesResult) {
 
 - (FavouritesResult)removeFromFavourites:(SingleFortune *)fortune;
 
+- (NSArray *)favouriteIds;
 @end

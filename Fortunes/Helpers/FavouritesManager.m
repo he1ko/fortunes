@@ -99,6 +99,11 @@ static NSString *favSettingKey = @"favourites";
 }
 
 
+- (NSArray *)favouriteIds {
+
+    return [self loadFavouriteIds];
+}
+
 #pragma mark -
 #pragma mark private helpers
 
