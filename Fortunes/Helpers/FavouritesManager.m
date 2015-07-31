@@ -111,8 +111,6 @@ static NSString *favSettingKey = @"favourites";
 
 - (FavouritesResult) _saveFavouriteState:(BOOL)isFav for:(SingleFortune*)fortune {
 
-    NSLog(@"%@", favouriteIDs);
-
     if(isFav && [self isFavourite:fortune]) {
         return FAV_RESULT_ALREADY_FAV;
     }
@@ -158,7 +156,8 @@ static NSString *favSettingKey = @"favourites";
 
 - (NSArray *)loadFavouriteIds {
 
-    return [UserSettings loadArrayWithKey:favSettingKey];
+    NSArray *favs = [UserSettings loadArrayWithKey:favSettingKey];
+    return favs;
 }
 
 @end

@@ -26,12 +26,14 @@
 - (void)setToFavourite {
 
     [[FavouritesManager getInstance] addToFavourites:self];
+    NSLog(@"%d is now your favourite!", self.id);
 }
 
 
 - (void)removeFromFavourites {
 
     [[FavouritesManager getInstance] removeFromFavourites:self];
+    NSLog(@"%d is no longer favourite.", self.id);
 }
 
 
