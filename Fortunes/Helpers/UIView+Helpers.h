@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Fast Gesund. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @interface UIView (Helpers)
 
 - (UIViewController*)viewController;
