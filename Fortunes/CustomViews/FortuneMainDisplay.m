@@ -4,7 +4,7 @@
 #import "LabelAutoSize.h"
 
 
-static float const labelMargin = 24.0f;
+static float const labelMargin = 30.0f;
 
 
 @interface FortuneMainDisplay ()
