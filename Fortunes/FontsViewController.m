@@ -122,11 +122,7 @@
     NSArray *fntArray = (NSArray*)fontFamilysAndNames[familyName];
     NSString *fontName = fntArray[(NSUInteger)indexPath.row];
 
-    // NSLog(@"%@ --> %@", familyName, fontName);
-
-
     static NSString *cellIdentifier = @"fontCell";
-
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 
     if (cell == nil) {
@@ -146,35 +142,41 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     [self saveFontName:[tableView cellForRowAtIndexPath:indexPath].textLabel.text];
-
-    /*
-    FontAssignViewController *fontAssignVC = [[FontAssignViewController alloc] init];
-    fontAssignVC.section = _fontSection;
-    fontAssignVC.fontName = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
-    [self.navigationController pushViewController:fontAssignVC animated:YES];
-    */
 }
 
 
 - (void)saveFontName:(NSString *)fontName {
 
-    [[FontManager getInstance] updateFontName:fontName forSection:_fontSection];
+    NSString *sectionName = [[FontManager getInstance] sectionNameForSection:_fontSection];
 
-    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    [self.view addSubview:HUD];
-    HUD.mode = MBProgressHUDModeText;
-    HUD.labelText = NSLocalizedString(@"FontSaved", @"Schriftart gespeichert");
-    HUD.detailsLabelText = [NSString stringWithFormat:@"%@: %@", [[FontManager getInstance] sectionNameForSection:_fontSection], fontName];
+    if(!HUD) {
+        HUD = [[MBProgressHUD alloc] initWithView:self.view];
+        HUD.delegate = self;
+        HUD.mode = MBProgressHUDModeText;
+        HUD.labelText = NSLocalizedString(@"FontSaved", @"Schriftart gespeichert");
+        [self.view addSubview:HUD];
+    }
 
-    HUD.delegate = self;
+    [self.view bringSubviewToFront:HUD];
+
+    HUD.detailsLabelText = [NSString stringWithFormat:@"%@: %@", sectionName, fontName];
     [HUD show:YES];
-    [self performSelector:@selector(hideHud) withObject:nil afterDelay:2.0];
+
+    [[FontManager getInstance] updateFontName:fontName forSection:_fontSection];
+    [self hideHud:HUD];
 }
 
 
-- (void)hideHud {
+- (void)hideHud:(MBProgressHUD *)hud {
 
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [hud hide:YES afterDelay:2.0];
+}
+
+
+- (void)hudWasHidden:(MBProgressHUD *)hud {
+
+    hud = nil;
+    [self rightNavigationButtonTouched];
 }
 
 

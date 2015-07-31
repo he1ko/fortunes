@@ -63,7 +63,6 @@
 
 - (void)rightNavigationButtonTouched {
 
-    NSLog(@"Rechter Button getippt...");
     [self.navigationController popViewControllerAnimated:YES];
 }
 
