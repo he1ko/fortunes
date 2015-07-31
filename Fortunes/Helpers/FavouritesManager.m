@@ -75,28 +75,28 @@ static NSString *favSettingKey = @"favourites";
 }
 
 
-- (void)addToFavourites:(SingleFortune *)fortune {
+- (FavouritesResult)addToFavourites:(SingleFortune *)fortune {
 
     FavouritesResult rslt = [self _saveFavouriteState:YES for:fortune];
 
     if(rslt == FAV_RESULT_ALREADY_FAV) {
-        [_delegate favouriteNotSaved:FAV_RESULT_ALREADY_FAV];
+        return FAV_RESULT_ALREADY_FAV;
     }
     if(rslt == FAV_RESULT_SET_TO_FAV) {
-        [_delegate favouriteSaved:FAV_RESULT_SET_TO_FAV];
+        return FAV_RESULT_SET_TO_FAV;
     }
 }
 
 
-- (void)removeFromFavourites:(SingleFortune *)fortune {
+- (FavouritesResult)removeFromFavourites:(SingleFortune *)fortune {
 
     FavouritesResult rslt = [self _saveFavouriteState:NO for:fortune];
 
     if(rslt == FAV_RESULT_ALREADY_NO_FAV) {
-        [_delegate favouriteNotSaved:FAV_RESULT_ALREADY_NO_FAV];
+        return FAV_RESULT_ALREADY_NO_FAV;
     }
     if(rslt == FAV_RESULT_SET_NO_FAV) {
-        [_delegate favouriteSaved:FAV_RESULT_SET_NO_FAV];
+        return FAV_RESULT_SET_NO_FAV;
     }
 }
 

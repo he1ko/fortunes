@@ -8,7 +8,6 @@ typedef NS_ENUM(NSInteger, FavouritesResult) {
     FAV_RESULT_ALREADY_NO_FAV
 };
 
-@protocol FavouritesManagerNotification;
 @class SingleFortune;
 
 
@@ -34,22 +33,12 @@ typedef NS_ENUM(NSInteger, FavouritesResult) {
 
 @interface FavouritesManager : NSObject
 
-@property(nonatomic, strong) id <FavouritesManagerNotification> delegate;
-
 + (FavouritesManager *)getInstance;
 
 - (BOOL)isFavourite:(SingleFortune *)fortune;
 
-- (void)addToFavourites:(SingleFortune *)fortune;
+- (FavouritesResult)addToFavourites:(SingleFortune *)fortune;
 
-- (void)removeFromFavourites:(SingleFortune *)fortune;
+- (FavouritesResult)removeFromFavourites:(SingleFortune *)fortune;
 
-@end
-
-
-
-@protocol FavouritesManagerNotification
-@optional
-- (void)favouriteSaved:(FavouritesResult)rslt;
-- (void)favouriteNotSaved:(FavouritesResult)rslt;
 @end

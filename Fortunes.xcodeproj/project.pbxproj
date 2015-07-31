@@ -28,6 +28,7 @@
 		212353C87192D6A030581AE4 /* FortuneList.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235A9C81611CA9F92D0CD7 /* FortuneList.m */; };
 		2123541E4803BCF55E97A9B5 /* ImpressumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235A50AC0E760F4767EA08 /* ImpressumViewController.m */; };
 		2123575B4905EF8E678ADDB9 /* FortunesBySourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2123539D67F30A0EF672E68B /* FortunesBySourceViewController.m */; };
+		21235780CC4F603C40CE7516 /* SingleFortune+Favourites.m in Sources */ = {isa = PBXBuildFile; fileRef = 212350B0128886811EBBB6E5 /* SingleFortune+Favourites.m */; };
 		212357B2C99E5B3D469FF335 /* FortunesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235A489AD4681C6D98CA7E /* FortunesListViewController.m */; };
 		212357EDC201D0BD5C2ADA04 /* UIViewController+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235659F2FEAFC19CECD82E /* UIViewController+Layout.m */; };
 		2123584252FCF8E238A1202F /* UIView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2123571D931755AB55081451 /* UIView+Helpers.m */; };
@@ -68,6 +69,7 @@
 
 /* Begin PBXFileReference section */
 		212350A4C588C6D1D3154C12 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = ViewController/Primary/SettingsViewController.h; sourceTree = "<group>"; };
+		212350B0128886811EBBB6E5 /* SingleFortune+Favourites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SingleFortune+Favourites.m"; sourceTree = "<group>"; };
 		21235283A711AC51577195B5 /* FortuneMainDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FortuneMainDisplay.m; sourceTree = "<group>"; };
 		212353696E159DDC4466913F /* RESTClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESTClient.h; sourceTree = "<group>"; };
 		2123539D67F30A0EF672E68B /* FortunesBySourceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FortunesBySourceViewController.m; path = ViewController/Primary/FortunesBySourceViewController.m; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 		2123569F771A32289000B781 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = ViewController/Primary/HomeViewController.h; sourceTree = "<group>"; };
 		212356EE4BB41E321C30899F /* LeftNavItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftNavItem.m; sourceTree = "<group>"; };
 		2123571D931755AB55081451 /* UIView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Helpers.m"; sourceTree = "<group>"; };
+		21235782B7EAF1ACD73D867C /* SingleFortune+Favourites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SingleFortune+Favourites.h"; sourceTree = "<group>"; };
 		212358A59896E13DC0F05FEE /* UIColor+Presets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Presets.h"; sourceTree = "<group>"; };
 		2123597AB4AE3E5E4C5B86CD /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = ViewController/Primary/SettingsViewController.m; sourceTree = "<group>"; };
 		2123598DA8F6797CCD469E6A /* RESTClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESTClient.m; sourceTree = "<group>"; };
@@ -172,8 +175,18 @@
 				2123598DA8F6797CCD469E6A /* RESTClient.m */,
 				21235690640FBCF317AA3CAB /* SingleFortune.h */,
 				21235E5B4E3B889BF682F011 /* SingleFortune.m */,
+				212350217399514501DEF868 /* Categories */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		212350217399514501DEF868 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				21235782B7EAF1ACD73D867C /* SingleFortune+Favourites.h */,
+				212350B0128886811EBBB6E5 /* SingleFortune+Favourites.m */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 		21235047D3F9D333D563960C /* Helpers */ = {
@@ -529,6 +542,7 @@
 				21235E85CDBD6D571FEC8213 /* FortuneMainDisplay.m in Sources */,
 				212358D4F04B5125E4135056 /* FontManager.m in Sources */,
 				2123506CBC745E578916BE69 /* FavouritesManager.m in Sources */,
+				21235780CC4F603C40CE7516 /* SingleFortune+Favourites.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
