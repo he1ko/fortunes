@@ -77,15 +77,22 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
     [super viewDidAppear:animated];
 
+    if (![self isFontChanged] && fortuneList.fortunes != nil) {
+
+        return;
+    }
+
+
     if(!HUD) {
         HUD = [[MBProgressHUD alloc] initWithView:self.view];
         [self.view addSubview:HUD];
-        HUD.mode = MBProgressHUDModeDeterminateHorizontalBar;
-        HUD.progress = 0.0;
-        HUD.labelText = NSLocalizedString(@"justASecond", @"wait... notification");
-        HUD.detailsLabelText = NSLocalizedString(@"remoteGetFortunes", @"Lade Fortunes vom Server");
-        HUD.delegate = self;
     }
+
+    HUD.progress = 0.0;
+    HUD.mode = MBProgressHUDModeDeterminateHorizontalBar;
+    HUD.labelText = NSLocalizedString(@"justASecond", @"wait... notification");
+    HUD.detailsLabelText = NSLocalizedString(@"remoteGetFortunes", @"Lade Fortunes vom Server");
+    HUD.delegate = self;
 
     if(fortuneList.fortunes == nil) {
 
@@ -227,13 +234,8 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
     UIFont *fSource = [[FontManager getInstance] fontForSection:FONT_APP_SECTION_LIST_SOURCE];
     FortuneTableViewCell *cell = [[FortuneTableViewCell alloc] initWithFortune:f fortuneFont:fFortune sourceFont:fSource reuseIdentifier:cellReuseIdentifier];
 
-    if(!fortuneFontName) {
-        fortuneFontName = [cell getFortuneFontName];
-    }
-
-    if(!sourceFontName) {
-        sourceFontName = [cell getSourceFontName];
-    }
+    fortuneFontName = [cell getFortuneFontName];
+    sourceFontName = [cell getSourceFontName];
 
     return cell;
 }
