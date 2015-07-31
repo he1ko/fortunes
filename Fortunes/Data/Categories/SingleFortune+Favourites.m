@@ -35,15 +35,19 @@
 }
 
 
-- (UIImageView *)favImage {
+- (UIButton *)favImageButton {
 
-    UIImageView *favImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"fav-add"]];
+    UIButton *btFav = [[UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *favImg = [UIImage imageNamed:@"fav-add"];
 
     if([self isFavourite]) {
-
-        [favImg setImage:[UIImage imageNamed:@"fav-remove"]];
+        favImg = [UIImage imageNamed:@"fav-remove"];
     }
-    return favImg;
+
+    [btFav setImage:favImg forState:UIControlStateNormal];
+    [btFav addTarget:self action:@selector(switchFavouriteState) forControlEvents:UIControlEventTouchUpInside];
+
+    return btFav;
 }
 
 
