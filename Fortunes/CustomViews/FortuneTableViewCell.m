@@ -8,9 +8,10 @@
 
 #import "FortuneTableViewCell.h"
 #import "SingleFortune.h"
+#import "SingleFortune+Favourites.h"
 #import "LabelAutoSize.h"
 
-static CGFloat const LeftPanelWidth = 30.0f;
+static CGFloat const LeftPanelWidth = 45.0f;
 static CGFloat const TextViewMargin = 12.0f;
 
 @interface FortuneTableViewCell ()
@@ -45,6 +46,8 @@ static CGFloat const TextViewMargin = 12.0f;
     LabelAutoSize *lblText;
     UILabel *lblSource;
     CGFloat myHeight;
+    UIView *leftPanel;
+    UIButton *btFav;
 
     UIFont *fortuneFont;
     UIFont *sourceFont;
@@ -158,7 +161,7 @@ static CGFloat const TextViewMargin = 12.0f;
     panelFrame.size.width = LeftPanelWidth;
     panelFrame.size.height = myHeight;
 
-    UIView *leftPanel = [[UIView alloc] initWithFrame:panelFrame];
+    leftPanel = [[UIView alloc] initWithFrame:panelFrame];
     leftPanel.backgroundColor = [UIColor preset_backGroundBlackWithAlpha:0.2];
 
     UILabel *lblLangEN = [self languageLabel];
@@ -166,6 +169,9 @@ static CGFloat const TextViewMargin = 12.0f;
     [lblLangEN setX:0.0];
     [lblLangEN setY:14.0];
     [leftPanel addSubview:lblLangEN];
+
+    btFav = [self favouritesButtonInFrame:panelFrame];
+    [leftPanel addSubview:btFav];
 
     [self.contentView addSubview:leftPanel];
 }
@@ -177,6 +183,17 @@ static CGFloat const TextViewMargin = 12.0f;
     [line setY:(float) (myHeight - 1.0)];
     line.backgroundColor = [UIColor preset_backGroundBlackWithAlpha:0.2];
     [self.contentView addSubview:line];
+}
+
+
+- (UIButton *)favouritesButtonInFrame:(CGRect)frame {
+
+    UIButton *bt = [myFortune favListImageButton];
+    [bt setY:myHeight - bt.frame.size.height - 6];
+    [bt setX:(frame.size.width - bt.frame.size.width) / 2];
+    [bt addTarget:self action:@selector(favouritesButtonTouch) forControlEvents:UIControlEventTouchUpInside];
+
+    return bt;
 }
 
 
@@ -217,9 +234,26 @@ static CGFloat const TextViewMargin = 12.0f;
     return lblText.font.fontName;
 }
 
+
 - (NSString *)getSourceFontName {
     return lblSource.font.fontName;
 }
 
+- (void)favouritesButtonTouch {
+
+    if([myFortune isFavourite]) {
+        [myFortune removeFromFavourites];
+    }
+    else {
+        [myFortune setToFavourite];
+    }
+
+    CGRect btFrame = btFav.frame;
+    btFav = nil;
+
+    UIButton *bt = [self favouritesButtonInFrame:leftPanel.frame];
+    bt.frame = btFrame;
+    btFav = bt;
+}
 
 @end
