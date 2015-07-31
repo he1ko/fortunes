@@ -51,6 +51,8 @@
 
     [self.navigationItem setTitle:@"Schriftarten"];
     [self addRightNavigationButtonWithText:@"Zurück"];
+
+    NSLog(@"Schriftenauswahl für Section %d", (int)_fontSection);
 }
 
 

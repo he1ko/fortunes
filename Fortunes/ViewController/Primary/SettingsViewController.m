@@ -27,11 +27,14 @@
     UIButton *btListSource;
 
     UILabel *lblDescription;
+    NSArray *fontListViewControllers;
 }
 
 - (void)viewDidLoad {
 
     [super viewDidLoad];
+
+    fontListViewControllers = [self emptyFontListViewControllersArray];
 
     lblDescription = [self descriptionLabel];
     [self appendView:lblDescription];
@@ -58,13 +61,26 @@
 }
 
 
+- (void)didReceiveMemoryWarning {
+
+    [super didReceiveMemoryWarning];
+}
+
+
+#pragma mark -
+#pragma mark Controls
+
 - (UILabel *)descriptionLabel {
 
     NSString *descText = NSLocalizedString(@"desriptionFontSettings", @"what can the user do with font settings?");
 
     UILabel *lblDesc = [self simpleLabelWithText:descText];
+    lblDesc.textAlignment = NSTextAlignmentCenter;
     lblDesc.numberOfLines = 0;
     [lblDesc sizeToFit];
+
+    /// sizeToFit might narrow the view but leaves origin.x unchanged --> center view again!
+    [lblDesc setX:CGRectGetMidX(self.view.frame) - lblDesc.frame.size.width /2];
 
     return lblDesc;
 }
@@ -79,20 +95,42 @@
 }
 
 
+#pragma mark -
+#pragma mark Selection of section to modify
+
 - (void)fontsButtonTouch:(id)sender {
 
     UIView *bt = (UIView *)sender;
-    FontsViewController *vcFonts = [[FontsViewController alloc] init];
-
-    vcFonts.fontSection = (FontAppSection)[bt tag];
+    
+    FontsViewController *vcFonts = [self getFontVcForSection:(FontAppSection)[bt tag]];
     [self.navigationController pushViewController:vcFonts animated:YES];
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (FontsViewController *)getFontVcForSection:(FontAppSection)section {
+
+    FontsViewController *neededVc = fontListViewControllers[section];
+
+    if([neededVc isEqual:[NSNull null]]) {
+        neededVc = [[FontsViewController alloc] init];
+        neededVc.fontSection = section;
+
+        NSMutableArray *mFontListVcs = [fontListViewControllers mutableCopy];
+        mFontListVcs[section] = neededVc;
+        fontListViewControllers = mFontListVcs;
+    }
+
+    return neededVc;
 }
+
+
+- (NSArray *)emptyFontListViewControllersArray {
+
+    return @[[NSNull null], [NSNull null], [NSNull null]];
+}
+
+
+
 
 
 @end
