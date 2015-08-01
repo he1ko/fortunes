@@ -9,13 +9,13 @@
 #import "HomeViewController.h"
 #import "UIViewController+Layout.h"
 #import "FortuneMainDisplay.h"
+#import "UIViewController+NavigationBar.h"
 
 @implementation HomeViewController {
 
 @private
     SingleFortune *fortune;
     FortuneMainDisplay *fortuneDisplay;
-    UIButton *favouriteButton;
 }
 
 - (void)viewDidLoad {
@@ -71,17 +71,12 @@
 
 - (void)setFavouriteButton {
 
-    if(favouriteButton) {
-        [favouriteButton removeFromSuperview];
-        favouriteButton = nil;
-    }
+    NSString *favIconImageName = @"fav-add";
 
-    favouriteButton = [fortune favImageButton];
-    [self alignView:favouriteButton atTopOfRect:[self visibleViewFrame]];
-    [favouriteButton setY:(float) (favouriteButton.frame.origin.y + 10.0)];
-    [favouriteButton setX:(float) ([self visibleViewFrame].size.width - favouriteButton.frame.size.width - 10.0)];
-    [favouriteButton addTarget:self action:@selector(rightNavigationButtonTouched) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:favouriteButton];
+    if([fortune isFavourite]) {
+        favIconImageName = @"fav-remove";
+    }
+    [self addNavBarButtonWithImageName:favIconImageName side:NAV_BAR_BUTTON_SIDE_RIGHT];
 }
 
 
@@ -102,14 +97,6 @@
 
     fortuneMain.userInteractionEnabled = YES;
     return fortuneMain;
-}
-
-
-- (void)fortuneFavouriteStateChanged {
-
-    NSLog(@"Fav-Status changed...!");
-    UIButton *btFav = [fortune favImageButton];
-    [favouriteButton setImage:[btFav imageForState:UIControlStateNormal] forState:UIControlStateNormal];
 }
 
 

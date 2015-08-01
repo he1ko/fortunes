@@ -3,7 +3,7 @@
 
 
 @interface UIViewController ()
-- (void)addNavigationBarButton:(UIBarButtonItem *)button side:(NavBarButtonSide)side;
+
 @end
 
 @implementation UIViewController (NavigationBar)
@@ -67,7 +67,7 @@
 
 
 #pragma mark -
-#pragma mark public methods to be oerridden in implementation
+#pragma mark public methods to be overridden in implementation
 
 
 - (void)leftNavigationButtonTouched {
