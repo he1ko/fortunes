@@ -9,13 +9,14 @@
 #import "SettingsViewController.h"
 #import "UIViewController+Layout.h"
 #import "FontsViewController.h"
+#import "DefaultButton.h"
 
 static NSInteger FAKE_SECTION_RESET = 99;
 
 @interface SettingsViewController ()
 
 - (UILabel *)descriptionLabel;
-- (UIButton *)buttonWithText:(NSString *)buttonText;
+- (UIButton *)primaryButtonWithText:(NSString *)buttonText;
 - (void)fontsButtonTouch:(id)sender;
 
 @end
@@ -39,26 +40,27 @@ static NSInteger FAKE_SECTION_RESET = 99;
 
     [super viewDidLoad];
 
+    self.view.backgroundColor = [UIColor web_steelblue];
+
     fontListViewControllers = [self emptyFontListViewControllersArray];
 
     lblDescription = [self descriptionLabel];
     [self appendView:lblDescription];
 
-    btMainFortune = [self buttonWithText:NSLocalizedString(@"Dein (großes) Fortune", @"Dein (großes) Fortune")];
+    btMainFortune = [self primaryButtonWithText:NSLocalizedString(@"Dein (großes) Fortune", @"Dein (großes) Fortune")];
     [btMainFortune setTag:FONT_APP_SECTION_MAIN_FORTUNE];
     [self appendView:btMainFortune];
 
-    btListFortune = [self buttonWithText:NSLocalizedString(@"Fortunes in Listen", @"Fortunes in Listen")];
+    btListFortune = [self primaryButtonWithText:NSLocalizedString(@"Fortunes in Listen", @"Fortunes in Listen")];
     [btListFortune setTag:FONT_APP_SECTION_LIST_FORTUNE];
     [self appendView:btListFortune];
 
-    btListSource = [self buttonWithText:NSLocalizedString(@"Fortune-Quelle in Listen", @"Fortune-Quelle in Listen")];
+    btListSource = [self primaryButtonWithText:NSLocalizedString(@"Fortune-Quelle in Listen", @"Fortune-Quelle in Listen")];
     [btListSource setTag:FONT_APP_SECTION_LIST_SOURCE];
     [self appendView:btListSource];
 
-    btResetAll = [self buttonWithText:NSLocalizedString(@"settings.buttons.reset", @"reset fonts")];
+    btResetAll = [self secondaryButtonWithText:NSLocalizedString(@"settings.buttons.reset", @"reset fonts")];
     [btResetAll setTag:FAKE_SECTION_RESET];
-    btResetAll.backgroundColor = [UIColor clearColor];
     [self appendView:btResetAll];
 }
 
@@ -96,11 +98,22 @@ static NSInteger FAKE_SECTION_RESET = 99;
 }
 
 
-- (UIButton *)buttonWithText:(NSString *)buttonText {
+- (UIButton *)primaryButtonWithText:(NSString *)buttonText {
 
-    UIButton * button = [self roundedButtonWithText:buttonText];
+    UIButton *button = [DefaultButton primaryButtonWithFrame:[self contentCanvas] text:buttonText];
     [button addTarget:self action:@selector(fontsButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
-    button.backgroundColor = [UIColor presetItemSelected];
+    [button setHeight:40.0];
+
+    return button;
+}
+
+
+- (UIButton *)secondaryButtonWithText:(NSString *)buttonText {
+
+    UIButton *button = [DefaultButton secondaryButtonWithFrame:[self contentCanvas] text:buttonText];
+    [button addTarget:self action:@selector(fontsButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
+    [button setHeight:40.0];
+
     return button;
 }
 

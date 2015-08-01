@@ -41,6 +41,7 @@
 		21235E85CDBD6D571FEC8213 /* FortuneMainDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235283A711AC51577195B5 /* FortuneMainDisplay.m */; };
 		87316F771B6B2C2E005FF5C7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87316F751B6B2C2E005FF5C7 /* Localizable.strings */; };
 		87316F7A1B6B2C37005FF5C7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87316F781B6B2C37005FF5C7 /* Localizable.strings */; };
+		8758ED041B6D1E13008EEE1C /* DefaultButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8758ED031B6D1E13008EEE1C /* DefaultButton.m */; };
 		877BFBA01B6501BC00B2A8E5 /* LabelAutoSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 877BFB9F1B6501BC00B2A8E5 /* LabelAutoSize.m */; };
 		87BD950D1B66EEA300A96289 /* RowIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 87BD950C1B66EEA300A96289 /* RowIndicator.m */; };
 		87BD95101B6779A500A96289 /* FontsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87BD950F1B6779A500A96289 /* FontsViewController.m */; };
@@ -109,6 +110,8 @@
 		7A70EDD08EEC7F06DE57B4C0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		87316F761B6B2C2E005FF5C7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		87316F791B6B2C37005FF5C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
+		8758ED021B6D1E13008EEE1C /* DefaultButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultButton.h; sourceTree = "<group>"; };
+		8758ED031B6D1E13008EEE1C /* DefaultButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultButton.m; sourceTree = "<group>"; };
 		877BFB9E1B6501BC00B2A8E5 /* LabelAutoSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelAutoSize.h; sourceTree = "<group>"; };
 		877BFB9F1B6501BC00B2A8E5 /* LabelAutoSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelAutoSize.m; sourceTree = "<group>"; };
 		87BD950B1B66EEA300A96289 /* RowIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RowIndicator.h; sourceTree = "<group>"; };
@@ -232,6 +235,8 @@
 				87BD950C1B66EEA300A96289 /* RowIndicator.m */,
 				21235283A711AC51577195B5 /* FortuneMainDisplay.m */,
 				212354C690E64D24A3396B35 /* FortuneMainDisplay.h */,
+				8758ED021B6D1E13008EEE1C /* DefaultButton.h */,
+				8758ED031B6D1E13008EEE1C /* DefaultButton.m */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -528,6 +533,7 @@
 				877BFBA01B6501BC00B2A8E5 /* LabelAutoSize.m in Sources */,
 				87E2E54F1B5F929100AFDDB9 /* FortuneTableViewCell.m in Sources */,
 				212353C87192D6A030581AE4 /* FortuneList.m in Sources */,
+				8758ED041B6D1E13008EEE1C /* DefaultButton.m in Sources */,
 				2123515B3171C65FEDD8FCB6 /* RESTClient.m in Sources */,
 				21235214EA04DA6DE383266B /* SingleFortune.m in Sources */,
 				87BE06541B664700003F2186 /* FortuneDetailViewController.m in Sources */,

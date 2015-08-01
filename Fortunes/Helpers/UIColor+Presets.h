@@ -55,4 +55,9 @@ __Created__: 2014-12-15
 + (UIColor *)presetItemBGIncomplete;
 
 
++ (UIColor *)web_coral;
+
++ (UIColor *)web_goldenrod;
+
++ (UIColor *)web_steelblue;
 @end

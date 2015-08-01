@@ -79,7 +79,17 @@
     return UIColorFromRGB(0xeeeeee);
 }
 
++ (UIColor *)web_coral {
+    return UIColorFromRGB(0xff7f50);
+}
 
++ (UIColor *)web_goldenrod {
+    return UIColorFromRGB(0xdaa520);
+}
+
++ (UIColor *)web_steelblue {
+    return UIColorFromRGB(0x406070);
+}
 
 
 #pragma mark private WebColor Aliases

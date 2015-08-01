@@ -27,14 +27,14 @@
 
     [super viewDidLoad];
 
+    self.view.backgroundColor = [UIColor presetHighlight];
+
     if(IS_OS_7_OR_LATER) {
         self.automaticallyAdjustsScrollViewInsets = NO; // Avoid the top UITextView space, iOS7 (~bug?)
     }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-
-    self.view.backgroundColor = [UIColor presetHighlight];
 
     // tint color of navigation items:
     self.navigationController.navigationBar.tintColor = [UIColor preset_backGroundBlackWithAlpha:0.5];
