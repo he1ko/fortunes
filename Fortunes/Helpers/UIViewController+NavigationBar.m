@@ -72,12 +72,12 @@
 
 - (void)leftNavigationButtonTouched {
 
-    NSLog(@"LINKS!");
+    // NSLog(@"LINKS!");
 }
 
 - (void)rightNavigationButtonTouched {
 
-    NSLog(@"RECHTS!");
+    // NSLog(@"RECHTS!");
 }
 
 
