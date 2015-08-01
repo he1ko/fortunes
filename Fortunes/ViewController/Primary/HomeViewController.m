@@ -71,7 +71,6 @@
     }
     else {
         [fortuneDisplay updateFortune:fortune];
-        // fortuneDisplay.alpha = 0.0;
         [fortuneDisplay setX:self.view.frame.size.width];
         [self fadeInFortune];
     }
@@ -140,9 +139,15 @@
     UIFont *font = [self fontFromUserSettings];
     [fortuneMain setFont:font];
 
+    fortuneMain.backgroundColor = [UIColor clearColor];
+    CGFloat above = fortuneMain.frame.origin.y - self.visibleViewFrame.origin.y;
+    CGFloat below = CGRectGetMaxY(self.visibleViewFrame) - CGRectGetMaxY(fortuneMain.frame);
+
     fortuneMain.userInteractionEnabled = YES;
     return fortuneMain;
 }
+
+
 
 
 - (UIFont *)fontFromUserSettings {

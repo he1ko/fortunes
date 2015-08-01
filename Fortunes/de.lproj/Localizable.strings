@@ -46,3 +46,4 @@
 "settings.hud.title.reset" = "Schriften zurückgesetzt";
 "home.fav.added.message" = "Fortune als Favorit gespeichert.";
 "home.fav.removed.message" = "Fortune aus Deinen Favoriten entfernt.";
+"unknown-source" = "Unbekannte Quelle";

@@ -50,18 +50,16 @@ typedef NS_ENUM(NSInteger, AutoLabelErrorType) {
 - (void)adjust {
 
     NSArray *errors = [self checkPreConditions];
-    if([errors count] > 0) {
 
+    if([errors count] > 0) {
         [self respondToErrors:errors];
     }
 
     if(resizeMode == AUTOLABEL_RESIZE_HEIGHT) {
-
         [self resizeHeight];
     }
 
     else if(resizeMode == AUTOLABEL_RESIZE_FONT) {
-
         [self resizeFont];
     }
 
