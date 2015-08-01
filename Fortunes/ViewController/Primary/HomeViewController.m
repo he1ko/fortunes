@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Jemix. All rights reserved.
 //
 
+#import <MBProgressHUD/MBProgressHUD.h>
 #import "HomeViewController.h"
 #import "UIViewController+Layout.h"
 #import "FortuneMainDisplay.h"
@@ -55,6 +56,7 @@
 - (void)setupFortune {
 
     fortune = (SingleFortune *)self.jsonModel;
+    fortune.favDelegate = self;
 
     /// main fortune display
     if (fortuneDisplay == nil) {
@@ -74,6 +76,29 @@
     [self addNavBarButtonWithImageName:[fortune favImageButtonName] side:NAV_BAR_BUTTON_SIDE_RIGHT];
 }
 
+
+- (void)favouriteStateChangedTo:(BOOL)isFav {
+
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeText;
+
+    hud.labelText = @"Deine Favoriten";
+
+    if(isFav) {
+        hud.detailsLabelText = NSLocalizedString(@"home.fav.added.message", @"Fortune als Favorit gespeichert.");
+    }
+    else {
+        hud.detailsLabelText = NSLocalizedString(@"home.fav.removed.message", @"Fortune aus Deinen Favoriten entfernt.");
+    }
+
+    [self performSelector:@selector(hideHud) withObject:nil afterDelay:1.8];
+}
+
+
+- (void)hideHud {
+
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
 
 - (void)rightNavigationButtonTouched {
 

@@ -44,3 +44,5 @@
 "Fortune-Quelle in Listen" = "Fortune-Source in list views";
 "settings.buttons.reset" = "Reset to defaults";
 "settings.hud.title.reset" = "Fonts reset to defaults";
+"home.fav.added.message" = "Fortune added to your favorites.";
+"home.fav.removed.message" = "Fortune removed from your favorites.";

@@ -225,6 +225,7 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
 -(FortuneTableViewCell *)cellForFortune:(SingleFortune *)f {
 
+    f.favDelegate = self;
     UIFont *fFortune = [[FontManager getInstance] fontForSection:FONT_APP_SECTION_LIST_FORTUNE];
     UIFont *fSource = [[FontManager getInstance] fontForSection:FONT_APP_SECTION_LIST_SOURCE];
     FortuneTableViewCell *cell = [[FortuneTableViewCell alloc] initWithFortune:f fortuneFont:fFortune sourceFont:fSource reuseIdentifier:cellReuseIdentifier];
@@ -339,6 +340,35 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
     detailVC.fortune = f;
 
     [self.navigationController pushViewController:detailVC animated:YES];
+}
+
+
+#pragma mark -
+#pragma mark FavouriteFortune IMPL
+
+
+- (void)favouriteStateChangedTo:(BOOL)isFav {
+
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    [hud setYOffset:_tableView.contentOffset.y];
+
+    hud.labelText = @"Deine Favoriten";
+
+    if(isFav) {
+        hud.detailsLabelText = NSLocalizedString(@"home.fav.added.message", @"Fortune als Favorit gespeichert.");
+    }
+    else {
+        hud.detailsLabelText = NSLocalizedString(@"home.fav.removed.message", @"Fortune aus Deinen Favoriten entfernt.");
+    }
+
+    [self performSelector:@selector(hideHud) withObject:nil afterDelay:1.8];
+}
+
+
+- (void)hideHud {
+
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
 

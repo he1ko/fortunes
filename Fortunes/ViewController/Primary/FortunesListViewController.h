@@ -11,7 +11,7 @@
 
 @class FortuneList;
 
-@interface FortunesListViewController : BaseViewController <MBProgressHUDDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface FortunesListViewController : BaseViewController <MBProgressHUDDelegate, UITableViewDelegate, UITableViewDataSource, FavouriteFortune>
 
 /*
 - (instancetype)initWithStyle:(UITableViewStyle)style NS_DESIGNATED_INITIALIZER;

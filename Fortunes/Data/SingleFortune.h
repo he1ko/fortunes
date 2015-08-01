@@ -9,6 +9,7 @@
 #import "JSONModel.h"
 
 @protocol SingleFortune @end
+@protocol FavouriteFortune;
 
 @interface SingleFortune : JSONModel
 
@@ -18,7 +19,13 @@
 @property(nonatomic, strong) NSString *translationDe;
 @property(nonatomic, assign) int rating;
 
+@property(nonatomic, strong) id <FavouriteFortune> favDelegate;
+
 - (NSString *)cleanText;
 
+@end
 
+
+@protocol FavouriteFortune
+-(void)favouriteStateChangedTo:(BOOL)isFav;
 @end
