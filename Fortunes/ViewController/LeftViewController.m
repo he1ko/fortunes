@@ -80,7 +80,7 @@
 
     leftItems = mItems;
 
-    // [self itemTouched:itemSettings];
+    [self itemTouched:leftItems[1]];
 }
 
 
