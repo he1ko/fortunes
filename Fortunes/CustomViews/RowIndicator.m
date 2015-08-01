@@ -40,6 +40,7 @@ static float const numberFontSize = 22.0f;
         [self setX:minXPos + [self width]];
         [self setImage:[UIImage imageNamed:imageName]];
         [self addLabel];
+        self.hidden = YES;
     }
     return self;
 }
@@ -60,6 +61,7 @@ static float const numberFontSize = 22.0f;
     [self addSubview:lblNumber];
     [self adjustXToNumber];
 }
+
 
 - (void) setRowNumber:(int)rowNum {
 
@@ -100,6 +102,36 @@ static float const numberFontSize = 22.0f;
                      }
     ];
 }
+
+
+- (void) show:(BOOL)visible {
+
+    CGFloat finalAlpha;
+
+    if(visible) {
+
+        if(!self.hidden && self.alpha > 0.5) return;
+
+        finalAlpha = 0.7;
+        [self setAlpha:0.0];
+        [self setHidden:NO];
+    }
+    else {
+        finalAlpha = 0.0;
+    }
+
+    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveLinear
+                     animations:^{
+                         [self setAlpha:finalAlpha];
+                     }
+                     completion:^(BOOL finished) {
+                         if(!visible) {
+                             self.hidden = YES;
+                         }
+                     }
+    ];
+}
+
 
 - (void)setYPos:(CGFloat)yPos {
 

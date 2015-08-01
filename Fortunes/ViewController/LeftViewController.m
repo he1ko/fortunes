@@ -42,7 +42,9 @@
     self.view.backgroundColor = [UIColor presetItemBackground];
 
     [self setupControllerArray];
+
     [self setupNavItems];
+    // [self itemTouched:leftItems[1]];
 }
 
 
@@ -79,8 +81,6 @@
     [mItems addObject:[self navItemWithFrame:itemFrame tag:LeftNavItemTagImpressum text:NSLocalizedString(@"imprint", @"imprint")]];
 
     leftItems = mItems;
-
-    [self itemTouched:leftItems[1]];
 }
 
 

@@ -134,17 +134,17 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
         rowIndicator = [[RowIndicator alloc] initInFrame:[self visibleViewFrame]];
         [self.view addSubview:rowIndicator];
-        [rowIndicator setAlpha:0.7];
+        [rowIndicator show:YES];
     }
 
-    rowIndicator.hidden = NO;
+    [rowIndicator show:YES];
     [rowIndicator setRowNumber:num];
 }
 
 
 - (void)hideRowNum {
 
-    rowIndicator.hidden = YES;
+    [rowIndicator show:NO];
 }
 
 
