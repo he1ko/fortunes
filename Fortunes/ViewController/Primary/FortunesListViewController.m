@@ -132,14 +132,9 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
     if(rowIndicator == nil) {
 
-        CGRect frTemp = CGRectMake((CGFloat) (_tableView.frame.size.width - 70.0), 80.0, 60.0, 30.0);
-        rowIndicator = [[RowIndicator alloc] initWithFrame:frTemp];
-        rowIndicator.layer.cornerRadius = rowIndicator.frame.size.height / 2;
-        rowIndicator.layer.borderWidth = 2.0;
-        rowIndicator.layer.borderColor = [[UIColor whiteColor] CGColor];
-        rowIndicator.clipsToBounds = YES;
-        rowIndicator.alpha = 0.8;
+        rowIndicator = [[RowIndicator alloc] initInFrame:[self visibleViewFrame]];
         [self.view addSubview:rowIndicator];
+        [rowIndicator setAlpha:0.7];
     }
 
     rowIndicator.hidden = NO;

@@ -8,48 +8,102 @@
 
 #import "RowIndicator.h"
 
+static float const imageWidth = 80.0f;
+static float const imageHeight = 48.0f;
+static float const topMargin = 16.0f;
+static float const rightNumberMargin = 10.0f;
+
+static NSString *imageName = @"rowIndicator";
+static NSString *numberFontName = @"DINAlternate-Bold";
+static float const numberFontSize = 22.0f;
+
 @implementation RowIndicator {
 
 @private
     UILabel *lblNumber;
+    CGFloat minXPos;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame {
 
-    self = [super initWithFrame:frame];
+- (id)initInFrame:(CGRect)parentFrame {
+
+    CGFloat left = parentFrame.size.width - imageWidth;
+    CGFloat top = parentFrame.origin.y + topMargin;
+
+    self = [super initWithFrame:CGRectMake(left, top, imageWidth, imageHeight)];
 
     if (self) {
+
+        minXPos = self.frame.origin.x;
+
+        /// place me outside parent ... to slide in, if needed:
+        [self setX:minXPos + [self width]];
+        [self setImage:[UIImage imageNamed:imageName]];
         [self addLabel];
     }
-
     return self;
 }
 
 
 - (void)addLabel {
 
-    CGRect numberFrame = self.frame;
-    numberFrame.origin = CGPointMake(0.0, 0.0);
+    CGRect numberFrame = CGRectMake(24.0f, 10.0f, 54.0f, 26.0f);
 
     lblNumber = [[UILabel alloc] initWithFrame:numberFrame];
-    lblNumber.font = [UIFont fontWithName:@"TimesNewRomanPSMT" size:22.0];
-    lblNumber.textAlignment = NSTextAlignmentCenter;
-    lblNumber.backgroundColor = [UIColor darkGrayColor];
-    lblNumber.textColor = [UIColor whiteColor];
+    lblNumber.font = [UIFont fontWithName:numberFontName size:numberFontSize];
+    lblNumber.textAlignment = NSTextAlignmentLeft;
+    lblNumber.backgroundColor = [UIColor clearColor];
+    lblNumber.textColor = [UIColor darkGrayColor];
+    lblNumber.text = @"";
+    lblNumber.hidden = YES;
 
     [self addSubview:lblNumber];
+    [self adjustXToNumber];
 }
 
 - (void) setRowNumber:(int)rowNum {
 
-    lblNumber.text = [NSString stringWithFormat:@"%d", rowNum];
+    NSString *rowNumText = [NSString stringWithFormat:@"%d", rowNum];
+
+    NSUInteger digitsBefore = lblNumber.text.length;
+    NSUInteger digitsAfter = rowNumText.length;
+
+    lblNumber.text = rowNumText;
+    [lblNumber sizeToFit];
+
+    if(digitsAfter != digitsBefore) {
+
+        lblNumber.hidden = YES;
+        [self adjustXToNumber];
+    }
+}
+
+
+- (void)adjustXToNumber {
+
+    CGFloat maxSpaceForLabel = self.frame.size.width - lblNumber.frame.origin.x;
+    CGFloat currentLabelWidth = lblNumber.frame.size.width;
+
+    CGRect frTarget = self.frame;
+    frTarget.origin.x = minXPos + maxSpaceForLabel - currentLabelWidth - rightNumberMargin;
+
+    [UIView animateWithDuration:0.2
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+
+                         self.frame = frTarget;
+                     }
+                     completion:^(BOOL finished) {
+
+                         lblNumber.hidden = NO;
+                     }
+    ];
 }
 
 - (void)setYPos:(CGFloat)yPos {
 
-    CGRect frTemp = self.frame;
-    frTemp.origin.y = yPos;
-    self.frame = frTemp;
+    [self setY:yPos];
 }
 
 @end
