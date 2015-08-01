@@ -8,6 +8,7 @@
 
 #import "FontsViewController.h"
 #import "UIViewController+Layout.h"
+#import "UIViewController+NavigationBar.h"
 
 @interface FontsViewController ()
 
@@ -49,7 +50,18 @@
 
     NSString *sectionName = [[FontManager getInstance] sectionNameForSection:_fontSection];
     [self.navigationItem setTitle:sectionName];
-    [self addRightNavigationButtonWithText:@"Zurück"];
+
+    [self addNavBarButtonWithText:@"Zurück" side:NAV_BAR_BUTTON_SIDE_RIGHT];
+}
+
+
+
+/*!
+    override default navigationBarButton touch
+ */
+- (void)rightNavigationButtonTouched {
+
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -181,7 +193,7 @@
 - (void)hudWasHidden:(MBProgressHUD *)_hud {
 
     hud = nil;
-    [self rightNavigationButtonTouched];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

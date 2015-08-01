@@ -9,6 +9,8 @@
 #import "BaseViewController.h"
 #import "MMDrawerController.h"
 #import "UIViewController+MMDrawerController.h"
+#import "UIViewController+NavigationBar.h"
+
 
 @interface BaseViewController ()
 
@@ -40,37 +42,22 @@
     self.navigationController.navigationBar.barStyle  = UIBarStyleDefault;
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithWhite:1.0 alpha:0.8];
 
-    // [self.navigationItem setTitle:NSLocalizedString(@"Fortunes", @"Fortunes")];
-
-    UIBarButtonItem *menuIcon = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"MenuIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(leftNavigationButtonTouched)];
-    [self.navigationItem setLeftBarButtonItem:menuIcon animated:YES];
-}
-
-
-- (void)addRightNavigationButtonWithText:(NSString *)text {
-
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:text style:UIBarButtonItemStylePlain target:self action:@selector(rightNavigationButtonTouched)];
-    [self.navigationItem setRightBarButtonItem:rightButton animated:YES];
-}
-
-- (void)removeRightNavigationButtonWithText:(NSString *)text {
-
-    [self.navigationItem setRightBarButtonItem:nil animated:NO];
-}
-
-
-
-
-- (void)rightNavigationButtonTouched {
-
-    [self.navigationController popViewControllerAnimated:YES];
+    [self addNavBarButtonWithImageName:@"MenuIcon" side:NAV_BAR_BUTTON_SIDE_LEFT];
 }
 
 
 - (void)leftNavigationButtonTouched {
 
+    [super leftNavigationButtonTouched];
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
+
+
+- (void)rightNavigationButtonTouched {
+
+    [super rightNavigationButtonTouched];
+}
+
 
 - (void)setRestAnswer:(JSONModel *)jsonModel {
 

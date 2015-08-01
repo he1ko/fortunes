@@ -4,6 +4,7 @@
 //
 
 #import "UIViewController+Layout.h"
+#import "UIViewController+NavigationBar.h"
 
 static float const canvasMargin = 20.0;
 static float const controlsMargin = 20.0;
@@ -17,15 +18,28 @@ static float const defaultControlHeight = 40.0f;
 
 -(CGRect)visibleViewFrame {
 
-    CGRect frVisible = self.view.frame;
-    CGFloat navBarHeight = self.navigationController.navigationBar.frame.size.height;
-    CGFloat statusBarHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
-    CGFloat topBarsHeight = navBarHeight + statusBarHeight;
+    /*!
+        check if NavigationBar-Helper-Category exists in project
+     */
+    NSString *methodName = @"frameBelowTopBars";
 
-    frVisible.origin.y += topBarsHeight;
-    frVisible.size.height -= topBarsHeight;
+    if ([self respondsToSelector:NSSelectorFromString(methodName)]) {
 
-    return frVisible;
+        SEL selector = NSSelectorFromString(methodName);
+        CGRect returnValue;
+
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:
+                [[self class] instanceMethodSignatureForSelector:selector]];
+
+        [invocation setSelector:selector];
+        [invocation setTarget:self];
+        [invocation invoke];
+        [invocation getReturnValue:&returnValue];
+
+        return [self frameBelowTopBars];
+    }
+
+    return self.view.frame;
 }
 
 

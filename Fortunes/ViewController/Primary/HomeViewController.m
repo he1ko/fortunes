@@ -80,16 +80,17 @@
     [self alignView:favouriteButton atTopOfRect:[self visibleViewFrame]];
     [favouriteButton setY:(float) (favouriteButton.frame.origin.y + 10.0)];
     [favouriteButton setX:(float) ([self visibleViewFrame].size.width - favouriteButton.frame.size.width - 10.0)];
-    [favouriteButton addTarget:self action:@selector(favouriteButtonTouch) forControlEvents:UIControlEventTouchUpInside];
+    [favouriteButton addTarget:self action:@selector(rightNavigationButtonTouched) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:favouriteButton];
 }
 
 
-- (void)favouriteButtonTouch {
+- (void)rightNavigationButtonTouched {
 
     [fortune switchFavouriteState];
     [self setFavouriteButton];
 }
+
 
 
 - (FortuneMainDisplay*)fortuneDisplay {

@@ -9,6 +9,7 @@
 #import "FortuneDetailViewController.h"
 #import "LabelAutoSize.h"
 #import "UIViewController+Layout.h"
+#import "UIViewController+NavigationBar.h"
 
 @implementation FortuneDetailViewController {
 
@@ -32,7 +33,7 @@
 
     [super viewDidLoad];
 
-    [self addRightNavigationButtonWithText:@"Fertig"];
+    [self addNavBarButtonWithText:@"Fertig" side:NAV_BAR_BUTTON_SIDE_RIGHT];
 
     textMargins = 12.0f;
 
@@ -51,6 +52,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+/*!
+    override default navigationBarButton touch
+ */
+- (void)rightNavigationButtonTouched {
+
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
