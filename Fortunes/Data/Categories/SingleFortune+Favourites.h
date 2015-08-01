@@ -11,7 +11,7 @@
 
 - (void)removeFromFavourites;
 
-- (UIButton *)favImageButton;
+- (NSString *)favImageButtonName;
 
 - (UIButton *)favListImageButton;
 @end

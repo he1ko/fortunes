@@ -8,6 +8,8 @@ typedef NS_ENUM(NSInteger, FavouritesResult) {
     FAV_RESULT_ALREADY_NO_FAV
 };
 
+static NSString *favImageNameAdd = @"favourites-add";
+static NSString *favImageNameRemove = @"favourites-remove";
 
 @class SingleFortune;
 

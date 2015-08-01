@@ -71,12 +71,7 @@
 
 - (void)setFavouriteButton {
 
-    NSString *favIconImageName = @"fav-add";
-
-    if([fortune isFavourite]) {
-        favIconImageName = @"fav-remove";
-    }
-    [self addNavBarButtonWithImageName:favIconImageName side:NAV_BAR_BUTTON_SIDE_RIGHT];
+    [self addNavBarButtonWithImageName:[fortune favImageButtonName] side:NAV_BAR_BUTTON_SIDE_RIGHT];
 }
 
 

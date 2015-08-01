@@ -37,20 +37,15 @@
 }
 
 
-- (UIButton *)favImageButton {
+- (NSString *)favImageButtonName {
 
-    UIButton *btFav = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btFav setFrame:CGRectMake(0.0, 0.0, 50.0, 50.0)];
-
-    UIImage *favImg = [UIImage imageNamed:@"fav-add"];
+    NSString *imgName = favImageNameAdd;
 
     if([self isFavourite]) {
-        favImg = [UIImage imageNamed:@"fav-remove"];
+        imgName = favImageNameRemove;
     }
 
-    [btFav setBackgroundImage:favImg forState:UIControlStateNormal];
-
-    return btFav;
+    return imgName;
 }
 
 
