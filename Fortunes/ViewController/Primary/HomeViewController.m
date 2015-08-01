@@ -148,8 +148,6 @@
 }
 
 
-
-
 - (UIFont *)fontFromUserSettings {
 
     return [[FontManager getInstance] fontForSection:FONT_APP_SECTION_MAIN_FORTUNE];
