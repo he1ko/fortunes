@@ -349,6 +349,8 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
 - (void)favouriteStateChangedTo:(BOOL)isFav {
 
+    [MBProgressHUD hideAllHUDsForView:self.view animated:NO];
+
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeText;
     [hud setYOffset:_tableView.contentOffset.y];

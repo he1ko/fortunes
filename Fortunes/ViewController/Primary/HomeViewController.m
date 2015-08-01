@@ -62,12 +62,30 @@
     if (fortuneDisplay == nil) {
         fortuneDisplay = [self fortuneDisplay];
         [self.view addSubview:fortuneDisplay];
+        [self setFavouriteButton];
     }
     else {
         [fortuneDisplay updateFortune:fortune];
+        // fortuneDisplay.alpha = 0.0;
+        [fortuneDisplay setX:self.view.frame.size.width];
+        [self fadeInFortune];
     }
+}
 
-    [self setFavouriteButton];
+
+- (void)fadeInFortune {
+
+    CGFloat fortuneX = self.view.center.x - fortuneDisplay.frame.size.width /2;
+
+    [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveLinear
+                     animations:^{
+                         // [fortuneDisplay setAlpha:1.0];
+                         [fortuneDisplay setX:fortuneX];
+                     }
+                     completion:^(BOOL finished) {
+                         [self setFavouriteButton];
+                     }
+    ];
 }
 
 
@@ -78,6 +96,8 @@
 
 
 - (void)favouriteStateChangedTo:(BOOL)isFav {
+
+    [MBProgressHUD hideAllHUDsForView:self.view animated:NO];
 
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeText;
