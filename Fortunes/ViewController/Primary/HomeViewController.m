@@ -140,8 +140,6 @@
     [fortuneMain setFont:font];
 
     fortuneMain.backgroundColor = [UIColor clearColor];
-    CGFloat above = fortuneMain.frame.origin.y - self.visibleViewFrame.origin.y;
-    CGFloat below = CGRectGetMaxY(self.visibleViewFrame) - CGRectGetMaxY(fortuneMain.frame);
 
     fortuneMain.userInteractionEnabled = YES;
     return fortuneMain;
