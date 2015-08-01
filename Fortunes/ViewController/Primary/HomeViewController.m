@@ -38,6 +38,8 @@
 
 - (void)loadFortune {
 
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
     [RESTClient loadRandomFortune:self];
 }
 
@@ -45,6 +47,8 @@
 - (void)setRestAnswer:(JSONModel *)jsonModel {
 
     [super setRestAnswer:jsonModel];
+
+    [self hideHud];
 
     if([self.jsonModel isKindOfClass:[SingleFortune class]]) {
 
