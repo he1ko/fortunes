@@ -51,7 +51,7 @@
     NSString *sectionName = [[FontManager getInstance] sectionNameForSection:_fontSection];
     [self.navigationItem setTitle:sectionName];
 
-    [self addNavBarButtonWithText:@"Zurück" side:NAV_BAR_BUTTON_SIDE_RIGHT];
+    [self addNavBarButtonWithImageName:@"close" side:NAV_BAR_BUTTON_SIDE_RIGHT];
 }
 
 
