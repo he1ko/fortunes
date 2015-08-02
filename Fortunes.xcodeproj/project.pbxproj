@@ -25,6 +25,7 @@
 		2123515B3171C65FEDD8FCB6 /* RESTClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2123598DA8F6797CCD469E6A /* RESTClient.m */; };
 		212351E2606C393A91810A46 /* UIColor+Presets.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235E13C125FF2E916FCF61 /* UIColor+Presets.m */; };
 		21235214EA04DA6DE383266B /* SingleFortune.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235E5B4E3B889BF682F011 /* SingleFortune.m */; };
+		212352EBCC19F2585A2820B2 /* NSString+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235E7E32353969EF31A996 /* NSString+Utilities.m */; };
 		212353C87192D6A030581AE4 /* FortuneList.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235A9C81611CA9F92D0CD7 /* FortuneList.m */; };
 		2123541E4803BCF55E97A9B5 /* ImpressumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235A50AC0E760F4767EA08 /* ImpressumViewController.m */; };
 		2123575B4905EF8E678ADDB9 /* FortunesBySourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2123539D67F30A0EF672E68B /* FortunesBySourceViewController.m */; };
@@ -99,8 +100,10 @@
 		21235B00A7B0934024EA901F /* UIView+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Helpers.h"; sourceTree = "<group>"; };
 		21235BC70AFC73F6B03B6177 /* UserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettings.h; sourceTree = "<group>"; };
 		21235C63BD62088824415089 /* FortuneList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FortuneList.h; sourceTree = "<group>"; };
+		21235C98153682924BB85F5B /* NSString+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Utilities.h"; sourceTree = "<group>"; };
 		21235E13C125FF2E916FCF61 /* UIColor+Presets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Presets.m"; sourceTree = "<group>"; };
 		21235E5B4E3B889BF682F011 /* SingleFortune.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleFortune.m; sourceTree = "<group>"; };
+		21235E7E32353969EF31A996 /* NSString+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Utilities.m"; sourceTree = "<group>"; };
 		21235E8E8F6225FAEF26FA73 /* ImpressumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImpressumViewController.h; path = ViewController/Primary/ImpressumViewController.h; sourceTree = "<group>"; };
 		21235F17A15AFDF7D7578161 /* LeftNavItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftNavItem.h; sourceTree = "<group>"; };
 		21235FD685D033109884DAAC /* FontManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontManager.m; sourceTree = "<group>"; };
@@ -209,6 +212,8 @@
 				212356548BD968C0CE9D6BA1 /* FavouritesManager.h */,
 				21235379FCBFD3687A20DB34 /* UIViewController+NavigationBar.m */,
 				21235FF2C4B369B0D1F56A0F /* UIViewController+NavigationBar.h */,
+				21235E7E32353969EF31A996 /* NSString+Utilities.m */,
+				21235C98153682924BB85F5B /* NSString+Utilities.h */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -549,6 +554,7 @@
 				2123506CBC745E578916BE69 /* FavouritesManager.m in Sources */,
 				21235780CC4F603C40CE7516 /* SingleFortune+Favourites.m in Sources */,
 				21235B8FC795F7CC721C5E1D /* UIViewController+NavigationBar.m in Sources */,
+				212352EBCC19F2585A2820B2 /* NSString+Utilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

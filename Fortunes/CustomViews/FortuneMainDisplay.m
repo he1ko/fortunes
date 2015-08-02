@@ -8,9 +8,6 @@ static float const labelMargin = 40.0f;
 
 @interface FortuneMainDisplay ()
 
-- (void)centerFortune;
-- (LabelAutoSize *)setupFortuneLabel;
-
 @end
 
 
@@ -19,7 +16,7 @@ static float const labelMargin = 40.0f;
 @private
     SingleFortune *fortune;
     LabelAutoSize *fortuneLabel;
-    LabelAutoSize *sourceDisplay;
+    UILabel *sourceLabel;
 }
 
 
@@ -34,8 +31,8 @@ static float const labelMargin = 40.0f;
         fortuneLabel = [self setupFortuneLabel];
         [self addSubview:fortuneLabel];
 
-        sourceDisplay = [self setupSourceLabel];
-        [self addSubview:sourceDisplay];
+        sourceLabel = [self setupSourceLabel];
+        [self addSubview:sourceLabel];
 
         [self updateFortune:fortune__];
     }
@@ -46,13 +43,9 @@ static float const labelMargin = 40.0f;
 
 - (LabelAutoSize *)setupFortuneLabel {
 
-    CGRect myFrame = self.frame;
-    myFrame.origin.y = 0.0;
-    CGRect labelFrame = [UIView expandFrame:myFrame by: labelMargin * -1];
+    LabelAutoSize *lblFortune = [[LabelAutoSize alloc] initWithFrame:[self frameInsideMargins] resizeMode:AUTOLABEL_RESIZE_FONT];
 
-    LabelAutoSize *lblFortune = [[LabelAutoSize alloc] initWithFrame:labelFrame resizeMode:AUTOLABEL_RESIZE_FONT];
     [lblFortune setFont:[[FontManager getInstance] fontForSection:FONT_APP_SECTION_MAIN_FORTUNE]];
-
     lblFortune.textColor = [UIColor whiteColor];
     lblFortune.backgroundColor = [UIColor clearColor];
     lblFortune.textAlignment = NSTextAlignmentCenter;
@@ -62,17 +55,14 @@ static float const labelMargin = 40.0f;
 }
 
 
-- (LabelAutoSize *)setupSourceLabel {
+- (UILabel *)setupSourceLabel {
 
-    CGRect lblFrame = fortuneLabel.frame;
-    lblFrame.size.height = self.frame.size.height - CGRectGetMaxY(fortuneLabel.frame);
-    lblFrame.origin.y = CGRectGetMaxY(fortuneLabel.frame);
-
-    LabelAutoSize *lblSource = [[LabelAutoSize alloc] initWithFrame:lblFrame resizeMode:AUTOLABEL_RESIZE_FONT];
+    UILabel *lblSource = [[UILabel alloc] initWithFrame:[self frameInsideMargins]];
     lblSource.backgroundColor = [UIColor clearColor];
-    lblSource.font = [UIFont fontWithName:@"Baskerville-SemiBoldItalic" size:9.0];
-    [lblSource adjust];
-    [lblSource setWidth:fortuneLabel.frame.size.width];
+    lblSource.font = [UIFont fontWithName:@"Georgia-Italic" size:11.0];
+    lblSource.textAlignment = NSTextAlignmentCenter;
+    lblSource.numberOfLines = 0;
+    lblSource.userInteractionEnabled = NO;
 
     return lblSource;
 }
@@ -83,12 +73,17 @@ static float const labelMargin = 40.0f;
     return labelMargin;
 }
 
+- (CGRect)frameInsideMargins {
+
+    CGRect canvasFrame = [UIView expandFrame:self.frame by:labelMargin * -1];
+    canvasFrame.origin.y = 0.0; /// self.frame might have an Y-Offset...
+    return canvasFrame;
+}
 
 - (NSString *)getFontName {
 
     return fortuneLabel.font.fontName;
 }
-
 
 - (void)setFont:(UIFont *)font {
 
@@ -96,39 +91,49 @@ static float const labelMargin = 40.0f;
     [fortuneLabel adjust];
 }
 
-
-- (void)centerFortune {
-
-    CGPoint center = self.center;
-    center.y -= self.frame.origin.y;
-    [fortuneLabel setCenter:center];
-}
-
-
 - (void)updateFortune:(SingleFortune *)fortune__ {
 
     fortune = fortune__;
 
-    fortuneLabel.text = [fortune cleanText];
-    [fortuneLabel adjust];
-    [self centerFortune];
+    /// Update fortune text
 
-    if(fortune.source) {
-        sourceDisplay.text = fortune.source;
+    fortuneLabel.text = [fortune cleanText];
+
+    /// Update fortune source
+
+    if([@"" isEqualToString:fortune.source]) {
+
+        sourceLabel.text = NSLocalizedString(@"unknown-source", @"Unbekannte Quelle");
+        sourceLabel.alpha = 0.5;
     }
     else {
-        sourceDisplay.text = NSLocalizedString(@"unknown-source", @"Unbekannte Quelle");
+        sourceLabel.text = [fortune cleanSource];
+        sourceLabel.alpha = 1.0;
     }
-    [sourceDisplay adjust];
 
-    CGFloat realMargin = self.frame.size.height - CGRectGetMaxY(sourceDisplay.frame);
+    [self adjustLabelPositions];
+}
 
 
-    CGFloat sourceY = CGRectGetMaxY(fortuneLabel.frame);
-    CGFloat sourceHeight = self.frame.size.height - sourceY;
+- (void)adjustLabelPositions {
 
-    [sourceDisplay setY:sourceY];
-    [sourceDisplay setHeight:sourceHeight];
+    [fortuneLabel adjust];
+
+    [sourceLabel sizeToFit];
+    [sourceLabel setWidth:[fortuneLabel width]];
+
+    /// distribute label vertically
+
+    CGFloat totalYSpace = [self height] - [fortuneLabel height] - [sourceLabel height];
+
+    /// align source to bottom with ySpace / 3
+    CGFloat sourceY = [self height] - totalYSpace /3 - [sourceLabel height];
+    [sourceLabel setY:sourceY];
+
+    /// Y-center fortune inside left space
+    CGFloat fortuneCenterY = [sourceLabel y] /2;
+    CGFloat fortuneDeltaY = fortuneCenterY - fortuneLabel.center.y;
+    [fortuneLabel moveYBy:fortuneDeltaY];
 }
 
 @end

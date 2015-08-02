@@ -22,6 +22,7 @@
 @property(nonatomic, strong) id <FavouriteFortune> favDelegate;
 
 - (NSString *)cleanText;
+- (NSString *)cleanSource;
 
 @end
 

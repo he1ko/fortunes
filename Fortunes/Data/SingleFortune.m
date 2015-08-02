@@ -7,10 +7,12 @@
 //
 
 #import "SingleFortune.h"
+#import "NSString+Utilities.h"
 
 @implementation SingleFortune {
 
-    Boolean cleaned;
+    Boolean textCleaned;
+    Boolean sourceCleaned;
 }
 
 
@@ -26,66 +28,38 @@
 
 - (NSString *)cleanText {
 
-    if(cleaned) {
-        // NSLog(@"already clean!! ;-) ");
-        return _text;
+    if(!textCleaned) {
+        _text = [SingleFortune cleanOutput:_text];
+        textCleaned = YES;
     }
 
-    NSString *fortuneText = _text;
+    return _text;
+}
 
-    /// remove multiple consecuting spaces
-    NSError *error = nil;
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"  +" options:NSRegularExpressionCaseInsensitive error:&error];
-    fortuneText = [regex stringByReplacingMatchesInString:fortuneText options:0 range:NSMakeRange(0, [fortuneText length]) withTemplate:@" "];
 
-    /// remove tab characters
-    fortuneText = [fortuneText stringByReplacingOccurrencesOfString:@"\t" withString:@" "];
+- (NSString *)cleanSource {
 
-    /// remove newline characters
-    fortuneText = [fortuneText stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+    if(!sourceCleaned) {
 
-    /// trim text
-    fortuneText = [fortuneText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-
-    /*!
-            remove leading and trailing " quotes "
-
-            CHECK if there are " at the beginning AND the end!!!
-            Imagine this: Then I said "Hello"
-            Would result in: Then I said "Hello
-
-            Or: "Sorry" seems to be the hardest word.
-            Would result in: Sorry" seems to be the hardest word.
-      */
-
-    NSRange firstCharacterRange = NSMakeRange(0, 1);
-    NSRange lastCharacterRange = NSMakeRange(fortuneText.length -1, 1);
-    BOOL firstCharIsBad = NO;
-    BOOL lastCharIsBad = NO;
-
-    unichar greekAlpha = [fortuneText characterAtIndex:fortuneText.length -1];
-    NSString* s = [NSString stringWithCharacters:&greekAlpha length:1];
-    if([s isEqualToString:@"\""]) {
-        lastCharIsBad = YES;
+        _source = [SingleFortune cleanOutput:_source];
+        sourceCleaned = YES;
     }
 
-    greekAlpha = [fortuneText characterAtIndex:0];
-    s = [NSString stringWithCharacters:&greekAlpha length:1];
-    if([s isEqualToString:@"\""]) {
-        firstCharIsBad = YES;
-    }
+    return _source;
+}
 
 
-    if (firstCharIsBad && lastCharIsBad) {
+#pragma mark -
+#pragma mark private class methods
 
-        fortuneText = [fortuneText stringByReplacingCharactersInRange:lastCharacterRange withString:@""];
-        fortuneText = [fortuneText stringByReplacingCharactersInRange:firstCharacterRange withString:@""];
-    }
++ (NSString *)cleanOutput:(NSString *)output {
 
-    _text = fortuneText;
-    cleaned = YES;
+    output = [output repairMultipleSpaces];
+    output = [output removeTabs];
+    output = [output removeNewlineCharacters];
+    output = [output trim];
 
-    return fortuneText;
+    return output;
 }
 
 @end
