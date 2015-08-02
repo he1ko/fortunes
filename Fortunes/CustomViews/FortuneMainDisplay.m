@@ -4,7 +4,8 @@
 #import "NSString+Utilities.h"
 
 
-static float const labelMargin = 40.0f;
+static float const myGlobalMargin = 40.0f;
+static float const labelMargin = 16.0f;
 
 
 @interface FortuneMainDisplay ()
@@ -64,8 +65,8 @@ static float const labelMargin = 40.0f;
 
     UILabel *lblSource = [[UILabel alloc] initWithFrame:[self frameInsideMargins]];
     lblSource.backgroundColor = [UIColor clearColor];
-    lblSource.textColor = [UIColor colorWithWhite:1.0 alpha:0.6];
-    lblSource.font = [UIFont fontWithName:@"Georgia-Italic" size:11.0];
+    lblSource.textColor = [UIColor colorWithWhite:1.0 alpha:0.7];
+    lblSource.font = [UIFont fontWithName:@"Georgia-Italic" size:15.0];
     lblSource.textAlignment = NSTextAlignmentCenter;
     lblSource.numberOfLines = 0;
     lblSource.userInteractionEnabled = NO;
@@ -86,7 +87,7 @@ static float const labelMargin = 40.0f;
 
 - (CGRect)frameInsideMargins {
 
-    CGRect canvasFrame = [UIView expandFrame:self.frame by:labelMargin * -1];
+    CGRect canvasFrame = [UIView expandFrame:self.frame by:myGlobalMargin * -1];
     canvasFrame.origin.y = 0.0; /// self.frame might have an Y-Offset...
     return canvasFrame;
 }
@@ -124,25 +125,19 @@ static float const labelMargin = 40.0f;
 
 - (void)adjustLabelPositions {
 
-    [fortuneLabel adjust];
-
     [sourceLabel sizeToFit];
     [sourceLabel setWidth:[fortuneLabel width]];
 
-    /// distribute label vertically
+    /// distribute labels vertically
 
-    CGFloat totalYSpace = [self height] - [fortuneLabel height] - [sourceLabel height];
+    [sourceLabel setY:[self height] - [sourceLabel height] - labelMargin];
 
-    /// align source to bottom with ySpace / 3
-    CGFloat sourceY = [self height] - totalYSpace /3 - [sourceLabel height];
-    [sourceLabel setY:sourceY];
+    [separatorLine setY:[sourceLabel y] - [separatorLine height] - labelMargin];
 
-    /// Y-center fortune inside left space
-    CGFloat fortuneCenterY = [sourceLabel y] /2;
-    CGFloat fortuneDeltaY = fortuneCenterY - fortuneLabel.center.y;
-    [fortuneLabel moveYBy:fortuneDeltaY];
+    [fortuneLabel setHeight:[separatorLine y] - labelMargin];
+    [fortuneLabel adjust];
 
-    [separatorLine setY:(CGRectGetMaxY(fortuneLabel.frame) + [sourceLabel y])/2];
+    fortuneLabel.center = CGPointMake(fortuneLabel.center.x, [separatorLine y] /2);
 }
 
 @end
