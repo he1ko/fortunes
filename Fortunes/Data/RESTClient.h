@@ -9,13 +9,13 @@
 #import "JSONModelLib.h"
 #import "FortuneList.h"
 
-@class BaseViewController;
+@class UIViewController;
 
 @interface RESTClient : NSObject
 
-+ (void)loadFortunesList:(BaseViewController *)sender;
++ (void)loadFortunesList:(UIViewController *)sender;
 
-+ (void)loadRandomFortune:(BaseViewController *)sender;
++ (void)loadRandomFortune:(UIViewController *)sender;
 
 + (NSString *)getDataFrom:(NSString *)url;
 @end

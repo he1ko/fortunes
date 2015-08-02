@@ -70,7 +70,7 @@ static NSString *endpointAllFortunes = @"fortunesList";
 }
 
 
-+ (void)translateText:(NSString *)text sender:(UIViewController *)sender {
++ (void)translateText:(NSString *)text sender:(BaseViewController *)sender {
 
     NSString *langString = @"de|en";
     NSString *textEscaped = [text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];

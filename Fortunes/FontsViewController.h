@@ -3,7 +3,7 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "BaseViewController.h"
 
-@interface FontsViewController : BaseViewController <MBProgressHUDDelegate, UITableViewDelegate, UITableViewDataSource, FontManagerNotification>
+@interface FontsViewController : UIViewController <MBProgressHUDDelegate, UITableViewDelegate, UITableViewDataSource, FontManagerNotification>
 
 @property(nonatomic, assign) FontAppSection fontSection;
 

@@ -18,6 +18,8 @@ static float const defaultControlHeight = 40.0f;
 
 -(CGRect)visibleViewFrame {
 
+    CGRect frVisible;
+
     /*!
         check if NavigationBar-Helper-Category exists in project
      */
@@ -36,10 +38,13 @@ static float const defaultControlHeight = 40.0f;
         [invocation invoke];
         [invocation getReturnValue:&returnValue];
 
-        return [self frameBelowTopBars];
+        frVisible = [self frameBelowTopBars];
+    }
+    else {
+        frVisible = self.view.frame;
     }
 
-    return self.view.frame;
+    return frVisible;
 }
 
 

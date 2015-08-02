@@ -8,17 +8,26 @@
 
 #import "FortunesListViewController.h"
 #import "UserSettings.h"
-#import "FortuneTableViewCell.h"
 #import "FortuneDetailViewController.h"
-#import "UIViewController+Layout.h"
 #import "RowIndicator.h"
+#import "FavouritesManager.h"
+
+
+
+typedef NS_ENUM(NSInteger, TableDataSet) {
+
+    TABLE_DATA_SET_ALL,
+    TABLE_DATA_SET_FAVOURITES
+};
+
 
 static NSString *cellReuseIdentifier = @"fortuneCell";
 
 @implementation FortunesListViewController {
 
 @private
-    FortuneList *fortuneList;
+    FortuneList *fortunesFromServer;
+    NSArray *tableData;
     FortuneTableViewCell *heightTestCell;
     NSString *fortuneFontName;
     NSString *sourceFontName;
@@ -27,6 +36,9 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
     NSIndexPath *lastSelectionPath;
     RowIndicator *rowIndicator;
 
+    UIToolbar *tb;
+
+    TableDataSet dataSet;
     int topRowIdx;
 }
 
@@ -50,14 +62,22 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 
+    CGRect frameWithoutBars = [self visibleViewFrame];
     UIEdgeInsets contentPadding = _tableView.contentInset;
-    contentPadding.top = 64.0;
+    contentPadding.top = frameWithoutBars.origin.y;
     _tableView.contentInset = contentPadding;
 
     self.view = _tableView;
 
     _tableView.delegate = self;
     _tableView.dataSource = self;
+
+    tb = [self getToolbar];
+    [self.view addSubview:tb];
+
+    contentPadding = _tableView.contentInset;
+    contentPadding.bottom += 48.0;
+    _tableView.contentInset = contentPadding;
 
     [self.navigationItem setTitle:NSLocalizedString(@"listOfFortunes", @"AllFortunes header text")];
 }
@@ -79,11 +99,9 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
     [super viewDidAppear:animated];
 
-    if (![self isFontChanged] && fortuneList.fortunes != nil) {
-
+    if (![self isFontChanged] && tableData != nil) {
         return;
     }
-
 
     if(!HUD) {
         HUD = [[MBProgressHUD alloc] initWithView:self.view];
@@ -96,7 +114,7 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
     HUD.detailsLabelText = NSLocalizedString(@"remoteGetFortunes", @"Lade Fortunes vom Server");
     HUD.delegate = self;
 
-    if(fortuneList.fortunes == nil) {
+    if(tableData == nil) {
 
         /*!
             async. Request calls setRestAnswer: on completion
@@ -116,17 +134,97 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
 
 #pragma mark -
+#pragma mark TOOLBAR
+
+- (UIToolbar *)getToolbar {
+
+    UIToolbar *toolbar = [self toolbar];
+
+    UIBarButtonItem * tbItem0 = [self toolbarItemWithImageName:@"AllFortunes" action:@selector(tbTouchAll)];
+    UIBarButtonItem * tbItem1 = [self toolbarItemWithImageName:@"favourite-list" action:@selector(tbTouchFavourites)];
+    UIBarButtonItem * tbItem2 = [self toolbarItemWithImageName:@"ArrowTop" action:@selector(tbTouchGotoTop)];
+    UIBarButtonItem * tbItem3 = [self toolbarItemWithImageName:@"ArrowEnd" action:@selector(tbTouchGotoEnd)];
+
+    toolbar.items = @[tbItem0, tbItem1, tbItem2, tbItem3];
+
+    [self addTopLine:[UIColor colorWithWhite:1.0 alpha:0.6] toToolbar:toolbar];
+
+    return toolbar;
+}
+
+
+- (void)tbTouchFavourites {
+
+    NSArray *favIds = [[FavouritesManager getInstance] favouriteIds];
+    NSMutableArray *dataFiltered = [[NSMutableArray alloc] initWithCapacity:[favIds count]];
+
+    for (SingleFortune *f in fortunesFromServer.fortunes) {
+
+        for (NSNumber *fId in favIds) {
+
+            if ([fId intValue] == f.id) {
+
+                [dataFiltered addObject:f];
+            }
+        }
+    }
+    tableData = dataFiltered;
+    [_tableView reloadData];
+
+    [self navigationTitle:NSLocalizedString(@"Favoriten", @"Favoriten")];
+    [self tbTouchGotoTop];
+
+    dataSet = TABLE_DATA_SET_FAVOURITES;
+}
+
+
+- (void)tbTouchAll {
+
+    tableData = fortunesFromServer.fortunes;
+    [_tableView reloadData];
+
+    [self navigationTitle:@"Fortunes"];
+    [self tbTouchGotoTop];
+
+    dataSet = TABLE_DATA_SET_ALL;
+}
+
+
+- (void)tbTouchGotoEnd {
+
+    CGPoint offset = CGPointMake(0, _tableView.contentSize.height - _tableView.frame.size.height + tb.frame.size.height);
+    [_tableView setContentOffset:offset animated:YES];
+}
+
+
+- (void)tbTouchGotoTop {
+
+    [_tableView setContentOffset:CGPointMake(0.0, [self visibleViewFrame].origin.y * -1) animated:YES];
+}
+
+
+- (void)navigationTitle:(NSString *)selectionName {
+
+    [self.navigationItem setTitle:[NSString stringWithFormat:@"%d %@", (int)[tableData count], selectionName]];
+}
+
+
+#pragma mark -
 #pragma mark Scroll Row indicator
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 
-
+    /// re-position row indicator:
     CGFloat scrollOffsetAtTableTop = scrollView.contentOffset.y;
     scrollOffsetAtTableTop += [self visibleViewFrame].origin.y + 10.0;
     [rowIndicator setYPos:scrollOffsetAtTableTop];
 
     topRowIdx = (int) [_tableView indexPathForRowAtPoint: CGPointMake(0, scrollOffsetAtTableTop)].row;
     [self updateRowNumIndicator:topRowIdx + 1];
+
+    /// re-position toolbar
+    [tb setY:[_tableView height] - [tb height] + scrollView.contentOffset.y];
+
 }
 
 
@@ -215,22 +313,22 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
     HUD.progress = 0.0;
 
-    fortuneList = (FortuneList *)self.jsonModel;
+    fortunesFromServer = (FortuneList *)self.jsonModel;
+    tableData = fortunesFromServer.fortunes;
 
-    [self.navigationItem setTitle:[NSString stringWithFormat:NSLocalizedString(@"#n Fortunes", @"%d Fortunes"), (int) [fortuneList.fortunes count]]];
-
-    [_tableView reloadData];
+    [self tbTouchAll];
     [self restoreScrollPosition];
 }
 
 
-
 -(FortuneTableViewCell *)cellForFortune:(SingleFortune *)f {
 
-    f.favDelegate = self;
     UIFont *fFortune = [[FontManager getInstance] fontForSection:FONT_APP_SECTION_LIST_FORTUNE];
     UIFont *fSource = [[FontManager getInstance] fontForSection:FONT_APP_SECTION_LIST_SOURCE];
     FortuneTableViewCell *cell = [[FortuneTableViewCell alloc] initWithFortune:f fortuneFont:fFortune sourceFont:fSource reuseIdentifier:cellReuseIdentifier];
+
+    f.favDelegate = self;
+    cell.delegate = self;
 
     fortuneFontName = [cell getFortuneFontName];
     sourceFontName = [cell getSourceFontName];
@@ -252,28 +350,24 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     // Return the number of rows in the section.
-    return [fortuneList.fortunes count];
+    return [tableData count];
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    if(!heightTestCell) {
+    if(!heightTestCell ||[self isFontChanged]) {
 
-        heightTestCell = [self cellForFortune:fortuneList.fortunes[(NSUInteger) indexPath.row]];
-    }
-    else if ([self isFontChanged]) {
-
-        heightTestCell = [self cellForFortune:fortuneList.fortunes[(NSUInteger) indexPath.row]];
+        heightTestCell = [self cellForFortune:tableData[(NSUInteger)indexPath.row]];
     }
     else {
-        [heightTestCell setFortune:fortuneList.fortunes[(NSUInteger)indexPath.row]];
+        [heightTestCell setFortune:tableData[(NSUInteger)indexPath.row]];
     }
 
-    CGFloat progress = (CGFloat)indexPath.row / [fortuneList.fortunes count];
+    CGFloat progress = (CGFloat)indexPath.row / [tableData count];
 
     HUD.progress = progress;
-    HUD.detailsLabelText = [NSString stringWithFormat:NSLocalizedString(@"loading #X of #Y", @"Fortune %d von %d"), (int)indexPath.row, (int) [fortuneList.fortunes count]];
+    HUD.detailsLabelText = [NSString stringWithFormat:NSLocalizedString(@"loading #X of #Y", @"Fortune %d von %d"), (int)indexPath.row, (int) [tableData count]];
 
     return [heightTestCell getHeight];
 }
@@ -281,7 +375,7 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    return [self cellForFortune:fortuneList.fortunes[(NSUInteger) indexPath.row]];
+    return [self cellForFortune:tableData[(NSUInteger) indexPath.row]];
 }
 
 
@@ -289,7 +383,7 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
     lastSelectionPath = indexPath;
 
-    SingleFortune *f = fortuneList.fortunes[(NSUInteger)indexPath.row];
+    SingleFortune *f = tableData[(NSUInteger)indexPath.row];
     [self showDetailsForFortune:f];
 }
 
@@ -336,8 +430,6 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
 - (void)showDetailsForFortune:(SingleFortune *)f {
 
-    NSLog(@"Details für ID = %d ...", f.id);
-
     FortuneDetailViewController *detailVC = [[FortuneDetailViewController alloc] init];
     detailVC.fortune = f;
 
@@ -373,6 +465,35 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 - (void)hideHud {
 
     [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
+
+#pragma mark -
+#pragma mark TableViewCell IMPL
+
+- (void)favouriteDeleted:(SingleFortune *)fortune {
+
+    NSLog(@"suche ... ID %d", fortune.id);
+    NSMutableArray * mTabledata = [tableData mutableCopy];
+
+    if(dataSet == TABLE_DATA_SET_FAVOURITES) {
+
+        for (int i = 0; i < [_tableView numberOfRowsInSection:0]; i++) {
+
+            NSIndexPath *ip = [NSIndexPath indexPathForRow:i inSection:0];
+            FortuneTableViewCell *tvc = (FortuneTableViewCell *) [_tableView cellForRowAtIndexPath:ip];
+
+            if (tvc.fortune.id == fortune.id) {
+
+                NSLog(@"lösche Zeile %d - %@", i, fortune.text);
+                [_tableView beginUpdates];
+                [mTabledata removeObject:fortune];
+                tableData = mTabledata;
+                [_tableView deleteRowsAtIndexPaths:@[ip] withRowAnimation:UITableViewRowAnimationTop];
+                [_tableView endUpdates];
+                break;
+            }
+        }
+    }
 }
 
 

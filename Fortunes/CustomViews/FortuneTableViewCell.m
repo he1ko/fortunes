@@ -44,7 +44,6 @@ static CGFloat const favButtonOpacityInactive = 0.2f;
     UIColor *colorSource;
     UIColor *colorNoSource;
 
-    SingleFortune *myFortune;
     LabelAutoSize *lblText;
     UILabel *lblSource;
     CGFloat myHeight;
@@ -73,7 +72,7 @@ static CGFloat const favButtonOpacityInactive = 0.2f;
 
     if (self) {
 
-        myFortune = fortune;
+        _fortune = fortune;
 
         colorCellBackground = [UIColor presetHighlight];
         colorCellBackgroundSelected = [UIColor orangeColor];
@@ -114,7 +113,7 @@ static CGFloat const favButtonOpacityInactive = 0.2f;
     lblText = [[LabelAutoSize alloc] initWithFrame:textFrame resizeMode:AUTOLABEL_RESIZE_HEIGHT];
     lblText.textColor = colorText;
     lblText.backgroundColor = [UIColor clearColor];
-    lblText.text = [myFortune cleanText];
+    lblText.text = [_fortune cleanText];
     lblText.font = fortuneFont;
     [lblText adjust];
 
@@ -135,12 +134,12 @@ static CGFloat const favButtonOpacityInactive = 0.2f;
     lblSource.textAlignment = NSTextAlignmentCenter;
     lblSource.backgroundColor = [UIColor clearColor];
 
-    if([myFortune.source isEqualToString:@""]) {
+    if([_fortune.source isEqualToString:@""]) {
         lblSource.text = @"unbekannte Quelle";
         lblSource.textColor = colorNoSource;
     }
     else {
-        lblSource.text = myFortune.source;
+        lblSource.text = _fortune.source;
         lblSource.textColor = colorSource;
     }
 
@@ -190,7 +189,7 @@ static CGFloat const favButtonOpacityInactive = 0.2f;
 
 - (UIButton *)favouritesButtonInFrame:(CGRect)frame {
 
-    UIButton *bt = [myFortune favListImageButton];
+    UIButton *bt = [_fortune favListImageButton];
     [bt setY:myHeight - bt.frame.size.height - 6];
     [bt setX:(frame.size.width - bt.frame.size.width) / 2];
     [bt addTarget:self action:@selector(favouritesButtonTouch) forControlEvents:UIControlEventTouchUpInside];
@@ -244,12 +243,15 @@ static CGFloat const favButtonOpacityInactive = 0.2f;
 
 - (void)favouritesButtonTouch {
 
-    if([myFortune isFavourite]) {
-        [myFortune removeFromFavourites];
+    if([_fortune isFavourite]) {
+        [_fortune removeFromFavourites];
         [btFav setAlpha:favButtonOpacityInactive];
+
+        NSLog(@"remove ID %d from Favs!", _fortune.id);
+        [_delegate favouriteDeleted:_fortune];
     }
     else {
-        [myFortune setToFavourite];
+        [_fortune setToFavourite];
         [btFav setAlpha:favButtonOpacityActive];
     }
 }

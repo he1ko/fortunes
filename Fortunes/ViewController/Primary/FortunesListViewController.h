@@ -8,10 +8,11 @@
 
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "BaseViewController.h"
+#import "FortuneTableViewCell.h"
 
 @class FortuneList;
 
-@interface FortunesListViewController : BaseViewController <MBProgressHUDDelegate, UITableViewDelegate, UITableViewDataSource, FavouriteFortune>
+@interface FortunesListViewController : BaseViewController <TableViewCell, MBProgressHUDDelegate, UITableViewDelegate, UITableViewDataSource, FavouriteFortune>
 
 /*
 - (instancetype)initWithStyle:(UITableViewStyle)style NS_DESIGNATED_INITIALIZER;
