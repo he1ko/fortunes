@@ -1,6 +1,7 @@
 #import "FortuneMainDisplay.h"
 #import "SingleFortune.h"
 #import "LabelAutoSize.h"
+#import "NSString+Utilities.h"
 
 
 static float const labelMargin = 40.0f;
@@ -17,6 +18,7 @@ static float const labelMargin = 40.0f;
     SingleFortune *fortune;
     LabelAutoSize *fortuneLabel;
     UILabel *sourceLabel;
+    UIView *separatorLine;
 }
 
 
@@ -28,11 +30,14 @@ static float const labelMargin = 40.0f;
 
         self.backgroundColor = [UIColor clearColor];
 
-        fortuneLabel = [self setupFortuneLabel];
+        fortuneLabel = [self fortuneLabel];
         [self addSubview:fortuneLabel];
 
-        sourceLabel = [self setupSourceLabel];
+        sourceLabel = [self sourceLabel];
         [self addSubview:sourceLabel];
+
+        separatorLine = [self separatorLine];
+        [self addSubview:separatorLine];
 
         [self updateFortune:fortune__];
     }
@@ -41,7 +46,7 @@ static float const labelMargin = 40.0f;
 }
 
 
-- (LabelAutoSize *)setupFortuneLabel {
+- (LabelAutoSize *)fortuneLabel {
 
     LabelAutoSize *lblFortune = [[LabelAutoSize alloc] initWithFrame:[self frameInsideMargins] resizeMode:AUTOLABEL_RESIZE_FONT];
 
@@ -55,16 +60,27 @@ static float const labelMargin = 40.0f;
 }
 
 
-- (UILabel *)setupSourceLabel {
+- (UILabel *)sourceLabel {
 
     UILabel *lblSource = [[UILabel alloc] initWithFrame:[self frameInsideMargins]];
     lblSource.backgroundColor = [UIColor clearColor];
+    lblSource.textColor = [UIColor colorWithWhite:1.0 alpha:0.6];
     lblSource.font = [UIFont fontWithName:@"Georgia-Italic" size:11.0];
     lblSource.textAlignment = NSTextAlignmentCenter;
     lblSource.numberOfLines = 0;
     lblSource.userInteractionEnabled = NO;
 
     return lblSource;
+}
+
+
+- (UIView *)separatorLine {
+
+    UIView *sepLine = [[UIView alloc] initWithFrame:[self frameInsideMargins]];
+    sepLine.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.3];
+    [sepLine setHeight:1.0];
+
+    return sepLine;
 }
 
 
@@ -101,7 +117,7 @@ static float const labelMargin = 40.0f;
 
     /// Update fortune source
 
-    if([@"" isEqualToString:fortune.source]) {
+    if([NSString isEmpty:fortune.source]) {
 
         sourceLabel.text = NSLocalizedString(@"unknown-source", @"Unbekannte Quelle");
         sourceLabel.alpha = 0.5;
@@ -134,6 +150,8 @@ static float const labelMargin = 40.0f;
     CGFloat fortuneCenterY = [sourceLabel y] /2;
     CGFloat fortuneDeltaY = fortuneCenterY - fortuneLabel.center.y;
     [fortuneLabel moveYBy:fortuneDeltaY];
+
+    [separatorLine setY:(CGRectGetMaxY(fortuneLabel.frame) + [sourceLabel y])/2];
 }
 
 @end
