@@ -121,6 +121,9 @@ static float const labelMargin = 40.0f;
     }
     [sourceDisplay adjust];
 
+    CGFloat realMargin = self.frame.size.height - CGRectGetMaxY(sourceDisplay.frame);
+
+
     CGFloat sourceY = CGRectGetMaxY(fortuneLabel.frame);
     CGFloat sourceHeight = self.frame.size.height - sourceY;
 

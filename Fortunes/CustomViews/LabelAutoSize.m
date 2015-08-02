@@ -62,7 +62,6 @@ typedef NS_ENUM(NSInteger, AutoLabelErrorType) {
     else if(resizeMode == AUTOLABEL_RESIZE_FONT) {
         [self resizeFont];
     }
-
 }
 
 
