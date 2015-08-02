@@ -472,7 +472,6 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
 - (void)favouriteDeleted:(SingleFortune *)fortune {
 
-    NSLog(@"suche ... ID %d", fortune.id);
     NSMutableArray * mTabledata = [tableData mutableCopy];
 
     if(dataSet == TABLE_DATA_SET_FAVOURITES) {
@@ -484,7 +483,6 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
             if (tvc.fortune.id == fortune.id) {
 
-                NSLog(@"lösche Zeile %d - %@", i, fortune.text);
                 [_tableView beginUpdates];
                 [mTabledata removeObject:fortune];
                 tableData = mTabledata;

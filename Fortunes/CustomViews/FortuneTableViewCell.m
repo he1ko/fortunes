@@ -247,7 +247,6 @@ static CGFloat const favButtonOpacityInactive = 0.2f;
         [_fortune removeFromFavourites];
         [btFav setAlpha:favButtonOpacityInactive];
 
-        NSLog(@"remove ID %d from Favs!", _fortune.id);
         [_delegate favouriteDeleted:_fortune];
     }
     else {
