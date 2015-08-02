@@ -23,7 +23,8 @@
 
 + (UIColor *)presetHighlight
 {
-    return UIColorFromRGB(0x16AED9);
+    // return UIColorFromRGB(0x16AED9);
+    return UIColorFromRGB(0x409cbe);
 }
 
 + (UIColor *)presetLightText

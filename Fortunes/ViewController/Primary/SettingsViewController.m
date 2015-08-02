@@ -40,8 +40,6 @@ static NSInteger FAKE_SECTION_RESET = 99;
 
     [super viewDidLoad];
 
-    self.view.backgroundColor = [UIColor web_steelblue];
-
     fontListViewControllers = [self emptyFontListViewControllersArray];
 
     lblDescription = [self descriptionLabel];
