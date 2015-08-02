@@ -67,6 +67,8 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
     [super viewWillAppear:animated];
 
+    self.view.backgroundColor = [UIColor presetHighlight];
+
     if (lastSelectionPath != nil) {
         [_tableView deselectRowAtIndexPath:lastSelectionPath animated:YES];
     }

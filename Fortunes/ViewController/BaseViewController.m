@@ -36,10 +36,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 
-    // tint color of navigation items:
-    self.navigationController.navigationBar.tintColor = [UIColor preset_backGroundBlackWithAlpha:0.5];
-
     self.navigationController.navigationBar.barStyle  = UIBarStyleDefault;
+    self.navigationController.navigationBar.tintColor = [UIColor presetHighlight];
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithWhite:1.0 alpha:0.8];
 
     [self addNavBarButtonWithImageName:@"MenuIcon" side:NAV_BAR_BUTTON_SIDE_LEFT];
