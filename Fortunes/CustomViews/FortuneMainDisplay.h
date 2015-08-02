@@ -4,10 +4,6 @@
 
 - (id)initWithFrame:(CGRect)frame andFortune:(SingleFortune *)fortune;
 
-- (CGFloat)getTextMargin;
-
-- (NSString *)getFontName;
-
 - (void)setFont:(UIFont *)font;
 
 - (void)updateFortune:(SingleFortune *)fortune;

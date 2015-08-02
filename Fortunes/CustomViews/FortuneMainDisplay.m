@@ -84,11 +84,6 @@ static float const labelMargin = 40.0f;
 }
 
 
-- (CGFloat)getTextMargin {
-
-    return labelMargin;
-}
-
 - (CGRect)frameInsideMargins {
 
     CGRect canvasFrame = [UIView expandFrame:self.frame by:labelMargin * -1];
@@ -96,10 +91,6 @@ static float const labelMargin = 40.0f;
     return canvasFrame;
 }
 
-- (NSString *)getFontName {
-
-    return fortuneLabel.font.fontName;
-}
 
 - (void)setFont:(UIFont *)font {
 
