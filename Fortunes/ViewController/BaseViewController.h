@@ -1,6 +1,5 @@
 
 #import "RESTClient.h"
-#import "UIViewController+toolbar.h"
 #import "UIViewController+Layout.h"
 #import "UIViewController+Alert.h"
 

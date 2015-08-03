@@ -66,6 +66,18 @@
 }
 
 
+- (void)setNavigationTitle:(NSString *)title {
+
+    if(![self.navigationItem.titleView isKindOfClass:[UILabel class]]) {
+
+        [self createNavTitleLabel];
+    }
+
+    UILabel *navTitleView = (UILabel *)self.navigationItem.titleView;
+    [navTitleView setText:title];
+    [navTitleView sizeToFit];
+}
+
 #pragma mark -
 #pragma mark public methods to be overridden in implementation
 
@@ -95,5 +107,14 @@
 }
 
 
+- (void)createNavTitleLabel {
+
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.font = [UIFont boldSystemFontOfSize:20.0];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.textColor = [UIColor presetHighlight];
+    [self.navigationItem setTitleView:titleLabel];
+}
 
 @end

@@ -28,6 +28,7 @@
 		212352EBCC19F2585A2820B2 /* NSString+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235E7E32353969EF31A996 /* NSString+Utilities.m */; };
 		212353C87192D6A030581AE4 /* FortuneList.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235A9C81611CA9F92D0CD7 /* FortuneList.m */; };
 		2123541E4803BCF55E97A9B5 /* ImpressumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235A50AC0E760F4767EA08 /* ImpressumViewController.m */; };
+		2123554049310E796162F257 /* ToolbarFortuneList.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235F1F3B795C30E28EAE89 /* ToolbarFortuneList.m */; };
 		2123575B4905EF8E678ADDB9 /* FortunesBySourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2123539D67F30A0EF672E68B /* FortunesBySourceViewController.m */; };
 		21235780CC4F603C40CE7516 /* SingleFortune+Favourites.m in Sources */ = {isa = PBXBuildFile; fileRef = 212350B0128886811EBBB6E5 /* SingleFortune+Favourites.m */; };
 		212357B2C99E5B3D469FF335 /* FortunesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235A489AD4681C6D98CA7E /* FortunesListViewController.m */; };
@@ -39,7 +40,6 @@
 		21235B8FC795F7CC721C5E1D /* UIViewController+NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235379FCBFD3687A20DB34 /* UIViewController+NavigationBar.m */; };
 		21235BC34468EE5D395A02D8 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235A60946C133DC4DC54F9 /* UserSettings.m */; };
 		21235BE60C37D09DBA877F10 /* UIViewController+Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235C3397E8A273DFD477F7 /* UIViewController+Alert.m */; };
-		21235C9661239D23AF9C5B05 /* UIViewController+toolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235CCC236B426D68F985BA /* UIViewController+toolbar.m */; };
 		21235E71F303B6ECD38B2E71 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235A1012460B08E0193D6D /* HomeViewController.m */; };
 		21235E85CDBD6D571FEC8213 /* FortuneMainDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235283A711AC51577195B5 /* FortuneMainDisplay.m */; };
 		87316F771B6B2C2E005FF5C7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87316F751B6B2C2E005FF5C7 /* Localizable.strings */; };
@@ -49,6 +49,7 @@
 		87BD950D1B66EEA300A96289 /* RowIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 87BD950C1B66EEA300A96289 /* RowIndicator.m */; };
 		87BD95101B6779A500A96289 /* FontsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87BD950F1B6779A500A96289 /* FontsViewController.m */; };
 		87BE06541B664700003F2186 /* FortuneDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87BE06531B664700003F2186 /* FortuneDetailViewController.m */; };
+		87CC95771B6F0F8300D1E692 /* Toolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 87CC95761B6F0F8300D1E692 /* Toolbar.m */; };
 		87D1487A1B5D5C26003841AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D148791B5D5C26003841AC /* main.m */; };
 		87D1487D1B5D5C26003841AC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D1487C1B5D5C26003841AC /* AppDelegate.m */; };
 		87D148851B5D5C26003841AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87D148841B5D5C26003841AC /* Images.xcassets */; };
@@ -74,7 +75,6 @@
 /* Begin PBXFileReference section */
 		212350A4C588C6D1D3154C12 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = ViewController/Primary/SettingsViewController.h; sourceTree = "<group>"; };
 		212350B0128886811EBBB6E5 /* SingleFortune+Favourites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SingleFortune+Favourites.m"; sourceTree = "<group>"; };
-		212352068F50CC690AA9B741 /* UIViewController+toolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+toolbar.h"; sourceTree = "<group>"; };
 		21235283A711AC51577195B5 /* FortuneMainDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FortuneMainDisplay.m; sourceTree = "<group>"; };
 		212353696E159DDC4466913F /* RESTClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESTClient.h; sourceTree = "<group>"; };
 		21235379FCBFD3687A20DB34 /* UIViewController+NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NavigationBar.m"; sourceTree = "<group>"; };
@@ -91,6 +91,7 @@
 		212356EE4BB41E321C30899F /* LeftNavItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftNavItem.m; sourceTree = "<group>"; };
 		2123571D931755AB55081451 /* UIView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Helpers.m"; sourceTree = "<group>"; };
 		21235782B7EAF1ACD73D867C /* SingleFortune+Favourites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SingleFortune+Favourites.h"; sourceTree = "<group>"; };
+		212358128E4F51BD00F47414 /* ToolbarFortuneList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolbarFortuneList.h; sourceTree = "<group>"; };
 		212358A59896E13DC0F05FEE /* UIColor+Presets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Presets.h"; sourceTree = "<group>"; };
 		2123597AB4AE3E5E4C5B86CD /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = ViewController/Primary/SettingsViewController.m; sourceTree = "<group>"; };
 		2123598DA8F6797CCD469E6A /* RESTClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESTClient.m; sourceTree = "<group>"; };
@@ -105,12 +106,12 @@
 		21235C3397E8A273DFD477F7 /* UIViewController+Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alert.m"; sourceTree = "<group>"; };
 		21235C63BD62088824415089 /* FortuneList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FortuneList.h; sourceTree = "<group>"; };
 		21235C98153682924BB85F5B /* NSString+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Utilities.h"; sourceTree = "<group>"; };
-		21235CCC236B426D68F985BA /* UIViewController+toolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+toolbar.m"; sourceTree = "<group>"; };
 		21235E13C125FF2E916FCF61 /* UIColor+Presets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Presets.m"; sourceTree = "<group>"; };
 		21235E5B4E3B889BF682F011 /* SingleFortune.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleFortune.m; sourceTree = "<group>"; };
 		21235E7E32353969EF31A996 /* NSString+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Utilities.m"; sourceTree = "<group>"; };
 		21235E8E8F6225FAEF26FA73 /* ImpressumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImpressumViewController.h; path = ViewController/Primary/ImpressumViewController.h; sourceTree = "<group>"; };
 		21235F17A15AFDF7D7578161 /* LeftNavItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftNavItem.h; sourceTree = "<group>"; };
+		21235F1F3B795C30E28EAE89 /* ToolbarFortuneList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolbarFortuneList.m; sourceTree = "<group>"; };
 		21235F5CF7787F408463E065 /* UIViewController+Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Alert.h"; sourceTree = "<group>"; };
 		21235FD685D033109884DAAC /* FontManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontManager.m; sourceTree = "<group>"; };
 		21235FF2C4B369B0D1F56A0F /* UIViewController+NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NavigationBar.h"; sourceTree = "<group>"; };
@@ -129,6 +130,8 @@
 		87BD950F1B6779A500A96289 /* FontsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontsViewController.m; sourceTree = "<group>"; };
 		87BE06521B664700003F2186 /* FortuneDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FortuneDetailViewController.h; sourceTree = "<group>"; };
 		87BE06531B664700003F2186 /* FortuneDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FortuneDetailViewController.m; sourceTree = "<group>"; };
+		87CC95751B6F0F8300D1E692 /* Toolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toolbar.h; sourceTree = "<group>"; };
+		87CC95761B6F0F8300D1E692 /* Toolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Toolbar.m; sourceTree = "<group>"; };
 		87D148741B5D5C26003841AC /* Fortunes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fortunes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87D148781B5D5C26003841AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87D148791B5D5C26003841AC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -250,6 +253,8 @@
 				212354C690E64D24A3396B35 /* FortuneMainDisplay.h */,
 				8758ED021B6D1E13008EEE1C /* DefaultButton.h */,
 				8758ED031B6D1E13008EEE1C /* DefaultButton.m */,
+				87CC95751B6F0F8300D1E692 /* Toolbar.h */,
+				87CC95761B6F0F8300D1E692 /* Toolbar.m */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -270,6 +275,15 @@
 			name = de.lproj;
 			sourceTree = "<group>";
 		};
+		21235B03CB69B7DA5942B454 /* View-IMPL */ = {
+			isa = PBXGroup;
+			children = (
+				212358128E4F51BD00F47414 /* ToolbarFortuneList.h */,
+				21235F1F3B795C30E28EAE89 /* ToolbarFortuneList.m */,
+			);
+			path = "View-IMPL";
+			sourceTree = "<group>";
+		};
 		21235F0E7CB8EF132B87410D /* Primary */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,8 +297,6 @@
 				21235A50AC0E760F4767EA08 /* ImpressumViewController.m */,
 				212350A4C588C6D1D3154C12 /* SettingsViewController.h */,
 				2123597AB4AE3E5E4C5B86CD /* SettingsViewController.m */,
-				21235CCC236B426D68F985BA /* UIViewController+toolbar.m */,
-				212352068F50CC690AA9B741 /* UIViewController+toolbar.h */,
 			);
 			name = Primary;
 			sourceTree = "<group>";
@@ -324,6 +336,7 @@
 				21235878F70BD733F585E002 /* CustomViews */,
 				2123501CE23173AE1621F637 /* Data */,
 				212358156E2A881CE4C95432 /* Localization */,
+				21235B03CB69B7DA5942B454 /* View-IMPL */,
 			);
 			path = Fortunes;
 			sourceTree = "<group>";
@@ -511,7 +524,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#appledoc Xcode script\n# Start constants\ncompany=\"HeikoBublitz\";\ncompanyID=\"de.heikobublitz\";\ncompanyURL=\"http://www.heikobublitz.de\";\ntarget=\"iphoneos\";\n#target=\"macosx\";\noutputPath=\"${PROJECT_DIR}/../Doku\";\n# End constants\n/usr/local/bin/appledoc \\\n--project-name \"Fortunes\" \\\n--project-company \"${company}\" \\\n--company-id \"${companyID}\" \\\n--templates \"${PROJECT_DIR}/../AppleDocTemplates/old\" \\\n--docset-atom-filename \"${company}.atom\" \\\n--docset-feed-url \"${companyURL}/${company}/%DOCSETATOMFILENAME\" \\\n--docset-package-url \"${companyURL}/${company}/%DOCSETPACKAGEFILENAME\" \\\n--docset-fallback-url \"${companyURL}/${company}\" \\\n--output \"${outputPath}\" \\\n--publish-docset \\\n--docset-platform-family \"${target}\" \\\n--logformat xcode \\\n--keep-intermediate-files \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--search-undocumented-doc \\\n--no-repeat-first-par \\\n--no-warn-invalid-crossref \\\n--exit-threshold 2 \\\n--create-html \\\n--no-merge-categories \\\n--ignore \"${PROJECT_DIR}/FortuneTests\" \\\n--ignore Frameworks \\\n\"${PROJECT_DIR}/Fortunes\"";
+			shellScript = "#appledoc Xcode script\n# Start constants\ncompany=\"HeikoBublitz\";\ncompanyID=\"de.heikobublitz\";\ncompanyURL=\"http://www.heikobublitz.de\";\ntarget=\"iphoneos\";\n#target=\"macosx\";\noutputPath=\"${PROJECT_DIR}/../Doku\";\n# End constants\n/usr/local/bin/appledoc \\\n--project-name \"Fortunes\" \\\n--project-company \"${company}\" \\\n--company-id \"${companyID}\" \\\n--templates \"${PROJECT_DIR}/../AppleDocTemplates/old\" \\\n--docset-atom-filename \"${company}.atom\" \\\n--docset-feed-url \"${companyURL}/${company}/%DOCSETATOMFILENAME\" \\\n--docset-package-url \"${companyURL}/${company}/%DOCSETPACKAGEFILENAME\" \\\n--docset-fallback-url \"${companyURL}/${company}\" \\\n--output \"${outputPath}\" \\\n--publish-docset \\\n--docset-platform-family \"${target}\" \\\n--logformat xcode \\\n--keep-intermediate-files \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--search-undocumented-doc \\\n--no-repeat-first-par \\\n--no-warn-invalid-crossref \\\n--exit-threshold 2 \\\n--create-html \\\n--ignore \"${PROJECT_DIR}/FortuneTests\" \\\n--ignore Frameworks \\\n\"${PROJECT_DIR}/Fortunes\"";
 		};
 		EC796E2ADE92FA3C47E562FB /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -538,6 +551,7 @@
 				87D148B31B5DA38A003841AC /* BaseViewController.m in Sources */,
 				87D148A51B5D6646003841AC /* LeftViewController.m in Sources */,
 				87D148A81B5D6C7B003841AC /* NavController.m in Sources */,
+				87CC95771B6F0F8300D1E692 /* Toolbar.m in Sources */,
 				87D1487D1B5D5C26003841AC /* AppDelegate.m in Sources */,
 				87D1487A1B5D5C26003841AC /* main.m in Sources */,
 				87BD95101B6779A500A96289 /* FontsViewController.m in Sources */,
@@ -565,8 +579,8 @@
 				21235780CC4F603C40CE7516 /* SingleFortune+Favourites.m in Sources */,
 				21235B8FC795F7CC721C5E1D /* UIViewController+NavigationBar.m in Sources */,
 				212352EBCC19F2585A2820B2 /* NSString+Utilities.m in Sources */,
-				21235C9661239D23AF9C5B05 /* UIViewController+toolbar.m in Sources */,
 				21235BE60C37D09DBA877F10 /* UIViewController+Alert.m in Sources */,
+				2123554049310E796162F257 /* ToolbarFortuneList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

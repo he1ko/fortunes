@@ -22,6 +22,8 @@ typedef NS_ENUM(NSInteger, NavBarButtonSide) {
 
 - (void)navigationButtonTouched:(id)sender;
 
+- (void)setNavigationTitle:(NSString *)title;
+
 - (void)leftNavigationButtonTouched;
 
 - (void)rightNavigationButtonTouched;

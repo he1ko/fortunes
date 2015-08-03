@@ -4,7 +4,7 @@
 #import "FortuneDetailViewController.h"
 #import "RowIndicator.h"
 #import "FavouritesManager.h"
-
+#import "UIViewController+NavigationBar.h"
 
 
 typedef NS_ENUM(NSInteger, TableDataSet) {
@@ -29,7 +29,7 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
     NSIndexPath *lastSelectionPath;
     RowIndicator *rowIndicator;
 
-    UIToolbar *tb;
+    ToolbarFortuneList *tb;
 
     TableDataSet dataSet;
     int topRowIdx;
@@ -65,14 +65,13 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
     _tableView.delegate = self;
     _tableView.dataSource = self;
 
-    tb = [self getToolbar];
-    [self.view addSubview:tb];
-
     contentPadding = _tableView.contentInset;
     contentPadding.bottom += 48.0;
     _tableView.contentInset = contentPadding;
 
-    [self.navigationItem setTitle:NSLocalizedString(@"listOfFortunes", @"AllFortunes header text")];
+    [self addToolbar];
+
+    [self setNavigationTitle:NSLocalizedString(@"listOfFortunes", @"AllFortunes header text")];
 }
 
 
@@ -129,20 +128,49 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 #pragma mark -
 #pragma mark TOOLBAR
 
-- (UIToolbar *)getToolbar {
+- (void)addToolbar {
 
-    UIToolbar *toolbar = [self toolbar];
+    tb = [[ToolbarFortuneList alloc]init];
+    tb.delegate = self;
+    tb.toolbarDelegate = self;
+    [self.view addSubview:tb];
+}
 
-    UIBarButtonItem * tbItem0 = [self toolbarItemWithImageName:@"AllFortunes" action:@selector(tbTouchAll)];
-    UIBarButtonItem * tbItem1 = [self toolbarItemWithImageName:@"favourites-remove" action:@selector(tbTouchFavourites)];
-    UIBarButtonItem * tbItem2 = [self toolbarItemWithImageName:@"ArrowTop" action:@selector(tbTouchGotoTop)];
-    UIBarButtonItem * tbItem3 = [self toolbarItemWithImageName:@"ArrowEnd" action:@selector(tbTouchGotoEnd)];
 
-    toolbar.items = @[tbItem0, tbItem1, tbItem2, tbItem3];
+- (UIBarPosition)positionForBar:(id <UIBarPositioning>)bar {
 
-    [self addTopLine:[UIColor colorWithWhite:1.0 alpha:0.6] toToolbar:toolbar];
+    UIToolbar *toolbar = (UIToolbar *)bar;
 
-    return toolbar;
+    [toolbar setX:0];
+    [toolbar setY:[self.view height] - [toolbar height]];
+
+    return UIBarPositionBottom;
+}
+
+
+- (void)toolbarItemTouchedWithIndex:(NSUInteger)itemIndex {
+
+    switch (itemIndex) {
+
+        case TOOLBAR_ITEM_INDEX_ALL_FORTUNES:
+            [self tbTouchAllFortunes];
+            break;
+
+        case TOOLBAR_ITEM_INDEX_FAVOURITES:
+            [self tbTouchFavourites];
+            break;
+
+        case TOOLBAR_ITEM_INDEX_TOP:
+            [self tbTouchGotoTop];
+            break;
+
+        case TOOLBAR_ITEM_INDEX_BOTTOM:
+            [self tbTouchGotoEnd];
+            break;
+
+        default:
+            break;
+    }
 }
 
 
@@ -171,7 +199,7 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 }
 
 
-- (void)tbTouchAll {
+- (void)tbTouchAllFortunes {
 
     tableData = fortunesFromServer.fortunes;
     [_tableView reloadData];
@@ -309,7 +337,7 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
     fortunesFromServer = (FortuneList *)self.jsonModel;
     tableData = fortunesFromServer.fortunes;
 
-    [self tbTouchAll];
+    [self tbTouchAllFortunes];
     [self restoreScrollPosition];
 }
 
