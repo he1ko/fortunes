@@ -13,7 +13,6 @@
 #import "ImpressumViewController.h"
 #import "UIViewController+MMDrawerController.h"
 #import "FortunesListViewController.h"
-#import "FortunesBySourceViewController.h"
 #import "SettingsViewController.h"
 
 @interface LeftViewController ()
@@ -44,7 +43,8 @@
     [self setupControllerArray];
 
     [self setupNavItems];
-    [self itemTouched:leftItems[1]];
+
+    [self itemTouched:leftItems[0]];
 }
 
 
@@ -72,9 +72,6 @@
     [mItems addObject:[self navItemWithFrame:itemFrame tag:LeftNavItemTagFortunesList text:NSLocalizedString(@"listOfFortunes", @"all fortunes as a table")]];
 
     itemFrame.origin.y += itemHeight;
-    [mItems addObject:[self navItemWithFrame:itemFrame tag:LeftNavItemTagFortunesBySource text:NSLocalizedString(@"fortunesBySource", @"fortunes selecteable by sources")]];
-
-    itemFrame.origin.y += itemHeight;
     [mItems addObject:[self navItemWithFrame:itemFrame tag:LeftNavItemTagSettings text:NSLocalizedString(@"Settings", @"app settings")]];
 
     itemFrame.origin.y += itemHeight;
@@ -98,9 +95,8 @@
     /*
          0 - LeftNavItemTagHome,
          1 - LeftNavItemTagFortunesList,
-         2 - LeftNavItemTagFortunesBySource,
-         3 - LeftNavItemTagSettings,
-         4 - LeftNavItemTagImpressum
+         2 - LeftNavItemTagSettings,
+         3 - LeftNavItemTagImpressum
     */
 
         [self changeTo:viewControllers[(NSUInteger) item.tag]];
@@ -122,15 +118,14 @@
 
 - (void)setupControllerArray {
 
-    NSMutableArray *mControllers = [[NSMutableArray alloc] initWithCapacity:5];
+    NSMutableArray *mControllers = [[NSMutableArray alloc] initWithCapacity:4];
 
     if(viewControllers[0] == nil) {
         mControllers[0] = [[HomeViewController alloc] init];
     }
     mControllers[1] = [[FortunesListViewController alloc] init];
-    mControllers[2] = [[FortunesBySourceViewController alloc] init];
-    mControllers[3] = [[SettingsViewController alloc] init];
-    mControllers[4] = [[ImpressumViewController alloc] init];
+    mControllers[2] = [[SettingsViewController alloc] init];
+    mControllers[3] = [[ImpressumViewController alloc] init];
 
     viewControllers = mControllers;
 }

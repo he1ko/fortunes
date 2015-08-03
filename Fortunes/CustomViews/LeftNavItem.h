@@ -10,7 +10,6 @@
 typedef NS_ENUM(NSInteger, LeftNavItemTag){
     LeftNavItemTagHome,
     LeftNavItemTagFortunesList,
-    LeftNavItemTagFortunesBySource,
     LeftNavItemTagSettings,
     LeftNavItemTagImpressum
 };

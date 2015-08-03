@@ -41,8 +41,6 @@
     [drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
     [drawerController setMaximumLeftDrawerWidth:240.0];
 
-    [vCLeft setFirstController:vCcenter];
-
     self.window.rootViewController = drawerController;
 
     return YES;
