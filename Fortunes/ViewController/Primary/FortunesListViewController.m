@@ -134,7 +134,14 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
 - (void)addToolbar {
 
-    fortuneListToolbar = [[ToolbarFortuneList alloc]init];
+    NSMutableArray *mImageNames = [[NSMutableArray alloc] initWithCapacity:4];
+    mImageNames[TOOLBAR_ITEM_INDEX_ALL_FORTUNES] = @"AllFortunes";
+    mImageNames[TOOLBAR_ITEM_INDEX_FAVOURITES] = @"favourites-remove";
+    mImageNames[TOOLBAR_ITEM_INDEX_TOP] = @"ArrowTop";
+    mImageNames[TOOLBAR_ITEM_INDEX_BOTTOM] = @"ArrowEnd";
+
+    fortuneListToolbar = [[ToolbarFortuneList alloc] initWithImageNamesArray:mImageNames];
+
     fortuneListToolbar.delegate = self;
     fortuneListToolbar.toolbarDelegate = self;
     [self.view addSubview:fortuneListToolbar];

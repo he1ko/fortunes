@@ -7,6 +7,10 @@
 
 @property(nonatomic, strong) id <FortuneListToolbar> toolbarDelegate;
 
+@property(nonatomic, strong) NSArray *imageNamesArray;
+
+- (id)initWithImageNamesArray:(NSArray *)imageNames;
+
 - (void)setItemActive:(BOOL)active withIndex:(NSUInteger)index;
 
 - (UIBarButtonItem *)toolbarItemWithImageName:(NSString *)imgName;

@@ -4,13 +4,15 @@
 static float const defaultToolbarHeight = 48.0;
 
 @interface Toolbar ()
-- (void)setupToolbar;
+- (void)setupAppearance;
 @end
 
 @implementation Toolbar
 
 
-- (id)init {
+- (id)initWithImageNamesArray:(NSArray *)imageNames {
+
+    self.imageNamesArray = imageNames;
 
     CGRect toolbarFrame = [[UIScreen mainScreen] bounds];
     toolbarFrame.size.height = defaultToolbarHeight;
@@ -26,13 +28,30 @@ static float const defaultToolbarHeight = 48.0;
         self.opaque = YES;
         self.clipsToBounds = YES;
 
-        [self setupToolbar];
+        [self setupItems];
+        [self setupAppearance];
     }
     return self;
 }
 
 
-- (void)setupToolbar {
+- (void)setupItems {
+
+    NSMutableArray *mItems = [[NSMutableArray alloc] initWithCapacity:[self.imageNamesArray count]];
+    NSString *imageName;
+
+    for (int i = 0; i < [self.imageNamesArray count]; i++) {
+
+        imageName = self.imageNamesArray[(NSUInteger)i];
+        mItems[(NSUInteger)i] = [self toolbarItemWithImageName:imageName];
+    }
+
+    self.items = mItems;
+}
+
+
+
+- (void)setupAppearance {
 
 }
 
