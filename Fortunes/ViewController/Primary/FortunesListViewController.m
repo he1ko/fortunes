@@ -1,10 +1,10 @@
 
 #import "FortunesListViewController.h"
 #import "UserSettings.h"
-#import "FortuneDetailViewController.h"
 #import "RowIndicator.h"
 #import "FavouritesManager.h"
 #import "UIViewController+NavigationBar.h"
+#import "SingleFortuneViewController.h"
 
 
 typedef NS_ENUM(NSInteger, TableDataSet) {
@@ -222,7 +222,7 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
     NSString *localizedTitle = NSLocalizedString(@"Favoriten", @"Favoriten");
 
-    [self setNavigationTitle:[NSString stringWithFormat:@"%d %@", [tableData count], localizedTitle]];
+    [self setNavigationTitle:[NSString stringWithFormat:@"%d %@", (int)[tableData count], localizedTitle]];
     [self tbTouchGotoTop];
 
     dataSet = TABLE_DATA_SET_FAVOURITES;
@@ -478,10 +478,12 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
 - (void)showDetailsForFortune:(SingleFortune *)f {
 
-    FortuneDetailViewController *detailVC = [[FortuneDetailViewController alloc] init];
-    detailVC.fortune = f;
+    SingleFortuneViewController *detailVc = [[SingleFortuneViewController alloc] init];
 
-    [self.navigationController pushViewController:detailVC animated:YES];
+    // FortuneDetailViewController *detailVC = [[FortuneDetailViewController alloc] init];
+    detailVc.fortune = f;
+
+    [self.navigationController pushViewController:detailVc animated:YES];
 }
 
 

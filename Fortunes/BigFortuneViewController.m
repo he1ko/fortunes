@@ -12,7 +12,6 @@
 @implementation BigFortuneViewController {
 
 @private
-    SingleFortune *fortune;
     FortuneMainDisplay *fortuneDisplay;
 }
 
@@ -57,8 +56,8 @@
 
 - (void)setupFortune {
 
-    fortune = (SingleFortune *)self.jsonModel;
-    fortune.favDelegate = self;
+    _fortune = (SingleFortune *)self.jsonModel;
+    _fortune.favDelegate = self;
 
     /// main fortune display
     if (fortuneDisplay == nil) {
@@ -67,7 +66,7 @@
         [self setFavouriteButton];
     }
     else {
-        [fortuneDisplay updateFortune:fortune];
+        [fortuneDisplay updateFortune:_fortune];
         [fortuneDisplay setX:self.view.frame.size.width];
         [self fadeInFortune];
     }
@@ -92,7 +91,7 @@
 
 - (void)setFavouriteButton {
 
-    [self addNavBarButtonWithImageName:[fortune favImageButtonName] side:NAV_BAR_BUTTON_SIDE_RIGHT];
+    [self addNavBarButtonWithImageName:[_fortune favImageButtonName] side:NAV_BAR_BUTTON_SIDE_RIGHT];
 }
 
 
@@ -114,7 +113,7 @@
 
 - (void)rightNavigationButtonTouched {
 
-    [fortune switchFavouriteState];
+    [_fortune switchFavouriteState];
     [self setFavouriteButton];
 }
 
@@ -122,7 +121,7 @@
 
 - (FortuneMainDisplay*)fortuneDisplay {
 
-    FortuneMainDisplay *fortuneMain = [[FortuneMainDisplay alloc] initWithFrame:[self visibleViewFrame] andFortune:fortune];
+    FortuneMainDisplay *fortuneMain = [[FortuneMainDisplay alloc] initWithFrame:[self visibleViewFrame] andFortune:_fortune];
 
     UIFont *font = [self fontFromUserSettings];
     [fortuneMain setFont:font];
