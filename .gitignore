@@ -7,4 +7,6 @@
 
 .gitignore
 
+Fortunes.xcodeproj/xcuserdata/heikobublitz.xcuserdatad/xcschemes/Doku.xcscheme
+
 Podfile.lock
