@@ -7,7 +7,6 @@
 //
 
 #import "FontsViewController.h"
-#import "UIViewController+Layout.h"
 #import "UIViewController+NavigationBar.h"
 
 @interface FontsViewController ()
@@ -37,7 +36,7 @@
 
     _tableView = [[UITableView alloc] initWithFrame:tableViewFrame style:UITableViewStylePlain];
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
-    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
 
     UIEdgeInsets contentPadding = _tableView.contentInset;
     contentPadding.top = 64.0;
@@ -49,9 +48,9 @@
     _tableView.dataSource = self;
 
     NSString *sectionName = [[FontManager getInstance] sectionNameForSection:_fontSection];
-    [self.navigationItem setTitle:sectionName];
+    [self setNavigationTitle:sectionName];
 
-    [self addNavBarButtonWithImageName:@"close" side:NAV_BAR_BUTTON_SIDE_RIGHT];
+    [self addNavBarButtonWithImageName:@"close" side:NAV_BAR_BUTTON_SIDE_LEFT];
 }
 
 
@@ -59,7 +58,7 @@
 /*!
     override default navigationBarButton touch
  */
-- (void)rightNavigationButtonTouched {
+- (void)leftNavigationButtonTouched {
 
     [self.navigationController popViewControllerAnimated:YES];
 }
