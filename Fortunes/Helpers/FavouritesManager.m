@@ -129,7 +129,7 @@ static NSString *favSettingKey = @"favourites";
     if(isFav) {
         [mFavouriteIDs addObject:@(fortune.id)];
         favouriteIDs = mFavouriteIDs;
-        [UserSettings saveArray:favouriteIDs forKey:favSettingKey];
+        [UserSettings saveObject:favouriteIDs forKey:favSettingKey];
         return FAV_RESULT_SET_TO_FAV;
     }
 
@@ -148,7 +148,7 @@ static NSString *favSettingKey = @"favourites";
 
     /// Save modified array to userDefaults
     favouriteIDs = mFavouriteIDs;
-    [UserSettings saveArray:favouriteIDs forKey:favSettingKey];
+    [UserSettings saveObject:favouriteIDs forKey:favSettingKey];
     return FAV_RESULT_SET_NO_FAV;
 }
 

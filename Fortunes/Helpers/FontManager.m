@@ -95,7 +95,7 @@ static NSString *fontsSettingKeyPrefix = @"fontSection";
 - (void)updateFontName:(NSString *)fontName forSection:(FontAppSection)section {
 
     NSString *key = [self userSettingsKeyForSection:section];
-    [UserSettings saveString:fontName forKey:key];
+    [UserSettings saveObject:fontName forKey:key];
 
     NSMutableArray *mFontNames = [fontNames mutableCopy];
     mFontNames[section] = fontName;

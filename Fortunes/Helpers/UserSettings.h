@@ -10,12 +10,9 @@
 
 
 + (NSString *)loadStringWithKey:(NSString *)key;
-
-+ (void)saveString:(NSString *)string forKey:(NSString *)key;
-
 + (NSArray *)loadArrayWithKey:(NSString *)key;
 
-+ (void)saveArray:(NSArray *)array forKey:(NSString *)key;
++ (void)saveObject:(id)object forKey:(NSString *)key;
 
 + (int)loadFortuneListScrollPosition;
 + (void)saveFortuneListScrollPosition:(int)scrollPos;

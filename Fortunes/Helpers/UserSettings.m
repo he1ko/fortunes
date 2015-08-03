@@ -23,21 +23,15 @@ static NSString *keyScrollPosFortunesList = @"SCROLL_MAIN";
 }
 
 
-+ (void)saveString:(NSString *)string forKey:(NSString *)key {
-
-    [[NSUserDefaults standardUserDefaults] setObject:string forKey:key];
-}
-
-
 + (NSArray *)loadArrayWithKey:(NSString *)key {
 
     return [[NSUserDefaults standardUserDefaults] arrayForKey:key];
 }
 
 
-+ (void)saveArray:(NSArray *)array forKey:(NSString *)key {
++ (void)saveObject:(id)object forKey:(NSString *)key {
 
-    [[NSUserDefaults standardUserDefaults] setObject:array forKey:key];
+    [[NSUserDefaults standardUserDefaults] setObject:object forKey:key];
 }
 
 
