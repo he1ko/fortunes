@@ -43,7 +43,13 @@ static float const defaultToolbarHeight = 48.0;
     for (int i = 0; i < [self.imageNamesArray count]; i++) {
 
         imageName = self.imageNamesArray[(NSUInteger)i];
-        mItems[(NSUInteger)i] = [self toolbarItemWithImageName:imageName];
+
+        if([imageName isEqualToString:@""]) {
+            mItems[(NSUInteger)i] = [self toolbarFlexibleSpace];
+        }
+        else {
+            mItems[(NSUInteger) i] = [self toolbarItemWithImageName:imageName];
+        }
     }
 
     self.items = mItems;
@@ -61,6 +67,12 @@ static float const defaultToolbarHeight = 48.0;
     UIBarButtonItem *item = self.items[index];
     CGFloat opacity = active ? 1.0f : 0.5f;
     [item.customView setAlpha:opacity];
+}
+
+
+- (UIBarButtonItem *)toolbarFlexibleSpace {
+
+    return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
 }
 
 
