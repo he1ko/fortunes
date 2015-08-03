@@ -29,7 +29,7 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
     NSIndexPath *lastSelectionPath;
     RowIndicator *rowIndicator;
 
-    ToolbarFortuneList *tb;
+    ToolbarFortuneList *fortuneListToolbar;
     NSArray *lastScrollPositions;
 
     TableDataSet dataSet;
@@ -92,6 +92,9 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
     [super viewDidAppear:animated];
 
+    [self setPositionOfToolbar:fortuneListToolbar];
+    [self addToolbarOffset:fortuneListToolbar];
+
     if (![self isFontChanged] && tableData != nil) {
         return;
     }
@@ -117,9 +120,6 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
     else if ([self isFontChanged] && [_tableView numberOfRowsInSection:(NSInteger)0] > 0) {
         [HUD showWhileExecuting:@selector(reloadData) onTarget:_tableView withObject:nil animated:YES];
     }
-
-    [tb setX:0];
-    [tb setY:[self.view height] - [tb height]];
 }
 
 
@@ -134,19 +134,34 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
 - (void)addToolbar {
 
-    tb = [[ToolbarFortuneList alloc]init];
-    tb.delegate = self;
-    tb.toolbarDelegate = self;
-    [self.view addSubview:tb];
+    fortuneListToolbar = [[ToolbarFortuneList alloc]init];
+    fortuneListToolbar.delegate = self;
+    fortuneListToolbar.toolbarDelegate = self;
+    [self.view addSubview:fortuneListToolbar];
+}
+
+
+- (void)setPositionOfToolbar:(UIToolbar *)bar  {
+
+    CGRect toolbarFrame = bar.frame;
+    toolbarFrame.origin.x = 0.0;
+    toolbarFrame.origin.y = [self.view height] - toolbarFrame.size.height;
+
+    [bar setFrame:toolbarFrame];
+}
+
+
+- (void)addToolbarOffset:(UIToolbar *)bar {
+
+    CGRect toolbarFrame = bar.frame;
+    toolbarFrame.origin.y += _tableView.contentOffset.y;
+    [bar setFrame:toolbarFrame];
 }
 
 
 - (UIBarPosition)positionForBar:(id <UIBarPositioning>)bar {
 
-    UIToolbar *toolbar = (UIToolbar *)bar;
-
-    [toolbar setX:0];
-    [toolbar setY:[self.view height] - [toolbar height]];
+    [self setPositionOfToolbar:(UIToolbar *)bar];
 
     return UIBarPositionBottom;
 }
@@ -218,7 +233,7 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
 - (void)tbTouchGotoEnd {
 
-    CGPoint offset = CGPointMake(0, _tableView.contentSize.height - _tableView.frame.size.height + tb.frame.size.height);
+    CGPoint offset = CGPointMake(0, _tableView.contentSize.height - _tableView.frame.size.height + fortuneListToolbar.frame.size.height);
     [_tableView setContentOffset:offset animated:YES];
 }
 
@@ -243,7 +258,7 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
     [self updateRowNumIndicator:topRowIdx + 1];
 
     /// re-position toolbar
-    [tb setY:[_tableView height] - [tb height] + scrollView.contentOffset.y];
+    [fortuneListToolbar setY:[_tableView height] - [fortuneListToolbar height] + scrollView.contentOffset.y];
 
 }
 
