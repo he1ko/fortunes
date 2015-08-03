@@ -38,6 +38,7 @@
 		21235AB75DB52849AB17F75B /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2123597AB4AE3E5E4C5B86CD /* SettingsViewController.m */; };
 		21235B8FC795F7CC721C5E1D /* UIViewController+NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235379FCBFD3687A20DB34 /* UIViewController+NavigationBar.m */; };
 		21235BC34468EE5D395A02D8 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235A60946C133DC4DC54F9 /* UserSettings.m */; };
+		21235BE60C37D09DBA877F10 /* UIViewController+Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235C3397E8A273DFD477F7 /* UIViewController+Alert.m */; };
 		21235C9661239D23AF9C5B05 /* UIViewController+toolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235CCC236B426D68F985BA /* UIViewController+toolbar.m */; };
 		21235E71F303B6ECD38B2E71 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235A1012460B08E0193D6D /* HomeViewController.m */; };
 		21235E85CDBD6D571FEC8213 /* FortuneMainDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235283A711AC51577195B5 /* FortuneMainDisplay.m */; };
@@ -101,6 +102,7 @@
 		21235A9C81611CA9F92D0CD7 /* FortuneList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FortuneList.m; sourceTree = "<group>"; };
 		21235B00A7B0934024EA901F /* UIView+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Helpers.h"; sourceTree = "<group>"; };
 		21235BC70AFC73F6B03B6177 /* UserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettings.h; sourceTree = "<group>"; };
+		21235C3397E8A273DFD477F7 /* UIViewController+Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alert.m"; sourceTree = "<group>"; };
 		21235C63BD62088824415089 /* FortuneList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FortuneList.h; sourceTree = "<group>"; };
 		21235C98153682924BB85F5B /* NSString+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Utilities.h"; sourceTree = "<group>"; };
 		21235CCC236B426D68F985BA /* UIViewController+toolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+toolbar.m"; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		21235E7E32353969EF31A996 /* NSString+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Utilities.m"; sourceTree = "<group>"; };
 		21235E8E8F6225FAEF26FA73 /* ImpressumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImpressumViewController.h; path = ViewController/Primary/ImpressumViewController.h; sourceTree = "<group>"; };
 		21235F17A15AFDF7D7578161 /* LeftNavItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftNavItem.h; sourceTree = "<group>"; };
+		21235F5CF7787F408463E065 /* UIViewController+Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Alert.h"; sourceTree = "<group>"; };
 		21235FD685D033109884DAAC /* FontManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontManager.m; sourceTree = "<group>"; };
 		21235FF2C4B369B0D1F56A0F /* UIViewController+NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NavigationBar.h"; sourceTree = "<group>"; };
 		2EBB10577B677DBEE1EF280D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -217,6 +220,8 @@
 				21235FF2C4B369B0D1F56A0F /* UIViewController+NavigationBar.h */,
 				21235E7E32353969EF31A996 /* NSString+Utilities.m */,
 				21235C98153682924BB85F5B /* NSString+Utilities.h */,
+				21235C3397E8A273DFD477F7 /* UIViewController+Alert.m */,
+				21235F5CF7787F408463E065 /* UIViewController+Alert.h */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -561,6 +566,7 @@
 				21235B8FC795F7CC721C5E1D /* UIViewController+NavigationBar.m in Sources */,
 				212352EBCC19F2585A2820B2 /* NSString+Utilities.m in Sources */,
 				21235C9661239D23AF9C5B05 /* UIViewController+toolbar.m in Sources */,
+				21235BE60C37D09DBA877F10 /* UIViewController+Alert.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

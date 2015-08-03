@@ -54,7 +54,7 @@
     UIButton *btFav = [UIButton buttonWithType:UIButtonTypeCustom];
     [btFav setFrame:CGRectMake(0.0, 0.0, 30.0, 30.0)];
 
-    UIImage *favImg = [UIImage imageNamed:@"favourite-list"];
+    UIImage *favImg = [UIImage imageNamed:@"favourites-remove"];
 
     [btFav setBackgroundImage:favImg forState:UIControlStateNormal];
 
