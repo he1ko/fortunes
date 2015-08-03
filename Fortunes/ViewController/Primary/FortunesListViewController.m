@@ -219,7 +219,9 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
     tableData = dataFiltered;
     [_tableView reloadData];
 
-    [self setNavigationTitle:NSLocalizedString(@"Favoriten", @"Favoriten")];
+    NSString *localizedTitle = NSLocalizedString(@"Favoriten", @"Favoriten");
+
+    [self setNavigationTitle:[NSString stringWithFormat:@"%d %@", [tableData count], localizedTitle]];
     [self tbTouchGotoTop];
 
     dataSet = TABLE_DATA_SET_FAVOURITES;
