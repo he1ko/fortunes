@@ -79,20 +79,23 @@ static float const defaultToolbarHeight = 48.0;
 
     UIButton *bt = (UIButton *) sender;
     UIButton *bt2;
+    NSUInteger count = 0;
     NSUInteger index = 0;
 
     for(UIBarButtonItem *bbti in self.items) {
 
         bt2 = (UIButton *)bbti.customView;
+        bt2.alpha = 1.0;
         if(bt2 == bt) {
-            NSLog(@"YES! %d", index);
-            break;
+            index = count;
         }
-        index++;
+        count++;
     }
 
+    bt.alpha = 0.4;
     [_toolbarDelegate toolbarItemTouchedWithIndex:index];
 }
+
 
 
 - (void) addTopLine:(UIColor*)color {
