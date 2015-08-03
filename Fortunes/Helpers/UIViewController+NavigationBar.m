@@ -26,8 +26,8 @@
 - (void)setupNavBarAppearance {
 
     self.navigationController.navigationBar.barStyle  = UIBarStyleDefault;
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.barTintColor = [UIColor presetItemBGOthers];
+    self.navigationController.navigationBar.tintColor = [UIColor presetItemBGOthers];
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
 }
 
 
@@ -121,7 +121,7 @@
     titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.font = [UIFont boldSystemFontOfSize:20.0];
     titleLabel.textAlignment = NSTextAlignmentCenter;
-    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.textColor = [UIColor presetItemBGOthers];
     [self.navigationItem setTitleView:titleLabel];
 }
 
