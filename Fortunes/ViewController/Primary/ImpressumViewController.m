@@ -7,6 +7,7 @@
 //
 
 #import "ImpressumViewController.h"
+#import "UIViewController+NavigationBar.h"
 
 @interface ImpressumViewController ()
 
@@ -23,7 +24,7 @@
 
     [super viewWillAppear:animated];
 
-    [self.navigationItem setTitle:NSLocalizedString(@"imprint", @"Imprint-headerText")];
+    [self setNavigationTitle:NSLocalizedString(@"imprint", @"Imprint-headerText")];
 }
 
 

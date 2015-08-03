@@ -7,9 +7,9 @@
 //
 
 #import "SettingsViewController.h"
-#import "UIViewController+Layout.h"
 #import "FontsViewController.h"
 #import "DefaultButton.h"
+#import "UIViewController+NavigationBar.h"
 
 static NSInteger FAKE_SECTION_RESET = 99;
 
@@ -67,7 +67,7 @@ static NSInteger FAKE_SECTION_RESET = 99;
 
     [super viewWillAppear:animated];
 
-    [self.navigationItem setTitle:NSLocalizedString(@"Settings", @"Settings")];
+    [self setNavigationTitle:NSLocalizedString(@"Settings", @"Settings")];
 }
 
 

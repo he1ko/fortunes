@@ -30,6 +30,7 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
     RowIndicator *rowIndicator;
 
     ToolbarFortuneList *tb;
+    NSArray *lastScrollPositions;
 
     TableDataSet dataSet;
     int topRowIdx;
@@ -116,6 +117,9 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
     else if ([self isFontChanged] && [_tableView numberOfRowsInSection:(NSInteger)0] > 0) {
         [HUD showWhileExecuting:@selector(reloadData) onTarget:_tableView withObject:nil animated:YES];
     }
+
+    [tb setX:0];
+    [tb setY:[self.view height] - [tb height]];
 }
 
 
@@ -146,6 +150,7 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
     return UIBarPositionBottom;
 }
+
 
 
 - (void)toolbarItemTouchedWithIndex:(NSUInteger)itemIndex {
@@ -192,7 +197,7 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
     tableData = dataFiltered;
     [_tableView reloadData];
 
-    [self navigationTitle:NSLocalizedString(@"Favoriten", @"Favoriten")];
+    [self setNavigationTitle:NSLocalizedString(@"Favoriten", @"Favoriten")];
     [self tbTouchGotoTop];
 
     dataSet = TABLE_DATA_SET_FAVOURITES;
@@ -204,7 +209,7 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
     tableData = fortunesFromServer.fortunes;
     [_tableView reloadData];
 
-    [self navigationTitle:@"Fortunes"];
+    [self setNavigationTitle:[NSString stringWithFormat:@"%d Fortunes", (int)[tableData count]]];
     [self tbTouchGotoTop];
 
     dataSet = TABLE_DATA_SET_ALL;
@@ -221,12 +226,6 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 - (void)tbTouchGotoTop {
 
     [_tableView setContentOffset:CGPointMake(0.0, [self visibleViewFrame].origin.y * -1) animated:YES];
-}
-
-
-- (void)navigationTitle:(NSString *)selectionName {
-
-    [self.navigationItem setTitle:[NSString stringWithFormat:@"%d %@", (int)[tableData count], selectionName]];
 }
 
 
@@ -302,6 +301,9 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
     [self performSelector:@selector(hideRowNum) withObject:nil afterDelay:2.0];
 }
 
+/**
+* TODO: save, load and apply positions for ALL / FAVOURITES seperately!
+*/
 - (void)saveScrollPosition {
 
     [UserSettings saveFortuneListScrollPosition:topRowIdx];

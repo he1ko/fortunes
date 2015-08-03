@@ -1,6 +1,7 @@
 
 
 #import "FortunesBySourceViewController.h"
+#import "UIViewController+NavigationBar.h"
 
 @interface FortunesBySourceViewController ()
 
@@ -19,7 +20,7 @@
 
     [super viewWillAppear:animated];
 
-    [self.navigationItem setTitle:NSLocalizedString(@"fortunesBySource", @"fortunesBySource-Header")];
+    [self setNavigationTitle:NSLocalizedString(@"fortunesBySource", @"fortunesBySource-Header")];
 }
 
 
