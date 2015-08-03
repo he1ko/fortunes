@@ -6,9 +6,7 @@
 //  Copyright (c) 2015 Jemix. All rights reserved.
 //
 
-#import <MBProgressHUD/MBProgressHUD.h>
 #import "HomeViewController.h"
-#import "UIViewController+Layout.h"
 #import "FortuneMainDisplay.h"
 #import "UIViewController+NavigationBar.h"
 
@@ -38,8 +36,7 @@
 
 - (void)loadFortune {
 
-    [MBProgressHUD hideAllHUDsForView:self.view animated:NO];
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self alertLoadingIndicator];
 
     [RESTClient loadRandomFortune:self];
 }
@@ -49,7 +46,7 @@
 
     [super setRestAnswer:jsonModel];
 
-    [self hideHud];
+    [self hideAlert];
 
     if([self.jsonModel isKindOfClass:[SingleFortune class]]) {
 
@@ -101,28 +98,19 @@
 
 - (void)favouriteStateChangedTo:(BOOL)isFav {
 
-    [MBProgressHUD hideAllHUDsForView:self.view animated:NO];
-
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeText;
-
-    hud.labelText = @"Deine Favoriten";
+    NSString *alertTitle = NSLocalizedString(@"HUD.title.yourFavourites", @"HUD.title.yourFavourites");
+    NSString *alertSubtitle;
 
     if(isFav) {
-        hud.detailsLabelText = NSLocalizedString(@"home.fav.added.message", @"Fortune als Favorit gespeichert.");
+        alertSubtitle = NSLocalizedString(@"home.fav.added.message", @"Fortune als Favorit gespeichert.");
     }
     else {
-        hud.detailsLabelText = NSLocalizedString(@"home.fav.removed.message", @"Fortune aus Deinen Favoriten entfernt.");
+        alertSubtitle = NSLocalizedString(@"home.fav.removed.message", @"Fortune aus Deinen Favoriten entfernt.");
     }
 
-    [self performSelector:@selector(hideHud) withObject:nil afterDelay:1.8];
+    [self alertWithTitle:alertTitle subtitle:alertSubtitle duration:1.5];
 }
 
-
-- (void)hideHud {
-
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
-}
 
 - (void)rightNavigationButtonTouched {
 

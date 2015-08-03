@@ -19,7 +19,7 @@
 @implementation BaseViewController {
 
 @private
-
+    CGFloat alertOffsetY;
 }
 
 
@@ -28,6 +28,8 @@
     [super viewDidLoad];
 
     self.view.backgroundColor = [UIColor presetHighlight];
+
+    alertOffsetY = 0.0;
 
     if(IS_OS_7_OR_LATER) {
         self.automaticallyAdjustsScrollViewInsets = NO; // Avoid the top UITextView space, iOS7 (~bug?)
@@ -60,6 +62,19 @@
 - (void)setRestAnswer:(JSONModel *)jsonModel {
 
     self.jsonModel = jsonModel;
+}
+
+#pragma mark -
+#pragma mark Alert Helpers
+
+- (void)setAlertOffsetY:(CGFloat)offset {
+
+    alertOffsetY = offset;
+}
+
+- (CGFloat)getAlertOffsetY {
+
+    return alertOffsetY;
 }
 
 

@@ -44,7 +44,7 @@
     [self setupControllerArray];
 
     [self setupNavItems];
-    [self itemTouched:leftItems[1]];
+    // [self itemTouched:leftItems[1]];
 }
 
 

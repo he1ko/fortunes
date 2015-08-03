@@ -1,10 +1,3 @@
-//
-//  FortunesListViewController.m
-//  Fortunes
-//
-//  Created by Heiko Bublitz on 21.07.15.
-//  Copyright (c) 2015 Jemix. All rights reserved.
-//
 
 #import "FortunesListViewController.h"
 #import "UserSettings.h"
@@ -141,7 +134,7 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
     UIToolbar *toolbar = [self toolbar];
 
     UIBarButtonItem * tbItem0 = [self toolbarItemWithImageName:@"AllFortunes" action:@selector(tbTouchAll)];
-    UIBarButtonItem * tbItem1 = [self toolbarItemWithImageName:@"favourite-list" action:@selector(tbTouchFavourites)];
+    UIBarButtonItem * tbItem1 = [self toolbarItemWithImageName:@"favourites-remove" action:@selector(tbTouchFavourites)];
     UIBarButtonItem * tbItem2 = [self toolbarItemWithImageName:@"ArrowTop" action:@selector(tbTouchGotoTop)];
     UIBarButtonItem * tbItem3 = [self toolbarItemWithImageName:@"ArrowEnd" action:@selector(tbTouchGotoEnd)];
 
@@ -443,22 +436,19 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
 - (void)favouriteStateChangedTo:(BOOL)isFav {
 
-    [MBProgressHUD hideAllHUDsForView:self.view animated:NO];
-
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    [hud setYOffset:_tableView.contentOffset.y];
-
-    hud.labelText = @"Deine Favoriten";
+    NSString *alertTitle = NSLocalizedString(@"HUD.title.yourFavourites", @"Deine Favoriten");
+    NSString *alertSubtitle;
 
     if(isFav) {
-        hud.detailsLabelText = NSLocalizedString(@"home.fav.added.message", @"Fortune als Favorit gespeichert.");
+        alertSubtitle = NSLocalizedString(@"home.fav.added.message", @"Fortune als Favorit gespeichert.");
     }
     else {
-        hud.detailsLabelText = NSLocalizedString(@"home.fav.removed.message", @"Fortune aus Deinen Favoriten entfernt.");
+        alertSubtitle = NSLocalizedString(@"home.fav.removed.message", @"Fortune aus Deinen Favoriten entfernt.");
     }
 
-    [self performSelector:@selector(hideHud) withObject:nil afterDelay:1.8];
+    [self setAlertOffsetY:_tableView.contentOffset.y];
+    [self alertWithTitle:alertTitle subtitle:alertSubtitle duration:1.8];
+ //   [hud setYOffset:_tableView.contentOffset.y];
 }
 
 
