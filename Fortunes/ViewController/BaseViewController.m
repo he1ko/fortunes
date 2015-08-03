@@ -38,9 +38,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 
-    self.navigationController.navigationBar.barStyle  = UIBarStyleDefault;
-    self.navigationController.navigationBar.tintColor = [UIColor presetHighlight];
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithWhite:1.0 alpha:0.8];
+    [self setupNavBarAppearance];
 
     [self addNavBarButtonWithImageName:@"MenuIcon" side:NAV_BAR_BUTTON_SIDE_LEFT];
 }

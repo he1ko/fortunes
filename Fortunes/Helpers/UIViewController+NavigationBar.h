@@ -14,6 +14,8 @@ typedef NS_ENUM(NSInteger, NavBarButtonSide) {
 - (CGRect)frameBelowTopBars;
 
 
+- (void)setupNavBarAppearance;
+
 - (void)addNavBarButtonWithText:(NSString *)text side:(NavBarButtonSide)side;
 
 - (void)addNavBarButtonWithImageName:(NSString *)imgName side:(NavBarButtonSide)side;

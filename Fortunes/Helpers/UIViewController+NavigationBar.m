@@ -23,6 +23,14 @@
 }
 
 
+- (void)setupNavBarAppearance {
+
+    self.navigationController.navigationBar.barStyle  = UIBarStyleDefault;
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.barTintColor = [UIColor presetItemBGOthers];
+}
+
+
 #pragma mark -
 #pragma mark Nav Bar Buttons Public
 
@@ -113,7 +121,7 @@
     titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.font = [UIFont boldSystemFontOfSize:20.0];
     titleLabel.textAlignment = NSTextAlignmentCenter;
-    titleLabel.textColor = [UIColor presetHighlight];
+    titleLabel.textColor = [UIColor whiteColor];
     [self.navigationItem setTitleView:titleLabel];
 }
 
