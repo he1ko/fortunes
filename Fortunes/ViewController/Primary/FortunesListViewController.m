@@ -204,6 +204,8 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
 - (void)tbTouchFavourites {
 
+    [self saveTopFortuneIdx:topRowIdx forSection:currentSection];
+
     currentSection = TOOLBAR_ITEM_INDEX_FAVOURITES;
 
     NSArray *favIds = [[FavouritesManager getInstance] favouriteIds];
@@ -234,6 +236,8 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
 
 - (void)tbTouchAllFortunes {
+
+    [self saveTopFortuneIdx:topRowIdx forSection:currentSection];
 
     currentSection = TOOLBAR_ITEM_INDEX_ALL_FORTUNES;
 
@@ -560,7 +564,7 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 - (void)viewWillDisappear:(BOOL)animated {
 
     [self saveScrollPosition];
-    NSLog(@"tschüß, section # %d", currentSection);
+    NSLog(@"tschüß, section # %d", (int)currentSection);
 }
 
 

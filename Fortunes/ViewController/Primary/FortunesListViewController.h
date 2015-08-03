@@ -26,6 +26,4 @@
 @property(nonatomic) BOOL clearsSelectionOnViewWillAppear; // defaults to YES. If YES, any selection is cleared in viewWillAppear:
 @property (nonatomic,retain) UIRefreshControl *refreshControl;
 
-- (void)saveScrollPosition;
-
 @end
