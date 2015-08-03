@@ -33,7 +33,9 @@
 		212357B2C99E5B3D469FF335 /* FortunesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235A489AD4681C6D98CA7E /* FortunesListViewController.m */; };
 		212357EDC201D0BD5C2ADA04 /* UIViewController+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235659F2FEAFC19CECD82E /* UIViewController+Layout.m */; };
 		2123584252FCF8E238A1202F /* UIView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2123571D931755AB55081451 /* UIView+Helpers.m */; };
+		212358962627BBBED809F205 /* SingleFortuneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 212355C84A58C83854BD1B74 /* SingleFortuneViewController.m */; };
 		212358D4F04B5125E4135056 /* FontManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235FD685D033109884DAAC /* FontManager.m */; };
+		2123592A142EFAF88F63BB01 /* BigFortuneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 212357C2173A5D53F6CE4C2B /* BigFortuneViewController.m */; };
 		212359953153F89860E3347A /* LeftNavItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 212356EE4BB41E321C30899F /* LeftNavItem.m */; };
 		21235AB75DB52849AB17F75B /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2123597AB4AE3E5E4C5B86CD /* SettingsViewController.m */; };
 		21235B8FC795F7CC721C5E1D /* UIViewController+NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235379FCBFD3687A20DB34 /* UIViewController+NavigationBar.m */; };
@@ -79,6 +81,7 @@
 		21235379FCBFD3687A20DB34 /* UIViewController+NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NavigationBar.m"; sourceTree = "<group>"; };
 		212354C690E64D24A3396B35 /* FortuneMainDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FortuneMainDisplay.h; sourceTree = "<group>"; };
 		2123556A8AFB7BC8DC587A7B /* FavouritesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouritesManager.m; sourceTree = "<group>"; };
+		212355C84A58C83854BD1B74 /* SingleFortuneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleFortuneViewController.m; sourceTree = "<group>"; };
 		21235611898395CA4FBAA96F /* FontManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontManager.h; sourceTree = "<group>"; };
 		212356548BD968C0CE9D6BA1 /* FavouritesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouritesManager.h; sourceTree = "<group>"; };
 		21235659F2FEAFC19CECD82E /* UIViewController+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Layout.m"; sourceTree = "<group>"; };
@@ -88,12 +91,14 @@
 		212356EE4BB41E321C30899F /* LeftNavItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftNavItem.m; sourceTree = "<group>"; };
 		2123571D931755AB55081451 /* UIView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Helpers.m"; sourceTree = "<group>"; };
 		21235782B7EAF1ACD73D867C /* SingleFortune+Favourites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SingleFortune+Favourites.h"; sourceTree = "<group>"; };
+		212357C2173A5D53F6CE4C2B /* BigFortuneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigFortuneViewController.m; sourceTree = "<group>"; };
 		212358128E4F51BD00F47414 /* ToolbarFortuneList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolbarFortuneList.h; sourceTree = "<group>"; };
 		212358A59896E13DC0F05FEE /* UIColor+Presets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Presets.h"; sourceTree = "<group>"; };
 		2123597AB4AE3E5E4C5B86CD /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = ViewController/Primary/SettingsViewController.m; sourceTree = "<group>"; };
 		2123598DA8F6797CCD469E6A /* RESTClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESTClient.m; sourceTree = "<group>"; };
 		21235A0BF722C72BC12CF90B /* UIViewController+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Layout.h"; sourceTree = "<group>"; };
 		21235A1012460B08E0193D6D /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = ViewController/Primary/HomeViewController.m; sourceTree = "<group>"; };
+		21235A1A0BF4743A9E653007 /* SingleFortuneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleFortuneViewController.h; sourceTree = "<group>"; };
 		21235A489AD4681C6D98CA7E /* FortunesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FortunesListViewController.m; path = ViewController/Primary/FortunesListViewController.m; sourceTree = "<group>"; };
 		21235A50AC0E760F4767EA08 /* ImpressumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImpressumViewController.m; path = ViewController/Primary/ImpressumViewController.m; sourceTree = "<group>"; };
 		21235A60946C133DC4DC54F9 /* UserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettings.m; sourceTree = "<group>"; };
@@ -102,6 +107,7 @@
 		21235BC70AFC73F6B03B6177 /* UserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettings.h; sourceTree = "<group>"; };
 		21235C3397E8A273DFD477F7 /* UIViewController+Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alert.m"; sourceTree = "<group>"; };
 		21235C63BD62088824415089 /* FortuneList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FortuneList.h; sourceTree = "<group>"; };
+		21235C8D27F2CB86E79CAA60 /* BigFortuneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigFortuneViewController.h; sourceTree = "<group>"; };
 		21235C98153682924BB85F5B /* NSString+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Utilities.h"; sourceTree = "<group>"; };
 		21235E13C125FF2E916FCF61 /* UIColor+Presets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Presets.m"; sourceTree = "<group>"; };
 		21235E5B4E3B889BF682F011 /* SingleFortune.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleFortune.m; sourceTree = "<group>"; };
@@ -292,6 +298,10 @@
 				21235A50AC0E760F4767EA08 /* ImpressumViewController.m */,
 				212350A4C588C6D1D3154C12 /* SettingsViewController.h */,
 				2123597AB4AE3E5E4C5B86CD /* SettingsViewController.m */,
+				212357C2173A5D53F6CE4C2B /* BigFortuneViewController.m */,
+				21235C8D27F2CB86E79CAA60 /* BigFortuneViewController.h */,
+				212355C84A58C83854BD1B74 /* SingleFortuneViewController.m */,
+				21235A1A0BF4743A9E653007 /* SingleFortuneViewController.h */,
 			);
 			name = Primary;
 			sourceTree = "<group>";
@@ -575,6 +585,8 @@
 				212352EBCC19F2585A2820B2 /* NSString+Utilities.m in Sources */,
 				21235BE60C37D09DBA877F10 /* UIViewController+Alert.m in Sources */,
 				2123554049310E796162F257 /* ToolbarFortuneList.m in Sources */,
+				2123592A142EFAF88F63BB01 /* BigFortuneViewController.m in Sources */,
+				212358962627BBBED809F205 /* SingleFortuneViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

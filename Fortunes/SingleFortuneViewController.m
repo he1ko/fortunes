@@ -1,8 +1,8 @@
 
+#import "SingleFortuneViewController.h"
 
-#import "HomeViewController.h"
 
-@implementation HomeViewController {
+@implementation SingleFortuneViewController {
 
 }
 
@@ -17,7 +17,6 @@
      */
     [RESTClient loadRandomFortune:self];
 }
-
 
 
 @end
