@@ -108,7 +108,7 @@ static NSInteger FAKE_SECTION_RESET = 99;
 
 - (UIButton *)secondaryButtonWithText:(NSString *)buttonText {
 
-    UIButton *button = [DefaultButton secondaryButtonWithFrame:[self contentCanvas] text:buttonText];
+    UIButton *button = [DefaultButton cancelButtonWithFrame:[self contentCanvas] text:buttonText];
     [button addTarget:self action:@selector(fontsButtonTouch:) forControlEvents:UIControlEventTouchUpInside];
     [button setHeight:40.0];
 

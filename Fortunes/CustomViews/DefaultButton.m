@@ -20,8 +20,9 @@
 + (id)primaryButtonWithFrame:(CGRect)frame text:(NSString *)text {
 
     UIButton *bt = [[self alloc] initWithFrame:frame text:text];
-    [bt setBackgroundColor:[UIColor whiteColor]];
-    [bt setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [bt setBackgroundColor:[UIColor clearColor]];
+    [bt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self addBorder:[UIColor whiteColor] width:1.0 toButton:bt];
     return bt;
 }
 
@@ -29,7 +30,7 @@
 + (id)secondaryButtonWithFrame:(CGRect)frame text:(NSString *)text {
 
     UIButton *bt = [[self alloc] initWithFrame:frame text:text];
-    [bt setBackgroundColor:[UIColor presetDarkText]];
+    [bt setBackgroundColor:[UIColor presetItemBGOthers]];
     return bt;
 }
 
@@ -38,6 +39,7 @@
 
     UIButton *bt = [[self alloc] initWithFrame:frame text:text];
     [bt setBackgroundColor:[UIColor presetButtonGreen]];
+    [self addBorder:[UIColor whiteColor] width:1.0 toButton:bt];
     return bt;
 }
 
@@ -46,6 +48,15 @@
 
     UIButton *bt = [[self alloc] initWithFrame:frame text:text];
     [bt setBackgroundColor:[UIColor presetButtonRed]];
+    [self addBorder:[UIColor whiteColor] width:1.0 toButton:bt];
+    return bt;
+}
+
+
++ (UIButton *)addBorder:(UIColor *)color width:(CGFloat)width toButton:(UIButton *)bt {
+
+    bt.layer.borderColor = [[UIColor whiteColor] CGColor];
+    bt.layer.borderWidth = 1.0;
     return bt;
 }
 
