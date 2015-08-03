@@ -12,7 +12,7 @@
 @implementation BigFortuneViewController {
 
 @private
-    FortuneMainDisplay *fortuneDisplay;
+
 }
 
 - (void)viewDidLoad {
@@ -28,7 +28,7 @@
     [super viewWillAppear:animated];
 
     UIFont *font = [self fontFromUserSettings];
-    [fortuneDisplay setFont:font];
+    [_fortuneDisplay setFont:font];
 }
 
 
@@ -60,14 +60,14 @@
     _fortune.favDelegate = self;
 
     /// main fortune display
-    if (fortuneDisplay == nil) {
-        fortuneDisplay = [self fortuneDisplay];
-        [self.view addSubview:fortuneDisplay];
+    if (_fortuneDisplay == nil) {
+        _fortuneDisplay = [self _fortuneDisplay];
+        [self.view addSubview:_fortuneDisplay];
         [self setFavouriteButton];
     }
     else {
-        [fortuneDisplay updateFortune:_fortune];
-        [fortuneDisplay setX:self.view.frame.size.width];
+        [_fortuneDisplay updateFortune:_fortune];
+        [_fortuneDisplay setX:self.view.frame.size.width];
         [self fadeInFortune];
     }
 }
@@ -75,12 +75,12 @@
 
 - (void)fadeInFortune {
 
-    CGFloat fortuneX = self.view.center.x - fortuneDisplay.frame.size.width /2;
+    CGFloat fortuneX = self.view.center.x - _fortuneDisplay.frame.size.width /2;
 
     [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveLinear
                      animations:^{
-                         // [fortuneDisplay setAlpha:1.0];
-                         [fortuneDisplay setX:fortuneX];
+                         // [_fortuneDisplay setAlpha:1.0];
+                         [_fortuneDisplay setX:fortuneX];
                      }
                      completion:^(BOOL finished) {
                          [self setFavouriteButton];
@@ -119,7 +119,7 @@
 
 
 
-- (FortuneMainDisplay*)fortuneDisplay {
+- (FortuneMainDisplay*)_fortuneDisplay {
 
     FortuneMainDisplay *fortuneMain = [[FortuneMainDisplay alloc] initWithFrame:[self visibleViewFrame] andFortune:_fortune];
 
@@ -136,17 +136,6 @@
 - (UIFont *)fontFromUserSettings {
 
     return [[FontManager getInstance] fontForSection:FONT_APP_SECTION_MAIN_FORTUNE];
-}
-
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-
-    CGPoint touchLocation = [[touches anyObject] locationInView:self.view];
-    CGPoint viewPoint = [fortuneDisplay convertPoint:touchLocation fromView:self.view];
-
-    if ([fortuneDisplay pointInside:viewPoint withEvent:event]) {
-        [self loadFortune];
-    }
 }
 
 

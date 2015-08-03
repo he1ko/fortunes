@@ -34,13 +34,13 @@
     if(IS_OS_7_OR_LATER) {
         self.automaticallyAdjustsScrollViewInsets = NO; // Avoid the top UITextView space, iOS7 (~bug?)
     }
+
+    [self addNavBarButtonWithImageName:@"MenuIcon" side:NAV_BAR_BUTTON_SIDE_LEFT];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
 
     [self setupNavBarAppearance];
-
-    [self addNavBarButtonWithImageName:@"MenuIcon" side:NAV_BAR_BUTTON_SIDE_LEFT];
 }
 
 
