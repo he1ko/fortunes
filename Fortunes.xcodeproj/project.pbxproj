@@ -28,6 +28,7 @@
 		212352EBCC19F2585A2820B2 /* NSString+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235E7E32353969EF31A996 /* NSString+Utilities.m */; };
 		212353C87192D6A030581AE4 /* FortuneList.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235A9C81611CA9F92D0CD7 /* FortuneList.m */; };
 		2123541E4803BCF55E97A9B5 /* ImpressumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235A50AC0E760F4767EA08 /* ImpressumViewController.m */; };
+		2123550EE188420C59756FD3 /* FortunesListViewController+UserDataPersistence.m in Sources */ = {isa = PBXBuildFile; fileRef = 212355FE1D067198D0E96BB8 /* FortunesListViewController+UserDataPersistence.m */; };
 		2123554049310E796162F257 /* ToolbarFortuneList.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235F1F3B795C30E28EAE89 /* ToolbarFortuneList.m */; };
 		21235780CC4F603C40CE7516 /* SingleFortune+Favourites.m in Sources */ = {isa = PBXBuildFile; fileRef = 212350B0128886811EBBB6E5 /* SingleFortune+Favourites.m */; };
 		212357B2C99E5B3D469FF335 /* FortunesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21235A489AD4681C6D98CA7E /* FortunesListViewController.m */; };
@@ -83,7 +84,9 @@
 		21235379FCBFD3687A20DB34 /* UIViewController+NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NavigationBar.m"; sourceTree = "<group>"; };
 		212354C690E64D24A3396B35 /* FortuneMainDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FortuneMainDisplay.h; sourceTree = "<group>"; };
 		2123556A8AFB7BC8DC587A7B /* FavouritesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouritesManager.m; sourceTree = "<group>"; };
+		212355AF82CE33D7A00B00D3 /* FortunesListViewController+UserDataPersistence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FortunesListViewController+UserDataPersistence.h"; sourceTree = "<group>"; };
 		212355C84A58C83854BD1B74 /* SingleFortuneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleFortuneViewController.m; sourceTree = "<group>"; };
+		212355FE1D067198D0E96BB8 /* FortunesListViewController+UserDataPersistence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FortunesListViewController+UserDataPersistence.m"; sourceTree = "<group>"; };
 		21235611898395CA4FBAA96F /* FontManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontManager.h; sourceTree = "<group>"; };
 		212356548BD968C0CE9D6BA1 /* FavouritesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouritesManager.h; sourceTree = "<group>"; };
 		21235659F2FEAFC19CECD82E /* UIViewController+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Layout.m"; sourceTree = "<group>"; };
@@ -233,6 +236,8 @@
 				21235F5CF7787F408463E065 /* UIViewController+Alert.h */,
 				21235C5C3B78799089643784 /* UIViewController+Descriptions.m */,
 				2123520089750135A29C6CDB /* UIViewController+Descriptions.h */,
+				212355FE1D067198D0E96BB8 /* FortunesListViewController+UserDataPersistence.m */,
+				212355AF82CE33D7A00B00D3 /* FortunesListViewController+UserDataPersistence.h */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -593,6 +598,7 @@
 				2123592A142EFAF88F63BB01 /* BigFortuneViewController.m in Sources */,
 				212358962627BBBED809F205 /* SingleFortuneViewController.m in Sources */,
 				21235D3BF7CE6564D2559688 /* UIViewController+Descriptions.m in Sources */,
+				2123550EE188420C59756FD3 /* FortunesListViewController+UserDataPersistence.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

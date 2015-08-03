@@ -1,10 +1,17 @@
-
-
 #import "HomeViewController.h"
 #import "FortuneMainDisplay.h"
+#import "UIViewController+NavigationBar.h"
 
 @implementation HomeViewController {
 
+}
+
+
+- (void)viewDidLoad {
+
+    [super viewDidLoad];
+
+    [self setNavigationTitle:NSLocalizedString(@"home.nav.title", @"random wisdom")];
 }
 
 

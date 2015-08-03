@@ -1,10 +1,10 @@
 
 #import "FortunesListViewController.h"
-#import "UserSettings.h"
 #import "RowIndicator.h"
 #import "FavouritesManager.h"
 #import "UIViewController+NavigationBar.h"
 #import "SingleFortuneViewController.h"
+#import "FortunesListViewController+UserDataPersistence.h"
 
 
 typedef NS_ENUM(NSInteger, TableDataSet) {
@@ -30,7 +30,7 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
     RowIndicator *rowIndicator;
 
     ToolbarFortuneList *fortuneListToolbar;
-    NSArray *lastScrollPositions;
+    FortuneListToolbarItemIndex currentSection;
 
     TableDataSet dataSet;
     int topRowIdx;
@@ -204,6 +204,8 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
 - (void)tbTouchFavourites {
 
+    currentSection = TOOLBAR_ITEM_INDEX_FAVOURITES;
+
     NSArray *favIds = [[FavouritesManager getInstance] favouriteIds];
     NSMutableArray *dataFiltered = [[NSMutableArray alloc] initWithCapacity:[favIds count]];
 
@@ -226,10 +228,14 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
     [self tbTouchGotoTop];
 
     dataSet = TABLE_DATA_SET_FAVOURITES;
+
+    [self restoreScrollPosition];
 }
 
 
 - (void)tbTouchAllFortunes {
+
+    currentSection = TOOLBAR_ITEM_INDEX_ALL_FORTUNES;
 
     tableData = fortunesFromServer.fortunes;
     [_tableView reloadData];
@@ -238,6 +244,8 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
     [self tbTouchGotoTop];
 
     dataSet = TABLE_DATA_SET_ALL;
+
+    [self restoreScrollPosition];
 }
 
 
@@ -322,7 +330,6 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
 
-    [self saveScrollPosition];
     [self performSelector:@selector(hideRowNum) withObject:nil afterDelay:2.0];
 }
 
@@ -331,13 +338,13 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 */
 - (void)saveScrollPosition {
 
-    [UserSettings saveFortuneListScrollPosition:topRowIdx];
+    [self saveTopFortuneIdx:topRowIdx forSection:currentSection];
 }
 
 - (void)restoreScrollPosition {
 
     // Status- and NavigationBar hide 1,x rows...
-    topRowIdx = [UserSettings loadFortuneListScrollPosition] + 1;
+    topRowIdx = (int) ([self topFortuneIdxForSection:currentSection] + 1);
     [self updateRowNumIndicator:topRowIdx +1];
     [_tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:topRowIdx inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
 }
@@ -364,8 +371,17 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
     fortunesFromServer = (FortuneList *)self.jsonModel;
     tableData = fortunesFromServer.fortunes;
 
-    [self tbTouchAllFortunes];
-    [self restoreScrollPosition];
+    currentSection = [self lastSection];
+    NSLog(@"currentsection = %d", (int)currentSection);
+    if(currentSection == TOOLBAR_ITEM_INDEX_FAVOURITES) {
+
+        [self tbTouchFavourites];
+    }
+    else {
+        [self tbTouchAllFortunes];
+    }
+
+    // [self restoreScrollPosition];
 }
 
 
@@ -539,6 +555,12 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
             }
         }
     }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+
+    [self saveScrollPosition];
+    NSLog(@"tschüß, section # %d", currentSection);
 }
 
 

@@ -14,6 +14,8 @@
 
     [self.navigationItem setLeftBarButtonItem:nil];
     [self addNavBarButtonWithImageName:@"close" side:NAV_BAR_BUTTON_SIDE_LEFT];
+
+    [self setNavigationTitle:@""];
 }
 
 
