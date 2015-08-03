@@ -85,17 +85,34 @@ static float const defaultToolbarHeight = 48.0;
     for(UIBarButtonItem *bbti in self.items) {
 
         bt2 = (UIButton *)bbti.customView;
-        bt2.alpha = 1.0;
+
         if(bt2 == bt) {
+
             index = count;
         }
         count++;
     }
 
-    bt.alpha = 0.4;
+    [self disableItemAtIndex:index];
     [_toolbarDelegate toolbarItemTouchedWithIndex:index];
 }
 
+
+- (void)disableItemAtIndex:(NSUInteger)index {
+
+    UIButton *customItemView;
+    NSUInteger count = 0;
+
+    for(UIBarButtonItem *bbti in self.items) {
+
+        customItemView = (UIButton *)bbti.customView;
+
+        CGFloat opacity = (CGFloat) ((count == index) ? 0.4 : 1.0);
+        customItemView.alpha = opacity;
+
+        count++;
+    }
+}
 
 
 - (void) addTopLine:(UIColor*)color {

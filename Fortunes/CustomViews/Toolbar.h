@@ -15,6 +15,8 @@
 
 - (UIBarButtonItem *)toolbarItemWithImageName:(NSString *)imgName;
 
+- (void)disableItemAtIndex:(NSUInteger)index;
+
 - (void)addTopLine:(UIColor *)color;
 
 @end
