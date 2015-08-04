@@ -6,8 +6,9 @@
 
 - (void)setupAppearance {
 
-    self.barTintColor = [UIColor presetBrown];
-    [self addTopLine:[UIColor colorWithWhite:1.0 alpha:0.6]];
+    self.barTintColor = [UIColor whiteColor];
+    self.tintColor = [UIColor presetBrown];
+    [self addTopLine:[UIColor presetBrown]];
 
 }
 

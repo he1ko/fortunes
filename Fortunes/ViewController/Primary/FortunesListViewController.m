@@ -273,10 +273,10 @@ static NSString *cellReuseIdentifier = @"fortuneCell";
 
     /// re-position row indicator:
     CGFloat scrollOffsetAtTableTop = scrollView.contentOffset.y;
-    scrollOffsetAtTableTop += [self visibleViewFrame].origin.y + 10.0;
+    scrollOffsetAtTableTop += [self visibleViewFrame].origin.y + 20.0;
     [rowIndicator setYPos:scrollOffsetAtTableTop];
 
-    topRowIdx = (int) [_tableView indexPathForRowAtPoint: CGPointMake(0, scrollOffsetAtTableTop)].row;
+    topRowIdx = (int) [_tableView indexPathForRowAtPoint: CGPointMake(0, (CGFloat) (scrollOffsetAtTableTop + 23.0))].row;
     [self updateRowNumIndicator:topRowIdx + 1];
 
     /// re-position toolbar

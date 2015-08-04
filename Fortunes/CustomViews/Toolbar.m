@@ -79,11 +79,13 @@ static float const defaultToolbarHeight = 48.0;
 - (UIBarButtonItem *)toolbarItemWithImageName:(NSString *)imgName {
 
     UIButton *imageItem = [UIButton buttonWithType:UIButtonTypeCustom];
-    [imageItem setImage:[UIImage imageNamed:imgName] forState:UIControlStateNormal];
+    UIImage *img = [[UIImage imageNamed:imgName] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [imageItem setImage:img forState:UIControlStateNormal];
     [imageItem addTarget:self action:@selector(itemTouch:) forControlEvents:UIControlEventTouchUpInside];
     [imageItem setFrame:CGRectMake(0.0, 0.0, defaultToolbarHeight, defaultToolbarHeight)];
 
-    return [[UIBarButtonItem alloc] initWithCustomView:imageItem];
+    UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithCustomView:imageItem];
+    return item;
 }
 
 
