@@ -11,7 +11,7 @@
             @"web_"];
 }
 
-+ (UIColor *)preset_backGroundBlackWithAlpha:(CGFloat)alpha
++ (UIColor *)presetBlackWithAlpha:(CGFloat)alpha
 {
     return [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:alpha];
 }
@@ -21,7 +21,7 @@
     return UIColorFromRGB(0x1386BF);
 }
 
-+ (UIColor *)presetHighlight
++ (UIColor *)presetMediumBlue
 {
     // return UIColorFromRGB(0x16AED9);
     return UIColorFromRGB(0x409cbe);
@@ -70,7 +70,7 @@
     return UIColorFromRGB(0xB9CF3B);
 }
 
-+ (UIColor *)presetItemBGOthers
++ (UIColor *)presetBrown
 {
     return [self custom_dunkelGrauBraun];
 }

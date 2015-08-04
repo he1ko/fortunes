@@ -26,11 +26,11 @@ __Created__: 2014-12-15
 /// ---------------------------------
 
 /** color preset black with transparency */
-+ (UIColor *)preset_backGroundBlackWithAlpha:(CGFloat)alpha;
++ (UIColor *)presetBlackWithAlpha:(CGFloat)alpha;
 /** color preset main ui color, navi bar, toolbar, etc. */
 + (UIColor *)presetBase;
-/** color preset emphasised elemnts */
-+ (UIColor *)presetHighlight;
+/** color preset emphasised elements */
++ (UIColor *)presetMediumBlue;
 /** color preset light text */
 + (UIColor *)presetLightText;
 /** color preset dark text */
@@ -50,7 +50,7 @@ __Created__: 2014-12-15
 /** color preset my own items background */
 + (UIColor *)presetItemBGMine;
 /** color preset foreign users item background */
-+ (UIColor *)presetItemBGOthers;
++ (UIColor *)presetBrown;
 /** color preset incomplete item background */
 + (UIColor *)presetItemBGIncomplete;
 
