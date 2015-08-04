@@ -27,7 +27,7 @@
 
     [super viewDidLoad];
 
-    self.view.backgroundColor = [UIColor presetHighlight];
+    self.view.backgroundColor = [UIColor presetMediumBlue];
 
     alertOffsetY = 0.0;
 

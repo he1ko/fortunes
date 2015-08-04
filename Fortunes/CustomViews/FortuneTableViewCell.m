@@ -74,11 +74,11 @@ static CGFloat const favButtonOpacityInactive = 0.2f;
 
         _fortune = fortune;
 
-        colorCellBackground = [UIColor presetHighlight];
+        colorCellBackground = [UIColor presetMediumBlue];
         colorCellBackgroundSelected = [UIColor orangeColor];
         colorText = [UIColor whiteColor];
         colorSource = [UIColor blackColor];
-        colorNoSource = [UIColor preset_backGroundBlackWithAlpha:0.5];
+        colorNoSource = [UIColor presetBlackWithAlpha:0.5];
 
         self.contentView.backgroundColor = colorCellBackground;
 
@@ -163,7 +163,7 @@ static CGFloat const favButtonOpacityInactive = 0.2f;
     panelFrame.size.height = myHeight;
 
     leftPanel = [[UIView alloc] initWithFrame:panelFrame];
-    leftPanel.backgroundColor = [UIColor preset_backGroundBlackWithAlpha:0.2];
+    leftPanel.backgroundColor = [UIColor presetBlackWithAlpha:0.2];
 
     UILabel *lblLangEN = [self languageLabel];
     lblLangEN.text = @"EN";
@@ -182,7 +182,7 @@ static CGFloat const favButtonOpacityInactive = 0.2f;
     UIView *line = [[UIView alloc] initWithFrame:self.contentView.frame];
     [line setHeight:1.0];
     [line setY:(float) (myHeight - 1.0)];
-    line.backgroundColor = [UIColor preset_backGroundBlackWithAlpha:0.2];
+    line.backgroundColor = [UIColor presetBlackWithAlpha:0.2];
     [self.contentView addSubview:line];
 }
 

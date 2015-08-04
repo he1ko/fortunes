@@ -30,7 +30,7 @@
 + (id)secondaryButtonWithFrame:(CGRect)frame text:(NSString *)text {
 
     UIButton *bt = [[self alloc] initWithFrame:frame text:text];
-    [bt setBackgroundColor:[UIColor presetItemBGOthers]];
+    [bt setBackgroundColor:[UIColor presetBrown]];
     return bt;
 }
 
